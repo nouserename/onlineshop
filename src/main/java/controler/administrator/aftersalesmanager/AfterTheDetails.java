@@ -12,6 +12,6 @@ package controler.administrator.aftersalesmanager;
  * @author SongKaikai
  *
  */
-public class afterthedetails {
+public class AfterTheDetails {
 
 }
