@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 在这个页面里面不允许做空查询 -->
 
 </body>
 </html>

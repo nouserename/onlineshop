@@ -9,47 +9,9 @@ package entity;
  * @author YWB
  *
  */
-public class Admin {
-	private String name;
-	private int id;
-	private String passwd;
+public class Admin extends User{
 	private boolean sex;
-	/**
-	 * @return name
-	 */
-	public String getName() {
-		return name;
-	}
-	/**
-	 * @param name 要设置的 name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	/**
-	 * @return id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id 要设置的 id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-	/**
-	 * @return passwd
-	 */
-	public String getPasswd() {
-		return passwd;
-	}
-	/**
-	 * @param passwd 要设置的 passwd
-	 */
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
+	
 	/**
 	 * @return sex
 	 */
