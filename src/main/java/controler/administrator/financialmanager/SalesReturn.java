@@ -8,10 +8,12 @@
 */ 
 package controler.administrator.financialmanager;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class SalesReturn {
+public class SalesReturn extends HttpServlet{
 
 }

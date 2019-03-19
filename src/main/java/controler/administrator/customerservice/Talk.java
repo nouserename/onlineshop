@@ -8,10 +8,12 @@
 */ 
 package controler.administrator.customerservice;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class Talk {
+public class Talk extends HttpServlet{
 
 }

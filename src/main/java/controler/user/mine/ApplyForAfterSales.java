@@ -8,10 +8,12 @@
 */ 
 package controler.user.mine;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class ApplyForAfterSales {
+public class ApplyForAfterSales extends HttpServlet{
 
 }

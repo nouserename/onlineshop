@@ -1,12 +1,12 @@
 /**  
-* @Title: SearchAndResults.java  
-* @Package controler.user.shop  
+* @Title: UserHomePage.java  
+* @Package controler  
 * @Description: TODO(用一句话描述该文件做什么)  
 * @author SongKaikai  
 * @date 2019年3月8日  
 * @version V1.0  
 */ 
-package controler.user.shop;
+package controler;
 
 import java.io.IOException;
 
@@ -16,16 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Customer;
-import entity.Product;
+import entity.User;
 
 /**
  * @author SongKaikai
  *
  */
-public class SearchAndResults extends HttpServlet{
-	Customer customer = new Customer();
-	Product[] products;
-
+public class UserRegistration extends HttpServlet{
+	private Customer customer  = new Customer();
 	/**
 	* <p>Title: doGet</p>  
 	* <p>Description: </p>  
@@ -39,7 +37,6 @@ public class SearchAndResults extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
 		super.doGet(req, resp);
-		products = customer.search("");
 	}
 
 	/**
@@ -55,7 +52,7 @@ public class SearchAndResults extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
 		super.doPost(req, resp);
+		customer.logOn(req.getParameterValues(""));
 	}
-	
 
 }

@@ -8,10 +8,12 @@
 */ 
 package controler.user;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class UserHomePage {
+public class UserHomePage extends HttpServlet{
 
 }

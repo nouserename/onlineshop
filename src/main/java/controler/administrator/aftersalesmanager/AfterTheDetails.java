@@ -8,10 +8,12 @@
 */ 
 package controler.administrator.aftersalesmanager;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class AfterTheDetails {
+public class AfterTheDetails extends HttpServlet{
 
 }

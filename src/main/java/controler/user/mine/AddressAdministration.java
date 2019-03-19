@@ -8,10 +8,12 @@
 */ 
 package controler.user.mine;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class AddressAdministration {
+public class AddressAdministration extends HttpServlet{
 
 }

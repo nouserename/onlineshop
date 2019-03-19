@@ -1,12 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>trolly</title>
+</head>
+<style>
+h1 {
+  text-align: center;
+}
+div.nebula{
+ position: static;
+  margin: 0% 0% 0% 5%;
+}
+div.info{
+ margin: 3% 30% 75% 43%;
+}
+</style>
 </head>
 <body>
+<div class="nebula"><img src="NEBULA.jpg" alt="nebula" width="100" height="100"/>
+</div>
+<h1>´´½¨ÄúµÄÐÇÔÆID</h1>
+<div class="info">
+<form action=" ">
+  êÇ³Æ:<br>
+  <input type="text" name="kickname" >
+  <br>
+  ÓÊÏä:<br>
+  <input type="text" name="address" >
+  <br>
+    ÃÜÂë:<br>
+  <input type="password" name="password" >
+  <br>
+    È·ÈÏÃÜÂë:<br>
+  <input type="password" name="verifypassword" >
+  <br><br>
+  <input type="submit" value="Submit">
 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
+</form>
+    </div>
 </body>
 </html>

@@ -10,40 +10,56 @@ package entity;
  *
  */
 public class Root extends Admin {
-	/**
-	 * 增加admin
-	 * */
-	public boolean addAdmin(Admin type) {
-		//TODO
+	public Admin[] admins;
+	/**  
+	* 创建一个新的实例 Root.  
+	*    
+	*/
+	public Root() {
+		admins = findAdmin();
+	}
+	
+	
+	
+	/**  
+	* @Title: findAdmin  
+	* @Description: 查询管理员信息
+	* @param @param admin
+	* @param @return    参数  
+	* @return Admin[]    返回类型  
+	* @throws  
+	*/  
+	public Admin[] findAdmin() {
+		
+		return null;
+	}
+	
+	/**  
+	* @Title: deleteAdmin  
+	* @Description: 删除参数中的admin
+	* @param @param admin
+	* @param @return    参数  
+	* @return boolean    返回类型  
+	* @throws  
+	*/  
+	public boolean deleteAdmin(Admin admin) {
 		return true;
 	}
-	/**
-	 * 删除admin
-	 * */
-	public boolean delAdmin(Admin who) {
-		//TODO
+	
+	
+	/**  
+	* @Title: addAdmin  
+	* @Description: 此函数有两个作用，先在数据库做一次查询，如果查到有管理员，则修改信息，如果没有则新增一条记录  
+	* @param @param admin
+	* @param @return    参数  
+	* @return boolean    返回类型  
+	* @throws  
+	*/  
+	public boolean addAdmin(Admin admin) {
+		
 		return true;
+		
 	}
-	/**
-	 * 查找admin
-	 * */
-	public boolean searchAdmin(int id) {
-		//TODO
-		return true;
-	}
-	/**
-	 * 查找admin
-	 * */
-	public boolean searchAdmin(Admin who) {
-		//TODO
-		return true;
-	}
-	/**
-	 * 修改admin
-	 * */
-	public boolean modify(Admin who) {
-		//TODO
-		return true;
-	}
+	
 
 }

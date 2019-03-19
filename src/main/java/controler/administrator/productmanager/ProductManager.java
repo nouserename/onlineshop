@@ -8,10 +8,12 @@
 */ 
 package controler.administrator.productmanager;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class ProductManager {
+public class ProductManager extends HttpServlet{
 
 }

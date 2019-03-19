@@ -10,6 +10,10 @@ package entity;
  *
  */
 public interface FindOrder {
+	/**
+	 * @param whos 传入下单人信息
+	 * @return 返回订单信息
+	 * */
 	abstract public Order[] findOrder(Customer whos);
 	
 	

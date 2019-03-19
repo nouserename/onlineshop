@@ -8,10 +8,12 @@
 */ 
 package controler.administrator.ordermanager;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class OrderManager {
+public class OrderManager extends HttpServlet{
 
 }

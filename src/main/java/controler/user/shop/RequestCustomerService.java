@@ -8,10 +8,12 @@
 */ 
 package controler.user.shop;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class RequestCustomerService {
+public class RequestCustomerService extends HttpServlet{
 
 }

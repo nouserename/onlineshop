@@ -8,10 +8,12 @@
 */ 
 package controler.root;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author SongKaikai
  *
  */
-public class AddNewPerson {
+public class AddNewPerson extends HttpServlet{
 
 }
