@@ -124,6 +124,7 @@ public class Customer extends User{
 	* @throws  
 	*/  
 	public Map<Product, Integer> searchTrolley() {
+		
 		return null;
 	}
 	

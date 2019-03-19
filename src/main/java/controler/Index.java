@@ -58,7 +58,7 @@ public class Index extends HttpServlet{
 		// TODO 自动生成的方法存根
 		super.doPost(req, resp);
 		
-		user.setId(Integer.parseInt(req.getParameter("id")));
+		user.setId(req.getParameter("id"));
 		
 	}
 	
