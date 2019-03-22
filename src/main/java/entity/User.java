@@ -61,8 +61,36 @@ public class User {
 	/**
 	 * @param user 传入登陆者的信息
 	 * @return 用户信息存在，返回用户信息，否则weinull
+	 * user.name中存储的是用户类别，此处需要你根据name的值选择查询哪张表
 	 * */
 	public User logIn(User user) {
+		return null;
+	}
+	
+	
+	/**  
+	* @Title: search  
+	* @Description: 查询参数中给定的状态的产品信息 
+	* @param @param state
+	* @param @return    参数  
+	* @return Product[]    返回类型  
+	* @throws  
+	*/  
+	public Order[] searchOrder(int state) {
+		return null;
+	}
+	
+	
+	/**  
+	* @Title: search  
+	* @Description: 此函数用于查询手机，参数为关键词如果为空则返回所有手机信息  
+	* @param @param string
+	* @param @return    参数  
+	* @return Product[]    返回类型  
+	* @throws  
+	*/  
+	public Product[] searchProduct(String phoneName) {
+		
 		return null;
 	}
 

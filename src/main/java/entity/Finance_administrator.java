@@ -40,4 +40,32 @@ public class Finance_administrator extends Admin implements FindOrder{
 		return true;
 	}
 
+	/**
+	* <p>Title: searchOrder</p>  
+	* <p>Description: </p>  
+	* @param state
+	* @return  
+	* @see entity.User#searchOrder(int)  
+	*/ 
+	@Override
+	public Order[] searchOrder(int state) {
+		// TODO 自动生成的方法存根
+		return super.searchOrder(state);
+	}
+	
+	
+	/**  
+	* @Title: searchOrder  
+	* @Description: 根据id返回对应的订单 
+	* @param @param orderId
+	* @param @return    参数  
+	* @return Order    返回类型  
+	* @throws  
+	*/  
+	public Order searchOrder(String orderId) {
+		return null;
+	}
+	
+	
+
 }

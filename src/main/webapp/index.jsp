@@ -1,6 +1,10 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
+
+<%@page import="controler.Index"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>create new account</title>
@@ -23,7 +27,8 @@ div.info{
 </div>
 <h1>´´½¨ÄúµÄÐÇÔÆID</h1>
 <div class="info">
-<form action=" ">
+
+<form action="Index" method="post">
   êÇ³Æ:<br>
   <input type="text" name="kickname" >
   <br>
@@ -42,19 +47,5 @@ div.info{
 </form>
     </div>
 </body>
-</html
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-    <p>ç”¨Mavenåˆ›å»ºwebé¡¹ç›®ï¼Œæµ‹è¯•Servlet</p>
-    <a href="demo?action=login_input">ç™»å½•(demo?action=login_input)</a>
-</body>
 </html>
->>>>>>> c92efc8e01d27d3a8d027699a3aa50417aa13025
+

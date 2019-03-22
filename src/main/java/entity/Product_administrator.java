@@ -10,29 +10,35 @@ package entity;
  *
  */
 public class Product_administrator extends Admin {
-	/**
-	 * 发布产品
-	 * */
-	public boolean addProduct() {
+	
+	/**  
+	* @Title: addProduct  
+	* @Description: 新建一个产品  
+	* @param @param product
+	* @param @return    参数  
+	* @return boolean    返回类型  
+	* @throws  
+	*/  
+	public boolean addProduct(Product product) {
 		//TODO
 		return true;
 	}
-	/**
-	 * 删除产品
-	 * */
+	
+	/**  
+	* @Title: rmProduct  
+	* @Description: 删除参数中的product
+	* @param @param product
+	* @param @return    参数  
+	* @return boolean    返回类型  
+	* @throws  
+	*/  
 	public boolean rmProduct(Product product) {
 		//TODO
 		return true;
 	}
 	
-	/**
-	 * 选择产品
-	 * */
-	public Product[] selectProduct(String arg) {
-		//TODO
-		
-		return null;
-	}
+
+
 	
 	/**
 	 * 修改产品信息
@@ -42,5 +48,19 @@ public class Product_administrator extends Admin {
 		
 		return true;
 	}
+	/**
+	* <p>Title: searchProduct</p>  
+	* <p>Description: </p>  
+	* @param phoneName
+	* @return  
+	* @see entity.User#searchProduct(java.lang.String)  
+	*/ 
+	@Override
+	public Product[] searchProduct(String phoneName) {
+		// TODO 自动生成的方法存根
+		return super.searchProduct(phoneName);
+	}
+	
+	
 
 }

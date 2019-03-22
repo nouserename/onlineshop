@@ -56,9 +56,17 @@ public class Index extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
-		super.doPost(req, resp);
-		
-		user.setId(req.getParameter("id"));
+		resp.sendRedirect(req.getContextPath() + "/root/root.jsp");
+//		super.doPost(req, resp);
+//		user.setId(req.getParameter("id"));
+//		user.setPasswd(req.getParameter("passwd"));
+//		//此处由于没办法，所以用name传递类别
+//		user.setName(req.getParameter("kind"));
+//		User currentuser = user.logIn(user);
+//		if (currentuser!=null) {
+//			
+//		}
+//		
 		
 	}
 	

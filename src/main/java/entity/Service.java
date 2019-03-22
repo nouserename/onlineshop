@@ -35,12 +35,7 @@ public class Service extends Admin implements FindOrder{
 		return null;
 	}
 	
-	/**
-	 * 此方法用于帮助顾客申请退款
-	 * */
-	public boolean apply(Order o) {
-		//TODO
-		return true;
-	}
+	
+	
 
 }
