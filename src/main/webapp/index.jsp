@@ -25,20 +25,20 @@ div.info{
 <body>
 <div class="nebula"><img src="NEBULA.jpg" alt="nebula" width="100" height="100"/>
 </div>
-<h1>´´½¨ÄúµÄÐÇÔÆID</h1>
+<h1>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID</h1>
 <div class="info">
 
-<form action="Index" method="post">
-  êÇ³Æ:<br>
-  <input type="text" name="kickname" >
+<form action="Index" method="POST">
+  ï¿½Ç³ï¿½:<br>
+  <input type="text" name="kickname" id="kickname">
   <br>
-  ÓÊÏä:<br>
-  <input type="text" name="address" >
+  ï¿½ï¿½ï¿½ï¿½:<br>
+  <input type="text" name="address" id="address">
   <br>
-    ÃÜÂë:<br>
-  <input type="password" name="password" >
+    ï¿½ï¿½ï¿½ï¿½:<br>
+  <input type="password" name="password" id="password">
   <br>
-    È·ÈÏÃÜÂë:<br>
+    È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:<br>
   <input type="password" name="verifypassword" >
   <br><br>
   <input type="submit" value="Submit">

@@ -20,6 +20,7 @@ import java.sql.DriverManager;
 *    
 */
 public class Database {
+	//?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
     private static final  String url = "jdbc:mysql://39.105.17.254:3306/onlineshop?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false";
 private static final  String username = "root";
 private static final  String password = "root";
@@ -44,18 +45,21 @@ private static final  String password = "root";
 		e.fillInStackTrace();
 	}
 }
-    
-    public static void opendb(){
+    public static Connection opendb(){
         
         try {
-            Database.getConnection();
+            Connection connection = Database.getConnection();
+            
             System.out.println("数据库连接成功");
+            return connection;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
     public static void main(String[] args) {
-    opendb();
+    Connection connection = opendb();
+    System.out.println(connection);
 }
 
 }
