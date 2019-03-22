@@ -72,7 +72,7 @@ public class User {
 		Connection connection = Database.getConnection();
 		String sql = "select * from customer where customer_id = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setString(0, user.getId());
+		statement.setString(1, user.getId());
 		ResultSet rs = statement.executeQuery();
 		if(rs.next()) {
 			Customer customer = new Customer();

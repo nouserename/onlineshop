@@ -24,7 +24,7 @@ public class Address {
 	*/
 	public Address(String addr) {
 		// TODO 自动生成的构造函数存根
-		String[] ad = addr.split("&");
+		//String[] ad = addr.split("&");
 		
 	}
 	

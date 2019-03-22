@@ -69,6 +69,7 @@ public class Index extends HttpServlet{
 			user1 = user.logIn(user);
 			if (user1!=null) {
 				resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
+				return;
 			}
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
@@ -76,6 +77,7 @@ public class Index extends HttpServlet{
 		}
 		
 		resp.sendRedirect(req.getContextPath() + "/root/root.jsp");
+		return;
 	
 		
 	}
