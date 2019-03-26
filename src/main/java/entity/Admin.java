@@ -25,6 +25,7 @@ public class Admin extends User{
 	* @throws  
 	*/  
 	public Product[] searchProduct(String phoneName) {
+		
 		// TODO 自动生成的方法存根
 		return null;
 	}

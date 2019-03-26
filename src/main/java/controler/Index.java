@@ -76,22 +76,28 @@ public class Index extends HttpServlet{
 			if (user.getName().equals("admin")) {
 				currentAdmin =  (Admin) user.logIn(user);
 				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
+					req.getSession().setAttribute("admin", currentAdmin);
 					int kind = currentAdmin.getState();
 					switch (kind) {
 					case Admin.finance_adm:
-						resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/financialmanager.jsp");
+						req.getRequestDispatcher("/administrator/financialmanager/financialmanager.jsp").forward(req, resp);
+//						resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/financialmanager.jsp");
 						break;
 					case Admin.aftersale_adm:
-						resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
+						req.getRequestDispatcher("/administrator/aftersalesmanager/aftersalesmanager.jsp").forward(req, resp);
+//						resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
 						break;
 					case Admin.root_adm:
-						resp.sendRedirect(req.getContextPath()+"/administrator/root/root.jsp");
+						req.getRequestDispatcher("/administrator/root/root.jsp").forward(req, resp);
+//						resp.sendRedirect(req.getContextPath()+"/administrator/root/root.jsp");
 						break;
 					case Admin.product_adm:
-						resp.sendRedirect(req.getContextPath()+"/administrator/productmanager/productmanager.jsp");
+						req.getRequestDispatcher("/administrator/productmanager/productmanager.jsp").forward(req, resp);
+//						resp.sendRedirect(req.getContextPath()+"/administrator/productmanager/productmanager.jsp");
 						break;
 					case Admin.order_adm:
-						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
+						req.getRequestDispatcher("/administrator/ordermanager/ordermanager.jsp").forward(req, resp);
+//						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
 						break;
 						
 					default:
