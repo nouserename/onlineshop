@@ -17,6 +17,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.websocket.CaseInsensitiveKeyMap;
+
+import entity.Admin;
+import entity.Customer;
 import entity.User;
 
 /**
@@ -64,12 +69,44 @@ public class Index extends HttpServlet{
 		user.setName(name);
 		user.setPasswd(passwd);
 		user.setId(id);
-		User user1;
+		Admin currentAdmin;
+		Customer currentCustomer;
+		
 		try {
-			user1 = user.logIn(user);
-			if (user1!=null) {
-				resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
-				return;
+			if (user.getName().equals("admin")) {
+				currentAdmin =  (Admin) user.logIn(user);
+				if (currentAdmin!=null) {
+					int kind = currentAdmin.getState();
+					switch (kind) {
+					case Admin.finance_adm:
+						resp.sendRedirect(req.getContextPath()+"/financialmanager/financialmanager.jsp");
+						break;
+					case Admin.aftersale_adm:
+						resp.sendRedirect(req.getContextPath()+"/aftersalesmanager/aftersalesmanager.jsp");
+						break;
+					case Admin.root_adm:
+						resp.sendRedirect(req.getContextPath()+"/root/root.jsp");
+						break;
+					case Admin.product_adm:
+						resp.sendRedirect(req.getContextPath()+"/user/productmanager.jsp");
+						break;
+					case Admin.order_adm:
+						resp.sendRedirect(req.getContextPath()+"/ordermanager/ordermanager.jsp");
+						break;
+
+					default:
+						break;
+					}
+					
+					return;
+				}
+			} else {
+
+				currentCustomer = (Customer)user.logIn(user);
+				if (currentCustomer!=null) {
+					resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
+					return;
+				}
 			}
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块

@@ -70,6 +70,8 @@ public class User {
 	 * */
 	public User logIn(User user) throws SQLException {
 		Connection connection = Database.getConnection();
+		if (user.getName().equals("customer")) {
+			
 		String sql = "select * from customer where customer_id = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, user.getId());
@@ -87,6 +89,22 @@ public class User {
 			return customer;
 		}
 		return null;
+		} else {
+			
+			String sql = "select * from admin where admin_id = ?";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getId());
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				Admin admin = new Admin();
+				admin.setId(rs.getString("admin_id"));
+				admin.setName(rs.getString("name"));
+				admin.setState(rs.getInt("position"));
+				return admin;
+			}
+			return null;
+			
+		}
 	}
 	
 	
