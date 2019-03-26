@@ -16,6 +16,27 @@ public class Address {
 	private String city;
 	private String district;
 	private String other;
+	
+	
+	/**  
+	* 创建一个新的实例 Address.参数是从数据库里查出来的字符串，需要将里面的一个个地址解析出来  
+	*    
+	*/
+	public Address(String addr) {
+		// TODO 自动生成的构造函数存根
+		//String[] ad = addr.split("&");
+		
+	}
+	
+	
+	/**  
+	* 创建一个新的实例 Address.  
+	*    
+	*/
+	public Address() {
+		// TODO 自动生成的构造函数存根
+	}
+	
 	/**
 	 * @return phoneNumber
 	 */

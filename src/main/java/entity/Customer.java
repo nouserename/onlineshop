@@ -13,7 +13,6 @@ import java.util.Map;
  */
 public class Customer extends User{
 	private boolean sex;
-	private int credit;
 	private Address[] addr;
 	private Product[] products;
 	private Order[] orders;
@@ -36,18 +35,6 @@ public class Customer extends User{
 	 */
 	public void setSex(boolean sex) {
 		this.sex = sex;
-	}
-	/**
-	 * @return credit
-	 */
-	public int getCredit() {
-		return credit;
-	}
-	/**
-	 * @param credit 要设置的 credit
-	 */
-	public void setCredit(int credit) {
-		this.credit = credit;
 	}
 	/**
 	 * @return addr
@@ -102,18 +89,7 @@ public class Customer extends User{
 	}
 	
 	
-	/**  
-	* @Title: search  
-	* @Description: 此函数用于查询手机，参数为关键词如果为空则返回所有手机信息  
-	* @param @param string
-	* @param @return    参数  
-	* @return Product[]    返回类型  
-	* @throws  
-	*/  
-	public Product[] search(String phoneName) {
-		
-		return null;
-	}
+	
 	
 	
 	/**  
@@ -157,19 +133,38 @@ public class Customer extends User{
 	}
 	
 	
+	
+	/**  
+	* @Title: addProduct2Trolley  
+	* @Description: 此函数及其麻烦，设计者须谨慎编写，必要之时多多做几次测试
+	* 				先查询数据库购物车表是否有与当前客户id以及产品Id对应的记录，如果有，则修改数量
+	* 				如果没有，则插入一条记录 
+	* @param @param proId
+	* @param @return    参数  
+	* @return boolean    返回类型  
+	* @throws  
+	*/  
+	public boolean addProduct2Trolley(int proId) {
+		
+		return true;
+	}
+	
+	
 	/**  
 	* @Title: pay  
 	* @Description: 此函数为付款函数，本应该调用支付宝接口，此处假设调用完毕，所以只需要修改添加订单即可，
 	* 				需要说明的是，参数中同一间商品出现的次数表示用户购买的数量  
 	* 				!!!此处需强烈说明，pay函数开始必须先判断当前客户有没有设置地址
+	* 				！！！强烈说明，此函数须将订单状态设为待发货
+	* 				此处须将参数中传入的几件商品构造成几个订单，并将信息插入数据库
 	* @param @param products
 	* @param @return    参数  
-	* @return Order[]    返回类型  
+	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public Order[] pay(Product[] products) {
+	public boolean pay(Product[] products) {
 		
-		return null;
+		return true;
 	}
 	
 	

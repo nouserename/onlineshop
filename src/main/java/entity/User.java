@@ -9,6 +9,10 @@
 
 package entity;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**  
 * @ClassName: User  
@@ -61,8 +65,74 @@ public class User {
 	/**
 	 * @param user 传入登陆者的信息
 	 * @return 用户信息存在，返回用户信息，否则weinull
+	 * user.name中存储的是用户类别，此处需要你根据name的值选择查询哪张表
+	 * @throws SQLException 
 	 * */
-	public User logIn(User user) {
+	public User logIn(User user) throws SQLException {
+		Connection connection = Database.getConnection();
+		if (user.getName().equals("customer")) {
+			
+		String sql = "select * from customer where customer_id = ?";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, user.getId());
+		ResultSet rs = statement.executeQuery();
+		if(rs.next()) {
+			Customer customer = new Customer();
+			Address[] addresses = new Address[3];
+			addresses[0] = new Address(rs.getString("addr1"));
+			addresses[1] = new Address(rs.getString("addr2"));
+			addresses[2] = new Address(rs.getString("addr3"));
+			
+			customer.setId(rs.getString("customer_id"));
+			customer.setName(rs.getString("name"));
+			customer.setAddr(addresses);
+			customer.setPasswd(rs.getString("passwd"));
+			return customer;
+		}
+		return null;
+		} else {
+			
+			String sql = "select * from admin where admin_id = ?";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getId());
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				Admin admin = new Admin();
+				admin.setId(rs.getString("admin_id"));
+				admin.setName(rs.getString("name"));
+				admin.setState(rs.getInt("position"));
+				admin.setPasswd(rs.getString("passwd"));
+				return admin;
+			}
+			return null;
+			
+		}
+	}
+	
+	
+	/**  
+	* @Title: search  
+	* @Description: 查询参数中给定的状态的产品信息 
+	* @param @param state
+	* @param @return    参数  
+	* @return Product[]    返回类型  
+	* @throws  
+	*/  
+	public Order[] searchOrder(int state) {
+		return null;
+	}
+	
+	
+	/**  
+	* @Title: search  
+	* @Description: 此函数用于查询手机，参数为关键词如果为空则返回所有手机信息  
+	* @param @param string
+	* @param @return    参数  
+	* @return Product[]    返回类型  
+	* @throws  
+	*/  
+	public Product[] searchProduct(String phoneName) {
+		
 		return null;
 	}
 

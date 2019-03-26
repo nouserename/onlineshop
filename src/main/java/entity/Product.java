@@ -5,7 +5,6 @@
  */
 package entity;
 
-import java.awt.Color;
 import java.awt.Image;
 
 /**
@@ -16,8 +15,15 @@ public class Product {
 	private int id;
 	private double price;
 	private String name;
-	private Image[] images;
-	private Color color;
+	
+	/**  
+	* @Fields field:field:第一项缩略图，第二项用户首页展示图，后续是商品详情图  
+	*/ 
+	private Image[] images = new Image[7];
+	/**  
+	* @Fields field:field:第一项是用户首页配套文字，其余是商品详情配套文字
+	*/ 
+	private String[] description = new String[6];
 	private String group;
 	private int memory;
 	private int pixel;
@@ -70,18 +76,6 @@ public class Product {
 	 */
 	public void setImages(Image[] images) {
 		this.images = images;
-	}
-	/**
-	 * @return color
-	 */
-	public Color getColor() {
-		return color;
-	}
-	/**
-	 * @param color 要设置的 color
-	 */
-	public void setColor(Color color) {
-		this.color = color;
 	}
 	/**
 	 * @return group
@@ -142,6 +136,18 @@ public class Product {
 	 */
 	public void setProcessor(String processor) {
 		this.processor = processor;
+	}
+	/**
+	 * @return description
+	 */
+	public String[] getDescription() {
+		return description;
+	}
+	/**
+	 * @param description 要设置的 description
+	 */
+	public void setDescription(String[] description) {
+		this.description = description;
 	}
 
 }

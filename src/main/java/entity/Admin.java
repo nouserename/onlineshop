@@ -10,19 +10,60 @@ package entity;
  *
  */
 public class Admin extends User{
-	private boolean sex;
-	
-	/**
-	 * @return sex
-	 */
-	public boolean isSex() {
-		return sex;
+	private int position;
+	public final static int finance_adm = 1;
+	public final static int aftersale_adm = 2;
+	public final static int root_adm = 3;
+	public final static int product_adm = 4;
+	public final static int order_adm = 5;
+	/**  
+	* @Title: searchProduct  
+	* @Description: TODO(这里用一句话描述这个方法的作用)  
+	* @param @param phoneName
+	* @param @return    参数  
+	* @return Product []    返回类型  
+	* @throws  
+	*/  
+	public Product[] searchProduct(String phoneName) {
+		
+		// TODO 自动生成的方法存根
+		return null;
+	}
+	/**  
+	* @Title: searchOrder  
+	* @Description: TODO(这里用一句话描述这个方法的作用)  
+	* @param @param state
+	* @param @return    参数  
+	* @return Order []    返回类型  
+	* @throws  
+	*/  
+	public Order[] searchOrder(int state) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+	/**  
+	* @Title: search  
+	* @Description: TODO(这里用一句话描述这个方法的作用)  
+	* @param @param state
+	* @param @return    参数  
+	* @return Order []    返回类型  
+	* @throws  
+	*/  
+	public Order[] search(int state) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 	/**
-	 * @param sex 要设置的 sex
+	 * @return state
 	 */
-	public void setSex(boolean sex) {
-		this.sex = sex;
+	public int getState() {
+		return position;
+	}
+	/**
+	 * @param state 要设置的 state
+	 */
+	public void setState(int state) {
+		this.position = state;
 	}
 
 }
