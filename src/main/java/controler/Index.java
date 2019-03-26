@@ -88,7 +88,7 @@ public class Index extends HttpServlet{
 //						resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
 						break;
 					case Admin.root_adm:
-						req.getRequestDispatcher("/administrator/root/root.jsp").forward(req, resp);
+						req.getRequestDispatcher("/root/root.jsp").forward(req, resp);
 //						resp.sendRedirect(req.getContextPath()+"/administrator/root/root.jsp");
 						break;
 					case Admin.product_adm:

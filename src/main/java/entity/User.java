@@ -9,10 +9,12 @@
 
 package entity;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**  
 * @ClassName: User  
@@ -110,7 +112,8 @@ public class User {
 	}
 	
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: search  
 	* @Description: 查询参数中给定的状态的产品信息 
 	* @param @param state
@@ -118,12 +121,28 @@ public class User {
 	* @return Product[]    返回类型  
 	* @throws  
 	*/  
-	public Order[] searchOrder(int state) {
-		return null;
+	public Order[] searchOrder(int state) throws SQLException {
+		Connection connection = Database.getConnection();
+		String sql = "select * from order where state = ?";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setInt(1, state);
+		ResultSet resultSet = statement.executeQuery();
+		ArrayList<Order> list = new ArrayList<Order>();
+		while (resultSet.next()) {
+			list.add(new Order(resultSet.getString("order_id"),resultSet.getString("customer_id"),resultSet.getInt("price"),resultSet.getInt("product_id"),resultSet.getInt("state")));
+		}
+		int size = list.size();
+		Order[] orders = new Order[size];
+		for(int i = 0;i<size;i++) {
+			orders[i]= list.get(i); 
+		}
+		return orders;
 	}
 	
 	
-	/**  
+	/**
+	 * @throws IOException 
+	 * @throws SQLException   
 	* @Title: search  
 	* @Description: 此函数用于查询手机，参数为关键词如果为空则返回所有手机信息  
 	* @param @param string
@@ -131,9 +150,28 @@ public class User {
 	* @return Product[]    返回类型  
 	* @throws  
 	*/  
-	public Product[] searchProduct(String phoneName) {
-		
-		return null;
+	public Product[] searchProduct(String phoneName) throws SQLException, IOException {
+		String sql = "select * from product where 'name' like '%"+phoneName+"%'";
+		ResultSet resultSet = Database.executeQuery(sql);
+		ArrayList<Product> list = new ArrayList<Product>();
+		while (resultSet.next()) {
+			list.add(new Product(resultSet.getInt("product_id"),resultSet.getDouble("price"),
+					resultSet.getString("name"),resultSet.getString("image1"),
+					resultSet.getString("image2"),resultSet.getString("image3"),
+					resultSet.getString("image4"),resultSet.getString("image5"),
+					resultSet.getString("image6"),resultSet.getString("image7"),resultSet.getString("description1"),
+					resultSet.getString("description2"),resultSet.getString("description3"),
+					resultSet.getString("description4"),resultSet.getString("description5"),
+					resultSet.getString("description6"),resultSet.getString("group"),
+					resultSet.getInt("memory"),resultSet.getInt("pixel"),
+					resultSet.getInt("battery"),resultSet.getString("processor")));
+		}
+		int size = list.size();
+		Product[] products = new Product[size];
+		for(int i = 0;i<size;i++) {
+			products[i]= list.get(i); 
+		}
+		return products;
 	}
 
 }
