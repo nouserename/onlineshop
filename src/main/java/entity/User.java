@@ -86,6 +86,7 @@ public class User {
 			customer.setId(rs.getString("customer_id"));
 			customer.setName(rs.getString("name"));
 			customer.setAddr(addresses);
+			customer.setPasswd(rs.getString("passwd"));
 			return customer;
 		}
 		return null;
@@ -100,6 +101,7 @@ public class User {
 				admin.setId(rs.getString("admin_id"));
 				admin.setName(rs.getString("name"));
 				admin.setState(rs.getInt("position"));
+				admin.setPasswd(rs.getString("passwd"));
 				return admin;
 			}
 			return null;

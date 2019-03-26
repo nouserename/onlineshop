@@ -75,7 +75,7 @@ public class Index extends HttpServlet{
 		try {
 			if (user.getName().equals("admin")) {
 				currentAdmin =  (Admin) user.logIn(user);
-				if (currentAdmin!=null) {
+				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
 					int kind = currentAdmin.getState();
 					switch (kind) {
 					case Admin.finance_adm:
@@ -93,19 +93,31 @@ public class Index extends HttpServlet{
 					case Admin.order_adm:
 						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
 						break;
-
+						
 					default:
 						break;
 					}
 					
 					return;
 				}
+				else {
+					
+					PrintWriter writer = resp.getWriter();
+					writer.println("<p> 用户名或密码错误</p>");
+				}
 			} else {
 
 				currentCustomer = (Customer)user.logIn(user);
-				if (currentCustomer!=null) {
+				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
 					resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
 					return;
+				}else {
+					resp.setContentType("text/html;charset=UTF-8");
+					
+					PrintWriter writer = resp.getWriter();
+					writer.println("<p> 用户名或密码错误</p>");
+					writer.flush();
+					writer.close();
 				}
 			}
 		} catch (SQLException e) {
@@ -113,7 +125,7 @@ public class Index extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		resp.sendRedirect(req.getContextPath() + "/root/root.jsp");
+		
 		return;
 	
 		
