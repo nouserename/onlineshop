@@ -79,19 +79,19 @@ public class Index extends HttpServlet{
 					int kind = currentAdmin.getState();
 					switch (kind) {
 					case Admin.finance_adm:
-						resp.sendRedirect(req.getContextPath()+"/financialmanager/financialmanager.jsp");
+						resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/financialmanager.jsp");
 						break;
 					case Admin.aftersale_adm:
-						resp.sendRedirect(req.getContextPath()+"/aftersalesmanager/aftersalesmanager.jsp");
+						resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
 						break;
 					case Admin.root_adm:
-						resp.sendRedirect(req.getContextPath()+"/root/root.jsp");
+						resp.sendRedirect(req.getContextPath()+"/administrator/root/root.jsp");
 						break;
 					case Admin.product_adm:
-						resp.sendRedirect(req.getContextPath()+"/user/productmanager.jsp");
+						resp.sendRedirect(req.getContextPath()+"/administrator/productmanager/productmanager.jsp");
 						break;
 					case Admin.order_adm:
-						resp.sendRedirect(req.getContextPath()+"/ordermanager/ordermanager.jsp");
+						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
 						break;
 
 					default:
