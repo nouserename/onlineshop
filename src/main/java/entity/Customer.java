@@ -5,6 +5,10 @@
  */
 package entity;
 
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -74,7 +78,8 @@ public class Customer extends User{
 	}
 	
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: logOn  
 	* @Description: 注册  
 	* @param @param parm
@@ -82,9 +87,14 @@ public class Customer extends User{
 	* @return boolean    注册成功返回true
 	* @throws  
 	*/  
-	public boolean logOn(String[] parm) {
-		
-		return true;
+	public boolean logOn(String[] parm) throws SQLException {
+		String sql = "insert into customer values ('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
+		int column = Database.executeUpdate(sql);
+		if (column==1) {
+			return true;
+		} else {
+			return false;
+		}
 		
 	}
 	
@@ -92,20 +102,38 @@ public class Customer extends User{
 	
 	
 	
-	/**  
+	/**
+	 * @throws IOException 
+	 * @throws SQLException   
 	* @Title: searchTrollry  
 	* @Description: 当用户打开购物车界面时调用此函数， ,键中是产品信息，值里面是对应数量
 	* @param @return    参数  
 	* @return Product[]    返回类型  
 	* @throws  
 	*/  
-	public Map<Product, Integer> searchTrolley(Customer customer) {
+	public Map<Product, Integer> searchTrolley(Customer customer) throws SQLException, IOException {
+		String sql = "SELECT * FROM (SELECT product.*,amount,customer_id FROM product LEFT JOIN trolley ON product.product_id=trolley.product_id ) AS a WHERE customer_id = '"+customer.getId()+"'";
+		ResultSet resultSet = Database.executeQuery(sql);
+		Map<Product, Integer> map = new HashMap<Product, Integer>();
+		while (resultSet.next()) {
+			map.put(new Product(resultSet.getInt("product_id"),resultSet.getDouble("price"),
+					resultSet.getString("name"),resultSet.getString("image1"),
+					resultSet.getString("image2"),resultSet.getString("image3"),
+					resultSet.getString("image4"),resultSet.getString("image5"),
+					resultSet.getString("image6"),resultSet.getString("image7"),resultSet.getString("description1"),
+					resultSet.getString("description2"),resultSet.getString("description3"),
+					resultSet.getString("description4"),resultSet.getString("description5"),
+					resultSet.getString("description6"),resultSet.getString("group"),
+					resultSet.getInt("memory"),resultSet.getInt("pixel"),
+					resultSet.getInt("battery"),resultSet.getString("processor")), resultSet.getInt("amount"));
+		}
 		
-		return null;
+		return map;
 	}
 	
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: deleteTrolleyProduct  
 	* @Description: 根据参数中的产品id删除购物车中的对应产品  
 	* @param @param proId
@@ -113,9 +141,15 @@ public class Customer extends User{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean deleteTrolleyProduct(int proId) {
-		
-		return true;
+	public boolean deleteTrolleyProduct(int proId,Customer customer) throws SQLException {
+		String sql = "delete from trolley where product_id = "+proId+"and customer_id = '"+customer.getId()+"'";
+		int num = Database.executeUpdate(sql);
+		if (num>0) {
+			return true;
+			
+		} else {
+			return false;
+		}
 	}
 	
 	/**  
