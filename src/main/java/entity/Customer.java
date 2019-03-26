@@ -94,12 +94,12 @@ public class Customer extends User{
 	
 	/**  
 	* @Title: searchTrollry  
-	* @Description: 当用户打开购物车界面时调用此函数，此函数没有参数是因为默认用当前customer的id ,键中是产品信息，值里面是对应数量
+	* @Description: 当用户打开购物车界面时调用此函数， ,键中是产品信息，值里面是对应数量
 	* @param @return    参数  
 	* @return Product[]    返回类型  
 	* @throws  
 	*/  
-	public Map<Product, Integer> searchTrolley() {
+	public Map<Product, Integer> searchTrolley(Customer customer) {
 		
 		return null;
 	}
@@ -176,7 +176,7 @@ public class Customer extends User{
 	* @return Order[]    返回类型  
 	* @throws  
 	*/  
-	public Order[] searchOrder() {
+	public Order[] searchOrder(Customer customer) {
 		
 		return null;
 	}
