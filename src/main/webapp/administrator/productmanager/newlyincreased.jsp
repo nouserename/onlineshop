@@ -1,12 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>addproducts</title>
+</head>
+<style>
+
+
+body{
+line-height: 250%;
+    position: absolute;
+    left: 30%;
+    top:10%
+}
+
+</style>
 </head>
 <body>
 
+<div class="info">
+    <form action=" ">
+        ÉÌÆ·Ãû³Æ:<input type="text" name="productsname">
+        ¼Û¸ñ:<input type="text" name="price">
+        <br>
+        ÏñËØ:<input type="text" name="pixel">
+        µç³ØÈÝÁ¿:<input type="text" name="battery">
+        <br>
+        ÄÚ´æ:<input type="text" name="EMS memory">
+        ÏµÁÐÃû³Æ:<input type="text" name="product line">
+        <br>
+        CPU:<input type="text" name="cpu">
+        <script>
+        </form>
+function myFunction() {
+  var x = document.getElementById("myFile");
+  var x = document.getElementById("1");
+   var x = document.getElementById("2");
+    var x = document.getElementById("3");
+     var x = document.getElementById("4");
+      var x = document.getElementById("5");
+       var x = document.getElementById("6");
+  x.disabled = true;
+}
+ </script>
+<br><br>
+
+
+        ËõÂÔÍ¼£º<input type="file" id="myFile">
+        ÓÃ»§Ê×Ò³Õ¹Ê¾Í¼£º<input type="file" id="1">
+       <br> ÉÌÆ·ÏêÏ¸1Í¼£º<input type="file" id="2">
+        ÉÌÆ·ÏêÏ¸2Í¼£º<input type="file" id="3">
+       <br> ÉÌÆ·ÏêÏ¸3Í¼£º<input type="file" id="4">
+        ÉÌÆ·ÏêÏ¸4Í¼£º<input type="file" id="5">
+ <br> ÉÌÆ·ÏêÏ¸5Í¼£º<input type="file" id="6">
+    <br><br>
+
+      ÉÌÆ·ÏêÏ¸1ÎÄ×Ö:<input type="text" name="1">
+        ÉÌÆ·ÏêÏ¸2ÎÄ×Ö:<input type="text" name="2">
+        <br>
+        ÉÌÆ·ÏêÏ¸3ÎÄ×Ö:<input type="text" name="3">
+       ÉÌÆ·ÏêÏ¸4ÎÄ×Ö:<input type="text" name="4">
+        <br>
+        ÉÌÆ·ÏêÏ¸5ÎÄ×Ö:<input type="text" name="5">
+        <br>
+        ÓÃ»§Ê×Ò³ÎÄ×Ö:<input type="text" name="6">
+        <br>
+        <input type="submit" value="Submit">
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </form>
+    </div>
 </body>
 </html>
