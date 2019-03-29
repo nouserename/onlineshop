@@ -5,8 +5,7 @@
  */
 package entity;
 
-
-
+import java.sql.SQLException;
 
 /**  
 * @ClassName: Aftersales_administrator  
@@ -38,11 +37,12 @@ public class Aftersales_administrator extends Admin{
 	* <p>Description: </p>  
 	* @param state
 	* @return  
+	 * @throws SQLException 
 	* @see entity.Admin#searchOrder(int)  
 	* 返回所有状态为等待审核的订单
 	*/ 
 	@Override
-	public Order[] searchOrder(int state) {
+	public Order[] searchOrder(int state) throws SQLException {
 		// TODO 自动生成的方法存根
 		return super.searchOrder(state);
 	}

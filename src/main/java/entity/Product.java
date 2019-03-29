@@ -6,6 +6,10 @@
 package entity;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 /**
  * @author YWB
@@ -29,6 +33,48 @@ public class Product {
 	private int pixel;
 	private int battery;
 	private String processor;
+	
+	
+	public Product(int id,double price,String name,
+			String image,String image2,String image3,
+			String image4,String image5,String image6,
+			String image7,String description1,
+			String description2,String description3,
+			String description4,String description5,
+			String description6,String group,int memory,
+			int pixel,int battery,String processor) throws IOException {
+		this.id = id;
+		this.price = price;
+		this.name = name;
+		this.images[0] = ImageIO.read(new File(image));
+		this.images[1] = ImageIO.read(new File(image2));
+		this.images[2] = ImageIO.read(new File(image3));
+		this.images[3] = ImageIO.read(new File(image4));
+		this.images[4] = ImageIO.read(new File(image5));
+		this.images[5] = ImageIO.read(new File(image6));
+		this.images[6] = ImageIO.read(new File(image7));
+		this.description[0] = description1;
+		this.description[2] = description2;
+		this.description[3] = description3;
+		this.description[4] = description4;
+		this.description[5] = description5;
+		this.group = group;
+		this.memory = memory;
+		this.pixel = pixel;
+		this.battery = battery;
+		this.processor = processor;
+		
+		
+		// TODO 自动生成的构造函数存根
+	}
+	
+	/**  
+	* 创建一个新的实例 Product.  
+	*    
+	*/
+	public Product() {
+		// TODO 自动生成的构造函数存根
+	}
 	/**
 	 * @return id
 	 */

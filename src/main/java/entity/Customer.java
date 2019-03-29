@@ -5,6 +5,10 @@
  */
 package entity;
 
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -74,7 +78,8 @@ public class Customer extends User{
 	}
 	
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: logOn  
 	* @Description: 注册  
 	* @param @param parm
@@ -82,9 +87,22 @@ public class Customer extends User{
 	* @return boolean    注册成功返回true
 	* @throws  
 	*/  
-	public boolean logOn(String[] parm) {
+	public boolean logOn(String[] parm) throws SQLException {
+		String sql2 = "select * from customer where customer_id = '"+parm[1]+"'";
+		ResultSet resultSet = Database.executeQuery(sql2);
+		if (resultSet.next()) {
+			return false;
+		} else {
+
+			String sql = "insert into customer values ('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
+			int column = Database.executeUpdate(sql);
+			if (column==1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 		
-		return true;
 		
 	}
 	
@@ -92,20 +110,38 @@ public class Customer extends User{
 	
 	
 	
-	/**  
+	/**
+	 * @throws IOException 
+	 * @throws SQLException   
 	* @Title: searchTrollry  
-	* @Description: 当用户打开购物车界面时调用此函数，此函数没有参数是因为默认用当前customer的id ,键中是产品信息，值里面是对应数量
+	* @Description: 当用户打开购物车界面时调用此函数， ,键中是产品信息，值里面是对应数量
 	* @param @return    参数  
 	* @return Product[]    返回类型  
 	* @throws  
 	*/  
-	public Map<Product, Integer> searchTrolley() {
+	public Map<Product, Integer> searchTrolley(Customer customer) throws SQLException, IOException {
+		String sql = "SELECT * FROM (SELECT product.*,amount,customer_id FROM product LEFT JOIN trolley ON product.product_id=trolley.product_id ) AS a WHERE customer_id = '"+customer.getId()+"'";
+		ResultSet resultSet = Database.executeQuery(sql);
+		Map<Product, Integer> map = new HashMap<Product, Integer>();
+		while (resultSet.next()) {
+			map.put(new Product(resultSet.getInt("product_id"),resultSet.getDouble("price"),
+					resultSet.getString("name"),resultSet.getString("image1"),
+					resultSet.getString("image2"),resultSet.getString("image3"),
+					resultSet.getString("image4"),resultSet.getString("image5"),
+					resultSet.getString("image6"),resultSet.getString("image7"),resultSet.getString("description1"),
+					resultSet.getString("description2"),resultSet.getString("description3"),
+					resultSet.getString("description4"),resultSet.getString("description5"),
+					resultSet.getString("description6"),resultSet.getString("group"),
+					resultSet.getInt("memory"),resultSet.getInt("pixel"),
+					resultSet.getInt("battery"),resultSet.getString("processor")), resultSet.getInt("amount"));
+		}
 		
-		return null;
+		return map;
 	}
 	
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: deleteTrolleyProduct  
 	* @Description: 根据参数中的产品id删除购物车中的对应产品  
 	* @param @param proId
@@ -113,12 +149,19 @@ public class Customer extends User{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean deleteTrolleyProduct(int proId) {
-		
-		return true;
+	public boolean deleteTrolleyProduct(int proId,Customer customer) throws SQLException {
+		String sql = "delete from trolley where product_id = "+proId+"and customer_id = '"+customer.getId()+"'";
+		int num = Database.executeUpdate(sql);
+		if (num>0) {
+			return true;
+			
+		} else {
+			return false;
+		}
 	}
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: modifyTrolleyProduct  
 	* @Description:  根据第一个参数的proId修改数据库对应的数据，第二个参数表示加一还是减一
 	* @param @param proId
@@ -127,9 +170,15 @@ public class Customer extends User{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean modifyTrolleyProduct(int proId,int operate) {
+	public boolean modifyTrolleyProduct(int proId,int operate) throws SQLException {
 		
-		return true;
+		String sql = "update trolley set amount = amount "+operate+" where product_id = "+proId+"";
+		int line = Database.executeUpdate(sql);
+		if (line==1) {
+			
+			return true;
+		}
+		return false;
 	}
 	
 	
@@ -176,7 +225,7 @@ public class Customer extends User{
 	* @return Order[]    返回类型  
 	* @throws  
 	*/  
-	public Order[] searchOrder() {
+	public Order[] searchOrder(Customer customer) {
 		
 		return null;
 	}

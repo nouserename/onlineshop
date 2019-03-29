@@ -11,6 +11,9 @@ package entity;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**  
 * @ClassName: Database  
@@ -45,6 +48,64 @@ private static final  String password = "root";
 		e.fillInStackTrace();
 	}
 }
+    /**  
+    * @Title: executeQuery  
+    * @Description: 封装了jdbc的对应方法  
+    * @param @param connection
+    * @param @param sql
+    * @param @return
+    * @param @throws SQLException    参数  
+    * @return ResultSet    返回类型  
+    * @throws  
+    */  
+    private static ResultSet executeQuery(Connection connection,String sql) throws SQLException {
+    	PreparedStatement statement = connection.prepareStatement(sql);
+    	ResultSet resultSet = statement.executeQuery();
+    	connection.close();
+		statement.close();
+    	return resultSet;
+    }
+    
+    
+     
+    private static int executeUpdate(Connection connection,String sql) throws SQLException {
+    	PreparedStatement statement = connection.prepareStatement(sql);
+    	int influenceLine = statement.executeUpdate();
+    	
+		connection.close();
+		statement.close();
+    	return influenceLine;
+    }
+    
+    /**  
+     * @Title: executeUpdate  
+     * @Description: 封装了jdbc对应的方法  
+     * @param @param connection
+     * @param @param sql
+     * @param @return
+     * @param @throws SQLException    参数  
+     * @return int    返回类型  
+     * @throws  
+     */ 
+    public static int executeUpdate(String sql) throws SQLException {
+    	return executeUpdate(getConnection(), sql);
+    }
+    
+    /**  
+     * @Title: executeQuery  
+     * @Description: 封装了jdbc的对应方法  
+     * @param @param connection
+     * @param @param sql
+     * @param @return
+     * @param @throws SQLException    参数  
+     * @return ResultSet    返回类型  
+     * @throws  
+     */ 
+    public static ResultSet executeQuery(String sql) throws SQLException {
+    	return executeQuery(getConnection(), sql);
+    }
+    
+    
     public static Connection opendb(){
         
         try {

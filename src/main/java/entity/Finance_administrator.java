@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.sql.SQLException;
+
 /**
  * @author YWB
  *
@@ -45,10 +47,11 @@ public class Finance_administrator extends Admin implements FindOrder{
 	* <p>Description: </p>  
 	* @param state
 	* @return  
+	 * @throws SQLException 
 	* @see entity.User#searchOrder(int)  
 	*/ 
 	@Override
-	public Order[] searchOrder(int state) {
+	public Order[] searchOrder(int state) throws SQLException {
 		// TODO 自动生成的方法存根
 		return super.searchOrder(state);
 	}

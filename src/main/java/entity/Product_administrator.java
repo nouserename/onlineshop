@@ -5,6 +5,9 @@
  */
 package entity;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 /**
  * @author YWB
  *
@@ -53,10 +56,12 @@ public class Product_administrator extends Admin {
 	* <p>Description: </p>  
 	* @param phoneName
 	* @return  
+	 * @throws IOException 
+	 * @throws SQLException 
 	* @see entity.User#searchProduct(java.lang.String)  
 	*/ 
 	@Override
-	public Product[] searchProduct(String phoneName) {
+	public Product[] searchProduct(String phoneName) throws SQLException, IOException {
 		// TODO 自动生成的方法存根
 		return super.searchProduct(phoneName);
 	}

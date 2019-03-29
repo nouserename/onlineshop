@@ -18,6 +18,23 @@ public class Order {
 	private int productId;
 	private int state;
 	
+	
+	/**  
+	* 创建一个新的实例 Order.  
+	*    
+	*/
+	public Order(String id,String customerId,int price,int productId,int state) {
+		// TODO 自动生成的构造函数存根
+	}
+	
+	/**  
+	* 创建一个新的实例 Order.  
+	*    
+	*/
+	public Order() {
+		// TODO 自动生成的构造函数存根
+	}
+	
 	/**  
 	* @Fields field:field:未发货  
 	*/ 

@@ -5,6 +5,9 @@
  */
 package entity;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 /**
  * @author YWB
  *
@@ -16,7 +19,9 @@ public class Admin extends User{
 	public final static int root_adm = 3;
 	public final static int product_adm = 4;
 	public final static int order_adm = 5;
-	/**  
+	/**
+	 * @throws IOException 
+	 * @throws SQLException   
 	* @Title: searchProduct  
 	* @Description: TODO(这里用一句话描述这个方法的作用)  
 	* @param @param phoneName
@@ -24,12 +29,14 @@ public class Admin extends User{
 	* @return Product []    返回类型  
 	* @throws  
 	*/  
-	public Product[] searchProduct(String phoneName) {
-		
+	@Override
+	public Product[] searchProduct(String phoneName) throws SQLException, IOException {
+		return super.searchProduct(phoneName);
 		// TODO 自动生成的方法存根
-		return null;
+
 	}
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: searchOrder  
 	* @Description: TODO(这里用一句话描述这个方法的作用)  
 	* @param @param state
@@ -37,9 +44,10 @@ public class Admin extends User{
 	* @return Order []    返回类型  
 	* @throws  
 	*/  
-	public Order[] searchOrder(int state) {
+	@Override
+	public Order[] searchOrder(int state) throws SQLException {
 		// TODO 自动生成的方法存根
-		return null;
+		return super.searchOrder(state);
 	}
 	/**  
 	* @Title: search  
