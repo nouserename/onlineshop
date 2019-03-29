@@ -9,6 +9,7 @@
 
 package entity;
 
+import java.sql.SQLException;
 
 /**  
 * @ClassName: Order_administrator  
@@ -33,16 +34,21 @@ public class Order_administrator extends Admin {
 		
 	}
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: print  
 	* @Description: 打印所有未发货的订单信息 ,打印即发货，所以此函数需要将订单状态改为已发货(未收货)
 	* @param @return    参数  
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean print() {
-		
-		return true;
+	public boolean print() throws SQLException {
+		String sql = "UPDATE `order` SET `state`='"+Order.NR_waitForReceiving+"' WHERE (`state`='"+Order.NR_waitForReceiving+"')";
+		int line = Database.executeUpdate(sql);
+		if (line>0) {
+			return true;
+		}
+		return false;
 		
 	}
 
