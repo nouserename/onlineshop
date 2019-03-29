@@ -8,7 +8,9 @@ package entity;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -193,9 +195,26 @@ public class Customer extends User{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean addProduct2Trolley(int proId) {
+	public boolean addProduct2Trolley(int proId) throws SQLException{
+		String sql1 = "Select * from trolley where customer_id = '" + this.getId() + "' and product_id = " + proId;
 		
-		return true;
+		ResultSet resultSet1 = Database.executeQuery(sql1);
+		if(resultSet1.next()) {				//判断购物车里有没有相应的customer和对应的product。该情况下是有。
+				String sql2 = "Update trolley Set amount = amount + 1 where customer_id = '" + this.getId() + "'";
+				int a1 = Database.executeUpdate(sql2);
+				if(a1>0)
+					return true;
+				else
+					return false;
+		}
+		else {	//该情况为数据库中购物车表没有含有相应的信息，此时应该将相应的信息插入到购物车里。
+			String sql3 = "Insert trolley(amount,customer_id,product_id) values(1,'" + this.getId() + "'," + proId + ")";
+			int a2 = Database.executeUpdate(sql3);
+			if(a2>0)
+				return true;
+			else
+				return false;
+		}
 	}
 	
 	
@@ -211,9 +230,20 @@ public class Customer extends User{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean pay(Product[] products) {
-		
-		return true;
+	public boolean pay(Product[] products) throws SQLException{
+		if(this.addr.length==0) {       //判定该用户的地址是否为空,该用户的地址为空。
+			return false;
+		}
+		else {  //该用户包含地址。
+			
+			for(int i = 0; i<products.length;i++) {  //将产品插入order（订单）数据库表
+				String sqlString = "Insert order(customer_id,price,product_id,state) values('" + this.getId() + "'," + products[i].getPrice() + "," + products[i].getId() + "," + Order.NR_waitForReceiving;
+				int a = Database.executeUpdate(sqlString);
+				if(a <= 0)  //插入失败，返回false.
+					return false;  
+			}
+			return true;  //全部商品插入成功。
+		}
 	}
 	
 	
@@ -225,9 +255,30 @@ public class Customer extends User{
 	* @return Order[]    返回类型  
 	* @throws  
 	*/  
-	public Order[] searchOrder(Customer customer) {
+	public Order[] searchOrder(Customer customer) throws SQLException{
+		String sqlString = "Select * from order where id = '" + customer.getId() + "'";
+		ResultSet resultSet = Database.executeQuery(sqlString);
 		
-		return null;
+		List<Order> orderList = new ArrayList<Order>();
+		
+		while (resultSet.next()) {
+			orderList.add(new Order(resultSet.getString("order_id"), resultSet.getString("customer_id"), 
+					Integer.parseInt(resultSet.getString("price")), Integer.parseInt(resultSet.getString("product_id")), 
+					Integer.parseInt(resultSet.getString("state"))));
+		}
+		
+		Order[] orderArray = new Order[orderList.size()];
+		
+		for(int i=0; i<orderList.size();i++) {
+			orderArray[i].setId(orderList.get(i).getId());
+			orderArray[i].setCustomer(orderList.get(i).getCustomer());
+			orderArray[i].setTotalPrice(orderList.get(i).getTotalPrice());
+			orderArray[i].setProduct(orderList.get(i).getProduct());
+			orderArray[i].setState(orderList.get(i).getState());
+		}
+		
+		
+		return orderArray;
 	}
 	
 	
@@ -239,9 +290,21 @@ public class Customer extends User{
 	* @return Order[]    返回类型  
 	* @throws  
 	*/  
-	public Order[] searchOrder(Order[] orders,int state) {
+	public Order[] searchOrder(Order[] orders,int state) throws SQLException{
+		List<Order> orderList = new ArrayList<Order>();
 		
-		return null;
+		for(int i=0; i<orders.length;i++) {
+			if(orders[i].getState() == state)
+				orderList.add(orders[i]);
+		}
+		
+		Order[] orderArray = new Order[orderList.size()];
+		
+		for(int i=0;i<orderList.size();i++) {
+			orderArray[i] = orderList.get(i);
+		}
+		
+		return orderArray;
 	}
 	
 	
@@ -254,10 +317,23 @@ public class Customer extends User{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean modifyPasswd(String oldPasswd,String newPasswd) {
+	public boolean modifyPasswd(String oldPasswd,String newPasswd) throws SQLException {
+		String sqlString = "Select passwd from customer Where customer_id = '" + this.getId() +"'";
+		ResultSet resultSet = Database.executeQuery(sqlString);
 		
-		
-		return true;
+		if(oldPasswd == resultSet.getString("passwd")) {
+			String sqlString2 = "Update customer set passwd = '" + newPasswd + "' WHERE customer_id = '" + this.getId() + "'";
+			int state = Database.executeUpdate(sqlString2);
+			
+			if(state != 0)
+				return true;
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
 	}
 	
 	
