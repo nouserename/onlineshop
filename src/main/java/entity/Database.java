@@ -61,6 +61,8 @@ private static final  String password = "root";
     private static ResultSet executeQuery(Connection connection,String sql) throws SQLException {
     	PreparedStatement statement = connection.prepareStatement(sql);
     	ResultSet resultSet = statement.executeQuery();
+    	connection.close();
+		statement.close();
     	return resultSet;
     }
     
@@ -69,6 +71,9 @@ private static final  String password = "root";
     private static int executeUpdate(Connection connection,String sql) throws SQLException {
     	PreparedStatement statement = connection.prepareStatement(sql);
     	int influenceLine = statement.executeUpdate();
+    	
+		connection.close();
+		statement.close();
     	return influenceLine;
     }
     

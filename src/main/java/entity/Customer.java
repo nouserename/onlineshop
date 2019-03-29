@@ -88,13 +88,21 @@ public class Customer extends User{
 	* @throws  
 	*/  
 	public boolean logOn(String[] parm) throws SQLException {
-		String sql = "insert into customer values ('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
-		int column = Database.executeUpdate(sql);
-		if (column==1) {
-			return true;
-		} else {
+		String sql2 = "select * from customer where customer_id = '"+parm[1]+"'";
+		ResultSet resultSet = Database.executeQuery(sql2);
+		if (resultSet.next()) {
 			return false;
+		} else {
+
+			String sql = "insert into customer values ('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
+			int column = Database.executeUpdate(sql);
+			if (column==1) {
+				return true;
+			} else {
+				return false;
+			}
 		}
+		
 		
 	}
 	
@@ -152,7 +160,8 @@ public class Customer extends User{
 		}
 	}
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: modifyTrolleyProduct  
 	* @Description:  根据第一个参数的proId修改数据库对应的数据，第二个参数表示加一还是减一
 	* @param @param proId
@@ -161,9 +170,15 @@ public class Customer extends User{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean modifyTrolleyProduct(int proId,int operate) {
+	public boolean modifyTrolleyProduct(int proId,int operate) throws SQLException {
 		
-		return true;
+		String sql = "update trolley set amount = amount "+operate+" where product_id = "+proId+"";
+		int line = Database.executeUpdate(sql);
+		if (line==1) {
+			
+			return true;
+		}
+		return false;
 	}
 	
 	

@@ -78,6 +78,8 @@ public class User {
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, user.getId());
 		ResultSet rs = statement.executeQuery();
+		connection.close();
+		statement.close();
 		if(rs.next()) {
 			Customer customer = new Customer();
 			Address[] addresses = new Address[3];
@@ -98,6 +100,8 @@ public class User {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setString(1, user.getId());
 			ResultSet rs = statement.executeQuery();
+			connection.close();
+			statement.close();
 			if (rs.next()) {
 				Admin admin = new Admin();
 				admin.setId(rs.getString("admin_id"));
@@ -127,6 +131,8 @@ public class User {
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setInt(1, state);
 		ResultSet resultSet = statement.executeQuery();
+		connection.close();
+		statement.close();
 		ArrayList<Order> list = new ArrayList<Order>();
 		while (resultSet.next()) {
 			list.add(new Order(resultSet.getString("order_id"),resultSet.getString("customer_id"),resultSet.getInt("price"),resultSet.getInt("product_id"),resultSet.getInt("state")));
