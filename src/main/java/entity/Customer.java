@@ -124,7 +124,7 @@ public class Customer extends User{
 		ResultSet resultSet = Database.executeQuery(sql);
 		Map<Product, Integer> map = new HashMap<Product, Integer>();
 		while (resultSet.next()) {
-			map.put(new Product(resultSet.getInt("product_id"),resultSet.getDouble("price"),
+			map.put(new Product(resultSet.getInt("product_id"),resultSet.getInt("price"),
 					resultSet.getString("name"),resultSet.getString("image1"),
 					resultSet.getString("image2"),resultSet.getString("image3"),
 					resultSet.getString("image4"),resultSet.getString("image5"),

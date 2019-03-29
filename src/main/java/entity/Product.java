@@ -5,11 +5,7 @@
  */
 package entity;
 
-import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 /**
  * @author YWB
@@ -17,7 +13,7 @@ import javax.imageio.ImageIO;
  */
 public class Product {
 	private int id;
-	private double price;
+	private int price;
 	private String name;
 	
 	/**  
@@ -35,7 +31,7 @@ public class Product {
 	private String processor;
 	
 	
-	public Product(int id,double price,String name,
+	public Product(int id,int price,String name,
 			String image,String image2,String image3,
 			String image4,String image5,String image6,
 			String image7,String description1,
@@ -96,7 +92,7 @@ public class Product {
 	/**
 	 * @param price ÒªÉèÖÃµÄ price
 	 */
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	/**

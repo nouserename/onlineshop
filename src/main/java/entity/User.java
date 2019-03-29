@@ -161,7 +161,7 @@ public class User {
 		ResultSet resultSet = Database.executeQuery(sql);
 		ArrayList<Product> list = new ArrayList<Product>();
 		while (resultSet.next()) {
-			list.add(new Product(resultSet.getInt("product_id"),resultSet.getDouble("price"),
+			list.add(new Product(resultSet.getInt("product_id"),resultSet.getInt("price"),
 					resultSet.getString("name"),resultSet.getString("image1"),
 					resultSet.getString("image2"),resultSet.getString("image3"),
 					resultSet.getString("image4"),resultSet.getString("image5"),
