@@ -137,6 +137,17 @@ public class Order {
 	 * 将订单状态改为unCollected
 	 * */
 	public boolean orderUnCollected() {
+		String sql="select * from Order where order.state="+Order.NR_waitForReceiving;
+		PreparedStatement pstmt=con.prepareStatement(sql);
+	        pstmt.setString(1,sno);
+	        ResultSet rs=pstmt.executeQuery();       
+	        if (rs.next()){
+	             return true;
+	        }
+	             else
+	             {
+	            return false;
+	            }
 		//TODO
 		return true;
 	}
