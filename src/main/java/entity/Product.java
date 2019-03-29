@@ -23,7 +23,7 @@ public class Product {
 	/**  
 	* @Fields field:field:第一项缩略图，第二项用户首页展示图，后续是商品详情图  
 	*/ 
-	private Image[] images = new Image[7];
+	private String[] images = new String[7];
 	/**  
 	* @Fields field:field:第一项是用户首页配套文字，其余是商品详情配套文字
 	*/ 
@@ -46,13 +46,13 @@ public class Product {
 		this.id = id;
 		this.price = price;
 		this.name = name;
-		this.images[0] = ImageIO.read(new File(image));
-		this.images[1] = ImageIO.read(new File(image2));
-		this.images[2] = ImageIO.read(new File(image3));
-		this.images[3] = ImageIO.read(new File(image4));
-		this.images[4] = ImageIO.read(new File(image5));
-		this.images[5] = ImageIO.read(new File(image6));
-		this.images[6] = ImageIO.read(new File(image7));
+		this.images[0] = image;
+		this.images[1] = image2;
+		this.images[2] = image3;
+		this.images[3] = image4;
+		this.images[4] = image5;
+		this.images[5] = image6;
+		this.images[6] = image7;
 		this.description[0] = description1;
 		this.description[2] = description2;
 		this.description[3] = description3;
@@ -114,13 +114,13 @@ public class Product {
 	/**
 	 * @return images
 	 */
-	public Image[] getImages() {
+	public String[] getImages() {
 		return images;
 	}
 	/**
 	 * @param images 要设置的 images
 	 */
-	public void setImages(Image[] images) {
+	public void setImages(String[] images) {
 		this.images = images;
 	}
 	/**

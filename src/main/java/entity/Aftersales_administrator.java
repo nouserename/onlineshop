@@ -6,7 +6,7 @@
 package entity;
 
 import java.sql.SQLException;
-
+import static entity.Order.*;
 /**  
 * @ClassName: Aftersales_administrator  
 * @Description: TODO(这里用一句话描述这个类的作用)  
@@ -18,7 +18,8 @@ public class Aftersales_administrator extends Admin{
 
 
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: verify  
 	* @Description: 用来同意或者拒绝客户的售后申请  ，true表示同意，false表示不同意，同意将订单状态改为等待退货，不同意改为审核未通过
 	* @param @param agrNage
@@ -27,9 +28,21 @@ public class Aftersales_administrator extends Admin{
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean verify(boolean agrNage,Order o) {
+	public boolean verify(boolean agrNage,Order o) throws SQLException {
 		//TODO
-		return true;
+		String sql;
+
+		if (agrNage) {
+			sql = "UPDATE order set state = "+NR_waitForReturn+" where order_id = "+o.getId();
+		} else {
+			sql = "UPDATE order set state = "+NR_reviewNotPass+" where order_id = "+o.getId();
+		}
+		int line = Database.executeUpdate(sql);
+		if (line==1) {
+			
+			return true;
+		}
+		return false;
 	}
 
 	/**
