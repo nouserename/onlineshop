@@ -5,6 +5,7 @@
  */
 package entity;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -65,7 +66,13 @@ public class Finance_administrator extends Admin implements FindOrder{
 	* @return Order    ∑µªÿ¿‡–Õ  
 	* @throws  
 	*/  
-	public Order searchOrder(String orderId) {
+	public Order searchOrder(String orderId)  throws SQLException {
+		String sql = "SELECT * FROM order where order_id = '"+orderId+"'";
+		ResultSet resultSet = Database.executeQuery(sql);
+		if(resultSet.next()) {
+			Order order = new Order(resultSet.getString("id"),resultSet.getString("customerId"),resultSet.getInt("price"),resultSet.getInt("productId"),resultSet.getInt("state"));
+			return order;
+		}
 		return null;
 	}
 	

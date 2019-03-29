@@ -13,6 +13,7 @@
 <center> &emsp;密码&emsp;&emsp;<input type="text" Size=30 /></center><br />
 <center> 再次确认&emsp;<input type="text" Size=30 /></center><br />
 <center> 管理员性别<input type="text" Size=30 /></center><br />
+<center> &emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id="btn1" title="确认" value="确认" />&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id="btn2" title="清空" value="清空" /></center><br />
 </form>
 
 </body>
