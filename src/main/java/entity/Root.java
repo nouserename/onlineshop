@@ -5,6 +5,13 @@
  */
 package entity;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.mysql.jdbc.Connection;
+
 /**
  * @author YWB
  *
@@ -13,15 +20,17 @@ public class Root extends Admin {
 	public Admin[] admins;
 	/**  
 	* 创建一个新的实例 Root.  
+	 * @throws SQLException 
 	*    
 	*/
-	public Root() {
+	public Root() throws SQLException {
 		admins = findAdmin();
 	}
 	
 	
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: findAdmin  
 	* @Description: 查询管理员信息
 	* @param @param admin
@@ -29,12 +38,28 @@ public class Root extends Admin {
 	* @return Admin[]    返回类型  
 	* @throws  
 	*/  
-	public Admin[] findAdmin() {
-		
-		return null;
+	public Admin[] findAdmin() throws SQLException {
+		Connection con = (Connection) Database.getConnection();
+		String sqlString = " select * from admin ";
+		ResultSet re= Database.executeQuery(sqlString);
+		 List<Admin> ad = new ArrayList<Admin>();
+		 while(re.next()) {
+			 ad.add(new Admin(re.getString("admin_id"),re.getInt("position"),re.getString("name"),re.getString("passwd")));
+		 }	
+		 Admin[] a = new Admin[ad.size()] ;
+		 for(int i=0; i<ad.size();i++) {
+			 a[i].setId(ad.get(i).getId());
+			 a[i].setState(ad.get(i).getState());
+			 a[i].setName(ad.get(i).getName());
+			 a[i].setPasswd(ad.get(i).getPasswd());
+			 
+		 }
+			 
+		return a;
 	}
 	
-	/**  
+	/**
+	 * @throws SQLException   
 	* @Title: deleteAdmin  
 	* @Description: 删除参数中的admin
 	* @param @param admin
@@ -42,7 +67,13 @@ public class Root extends Admin {
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean deleteAdmin(Admin admin) {
+	public boolean deleteAdmin(Admin admin) throws SQLException {
+		String sqlString = " delete * from admin where admin_id = '"+ admin.getId();
+		int s= Database.executeUpdate(sqlString);
+		if (s==0) {
+			return false;
+			
+		}
 		return true;
 	}
 	
@@ -55,9 +86,28 @@ public class Root extends Admin {
 	* @return boolean    返回类型  
 	* @throws  
 	*/  
-	public boolean addAdmin(Admin admin) {
+	public boolean addAdmin(Admin admin) throws SQLException{
 		
-		return true;
+		String sqlString = " select * from admin where admin_id = "+ admin.getId();
+		ResultSet re= Database.executeQuery(sqlString);
+		if(re.next()) {
+			String sq = "Update admin set admin_id = '" + admin.getId() + "',position=" + admin.getState() + ",name='" + admin.getName() + "',passwd='"+admin.getPasswd()+"'";
+			int rs= Database.executeUpdate(sq);
+			if(rs==0) {
+				return false;
+			}
+			else {return true;}
+		}
+		else {
+			String a =" Insert INTO admin (admin_id, position, name, passwd) VALUES ('"+admin.getId()+"'+admin.getState()+'"+admin.getName()+"'+admin.getPasswd()+'";
+			int r= Database.executeUpdate(a);
+			if(r==0) {
+				return false;
+			}
+			else {return true;}
+		}
+		
+	
 		
 	}
 	
