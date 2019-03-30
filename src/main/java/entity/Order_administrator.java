@@ -46,8 +46,10 @@ public class Order_administrator extends Admin {
 		String sql = "UPDATE `order` SET `state`='"+Order.NR_waitForReceiving+"' WHERE (`state`='"+Order.NR_waitForReceiving+"')";
 		int line = Database.executeUpdate(sql);
 		if (line>0) {
+			Database.closeConnection();
 			return true;
 		}
+		Database.closeConnection();
 		return false;
 		
 	}

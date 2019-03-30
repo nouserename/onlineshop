@@ -17,6 +17,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.apache.tomcat.websocket.CaseInsensitiveKeyMap;
 
@@ -115,7 +117,10 @@ public class Index extends HttpServlet{
 
 				currentCustomer = (Customer)user.logIn(user);
 				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
-					resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
+					req.getSession().setAttribute("customer", currentCustomer);
+					System.out.println(req.getSession().getId());
+					req.getRequestDispatcher("/user/userhomepage.jsp").forward(req, resp);
+					//resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
 					return;
 				}else {
 					resp.setContentType("text/html;charset=UTF-8");

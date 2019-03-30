@@ -9,11 +9,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="http://www.xingyun.com/" method="get">
-<div align="center">
+<%
+	
+	String sessionId = session.getId();
+	if(session.isNew()){
+		response.getWriter().print("sessionId="+sessionId);
+	}
+	else{
+		response.getWriter().print("failed"+sessionId);
+	}
+%>
+<form action="" method="get">
 <input type="text" name="s" class="input" placeholder="输入 回车搜索" autofocus x-webkit-speech>
 <input type="button" name="" id="" class="btn">
-
+</form>
 
 <div style="position: absolute; top: 10px; right:200px;">
 <a href="/example/html/lastpage.html" style="text-decoration:none" >
