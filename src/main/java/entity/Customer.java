@@ -93,14 +93,17 @@ public class Customer extends User{
 		String sql2 = "select * from customer where customer_id = '"+parm[1]+"'";
 		ResultSet resultSet = Database.executeQuery(sql2);
 		if (resultSet.next()) {
+			Database.closeConnection();
 			return false;
 		} else {
 
 			String sql = "insert into customer values ('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
 			int column = Database.executeUpdate(sql);
 			if (column==1) {
+				Database.closeConnection();
 				return true;
 			} else {
+				Database.closeConnection();
 				return false;
 			}
 		}
@@ -137,7 +140,7 @@ public class Customer extends User{
 					resultSet.getInt("memory"),resultSet.getInt("pixel"),
 					resultSet.getInt("battery"),resultSet.getString("processor")), resultSet.getInt("amount"));
 		}
-		
+		Database.closeConnection();
 		return map;
 	}
 	
@@ -155,9 +158,10 @@ public class Customer extends User{
 		String sql = "delete from trolley where product_id = "+proId+"and customer_id = '"+customer.getId()+"'";
 		int num = Database.executeUpdate(sql);
 		if (num>0) {
+			Database.closeConnection();
 			return true;
-			
 		} else {
+			Database.closeConnection();
 			return false;
 		}
 	}
@@ -177,9 +181,10 @@ public class Customer extends User{
 		String sql = "update trolley set amount = amount "+operate+" where product_id = "+proId+"";
 		int line = Database.executeUpdate(sql);
 		if (line==1) {
-			
+			Database.closeConnection();
 			return true;
 		}
+		Database.closeConnection();
 		return false;
 	}
 	
@@ -202,18 +207,27 @@ public class Customer extends User{
 		if(resultSet1.next()) {				//判断购物车里有没有相应的customer和对应的product。该情况下是有。
 				String sql2 = "Update trolley Set amount = amount + 1 where customer_id = '" + this.getId() + "'";
 				int a1 = Database.executeUpdate(sql2);
-				if(a1>0)
+				if(a1>0) {
+					Database.closeConnection();
 					return true;
-				else
+				}
+				else {
+					Database.closeConnection();
 					return false;
+				}
 		}
 		else {	//该情况为数据库中购物车表没有含有相应的信息，此时应该将相应的信息插入到购物车里。
 			String sql3 = "Insert trolley(amount,customer_id,product_id) values(1,'" + this.getId() + "'," + proId + ")";
 			int a2 = Database.executeUpdate(sql3);
-			if(a2>0)
+			if(a2>0) {
+				Database.closeConnection();
 				return true;
-			else
+			}				
+			else {
+				Database.closeConnection();
 				return false;
+			}
+				
 		}
 	}
 	
@@ -239,9 +253,12 @@ public class Customer extends User{
 			for(int i = 0; i<products.length;i++) {  //将产品插入order（订单）数据库表
 				String sqlString = "Insert order(customer_id,price,product_id,state) values('" + this.getId() + "'," + products[i].getPrice() + "," + products[i].getId() + "," + Order.NR_waitForReceiving;
 				int a = Database.executeUpdate(sqlString);
-				if(a <= 0)  //插入失败，返回false.
-					return false;  
+				if(a <= 0) {    //插入失败，返回false.
+					Database.closeConnection();
+					return false;
+				}
 			}
+			Database.closeConnection();
 			return true;  //全部商品插入成功。
 		}
 	}
@@ -277,7 +294,7 @@ public class Customer extends User{
 			orderArray[i].setState(orderList.get(i).getState());
 		}
 		
-		
+		Database.closeConnection();
 		return orderArray;
 	}
 	
@@ -325,13 +342,17 @@ public class Customer extends User{
 			String sqlString2 = "Update customer set passwd = '" + newPasswd + "' WHERE customer_id = '" + this.getId() + "'";
 			int state = Database.executeUpdate(sqlString2);
 			
-			if(state != 0)
+			if(state != 0) {
+				Database.closeConnection();
 				return true;
+			}
 			else {
+				Database.closeConnection();
 				return false;
 			}
 		}
 		else {
+			Database.closeConnection();
 			return false;
 		}
 	}
