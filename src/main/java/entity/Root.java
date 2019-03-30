@@ -39,7 +39,6 @@ public class Root extends Admin {
 	* @throws  
 	*/  
 	public Admin[] findAdmin() throws SQLException {
-		Connection con = (Connection) Database.getConnection();
 		String sqlString = " select * from admin ";
 		ResultSet re= Database.executeQuery(sqlString);
 		 List<Admin> ad = new ArrayList<Admin>();
@@ -48,11 +47,7 @@ public class Root extends Admin {
 		 }	
 		 Admin[] a = new Admin[ad.size()] ;
 		 for(int i=0; i<ad.size();i++) {
-			 a[i].setId(ad.get(i).getId());
-			 a[i].setState(ad.get(i).getState());
-			 a[i].setName(ad.get(i).getName());
-			 a[i].setPasswd(ad.get(i).getPasswd());
-			 
+			 a[i]=ad.get(i);
 		 }
 			 
 		return a;
@@ -68,7 +63,7 @@ public class Root extends Admin {
 	* @throws  
 	*/  
 	public boolean deleteAdmin(Admin admin) throws SQLException {
-		String sqlString = " delete * from admin where admin_id = '"+ admin.getId();
+		String sqlString = " delete * from admin where admin_id = '"+ admin.getId()+"'";
 		int s= Database.executeUpdate(sqlString);
 		if (s==0) {
 			return false;
@@ -88,7 +83,7 @@ public class Root extends Admin {
 	*/  
 	public boolean addAdmin(Admin admin) throws SQLException{
 		
-		String sqlString = " select * from admin where admin_id = "+ admin.getId();
+		String sqlString = " select * from admin where admin_id = '"+ admin.getId()+"'";
 		ResultSet re= Database.executeQuery(sqlString);
 		if(re.next()) {
 			String sq = "Update admin set admin_id = '" + admin.getId() + "',position=" + admin.getState() + ",name='" + admin.getName() + "',passwd='"+admin.getPasswd()+"'";
@@ -99,7 +94,7 @@ public class Root extends Admin {
 			else {return true;}
 		}
 		else {
-			String a =" Insert INTO admin (admin_id, position, name, passwd) VALUES ('"+admin.getId()+"'+admin.getState()+'"+admin.getName()+"'+admin.getPasswd()+'";
+			String a =" Insert INTO admin (admin_id, position, name, passwd) VALUES ('"+admin.getId()+"',"+admin.getState()+",'"+admin.getName()+"','"+admin.getPasswd()+"')";
 			int r= Database.executeUpdate(a);
 			if(r==0) {
 				return false;

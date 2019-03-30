@@ -63,10 +63,10 @@ public class Index extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
 		
-		String name = req.getParameter("kickname");
-		String passwd = req.getParameter("password");
-		String id = req.getParameter("address");
-		user.setName(name);
+		String kind = req.getParameter("kind");
+		String passwd = req.getParameter("passwd");
+		String id = req.getParameter("userid");
+		user.setName(kind);
 		user.setPasswd(passwd);
 		user.setId(id);
 		Admin currentAdmin;
@@ -77,8 +77,8 @@ public class Index extends HttpServlet{
 				currentAdmin =  (Admin) user.logIn(user);
 				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
 					req.getSession().setAttribute("admin", currentAdmin);
-					int kind = currentAdmin.getState();
-					switch (kind) {
+					int admin_kind = currentAdmin.getState();
+					switch (admin_kind) {
 					case Admin.finance_adm:
 						req.getRequestDispatcher("/administrator/financialmanager/financialmanager.jsp").forward(req, resp);
 //						resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/financialmanager.jsp");

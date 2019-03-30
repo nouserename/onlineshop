@@ -58,6 +58,7 @@ public class Product_administrator extends Admin {
 	
 	/**
 	 * 修改产品信息
+	 * ！！！！！！！！！！！！！！！！！！！！！！此函数估计有错误
 	 * @throws SQLException 
 	 * */
 	public boolean modifyProductInfo(Product product) throws SQLException {

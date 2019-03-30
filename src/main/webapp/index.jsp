@@ -42,18 +42,15 @@ div.info{
 <div class="info">
 
 <form action="Index" method="POST">
-  �ǳ�:<br>
-  <input type="text" name="kickname" id="kickname">
+账号:<br>
+  <input type="text" name="userid" id="userid">
   <br>
-  ����:<br>
-  <input type="text" name="address" id="address">
+密码:<br>
+  <input type="text" name="passwd" id="passwd">
   <br>
-    ����:<br>
-  <input type="password" name="password" id="password">
-  <br>
-    ȷ������:<br>
-  <input type="password" name="verifypassword" >
-  <br><br>
+<input type="radio" name = "kind" id="radio1" value = "customer">至尊客户
+<input type="radio" name = "kind" id = "radio2" value = "admin">企业高管
+<br>
   <input type="submit" value="Submit">
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">

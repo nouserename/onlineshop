@@ -74,12 +74,12 @@ public class User {
 		Connection connection = Database.getConnection();
 		if (user.getName().equals("customer")) {
 			
-		String sql = "select * from customer where customer_id = ?";
+		String sql = "select * from customer where customer_id = "+user.getId();
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, user.getId());
 		ResultSet rs = statement.executeQuery();
-		connection.close();
-		statement.close();
+//		connection.close();
+//		statement.close();
 		if(rs.next()) {
 			Customer customer = new Customer();
 			Address[] addresses = new Address[3];
@@ -126,13 +126,8 @@ public class User {
 	* @throws  
 	*/  
 	public Order[] searchOrder(int state) throws SQLException {
-		Connection connection = Database.getConnection();
-		String sql = "select * from order where state = ?";
-		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setInt(1, state);
-		ResultSet resultSet = statement.executeQuery();
-		connection.close();
-		statement.close();
+		String sql = "select * from order where state = "+state;
+		ResultSet resultSet = Database.executeQuery(sql);
 		ArrayList<Order> list = new ArrayList<Order>();
 		while (resultSet.next()) {
 			list.add(new Order(resultSet.getString("order_id"),resultSet.getString("customer_id"),resultSet.getInt("price"),resultSet.getInt("product_id"),resultSet.getInt("state")));
@@ -142,6 +137,7 @@ public class User {
 		for(int i = 0;i<size;i++) {
 			orders[i]= list.get(i); 
 		}
+		Database.closeConnection();
 		return orders;
 	}
 	

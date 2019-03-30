@@ -27,23 +27,28 @@ public class Database {
     private static final  String url = "jdbc:mysql://39.105.17.254:3306/onlineshop?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false";
 private static final  String username = "root";
 private static final  String password = "root";
-    public static Connection getConnection(){
+private static Connection connection;
+private static PreparedStatement statement;
+    public static void getConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url,username,password);
-            return  connection;
+            connection = DriverManager.getConnection(url,username,password);
+            
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            
         }
         
         
     }
-    public static void closeConnection(Connection connection){
+    public static void closeConnection(){
 	try {
 		
 		
 		if(connection!=null)connection.close();
+		if (statement!=null) {
+			statement.close();
+		}
 	} catch (Exception e) {
 		e.fillInStackTrace();
 	}
@@ -59,21 +64,16 @@ private static final  String password = "root";
     * @throws  
     */  
     private static ResultSet executeQuery(Connection connection,String sql) throws SQLException {
-    	PreparedStatement statement = connection.prepareStatement(sql);
+    	statement = connection.prepareStatement(sql);
     	ResultSet resultSet = statement.executeQuery();
-    	connection.close();
-		statement.close();
     	return resultSet;
     }
     
     
      
     private static int executeUpdate(Connection connection,String sql) throws SQLException {
-    	PreparedStatement statement = connection.prepareStatement(sql);
+    	statement = connection.prepareStatement(sql);
     	int influenceLine = statement.executeUpdate();
-    	
-		connection.close();
-		statement.close();
     	return influenceLine;
     }
     
@@ -88,7 +88,8 @@ private static final  String password = "root";
      * @throws  
      */ 
     public static int executeUpdate(String sql) throws SQLException {
-    	return executeUpdate(getConnection(), sql);
+    	getConnection();
+    	return executeUpdate(connection, sql);
     }
     
     /**  
@@ -102,26 +103,9 @@ private static final  String password = "root";
      * @throws  
      */ 
     public static ResultSet executeQuery(String sql) throws SQLException {
-    	return executeQuery(getConnection(), sql);
+    	getConnection();
+    	return executeQuery(connection, sql);
     }
-    
-    
-    public static Connection opendb(){
-        
-        try {
-            Connection connection = Database.getConnection();
-            
-            System.out.println("数据库连接成功");
-            return connection;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public static void main(String[] args) {
-    Connection connection = opendb();
-    System.out.println(connection);
-}
 
 }
 
