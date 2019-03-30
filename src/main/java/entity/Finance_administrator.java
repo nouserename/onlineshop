@@ -71,8 +71,10 @@ public class Finance_administrator extends Admin implements FindOrder{
 		ResultSet resultSet = Database.executeQuery(sql);
 		if(resultSet.next()) {
 			Order order = new Order(resultSet.getString("id"),resultSet.getString("customerId"),resultSet.getInt("price"),resultSet.getInt("productId"),resultSet.getInt("state"));
+			Database.closeConnection();
 			return order;
 		}
+		Database.closeConnection();
 		return null;
 	}
 	

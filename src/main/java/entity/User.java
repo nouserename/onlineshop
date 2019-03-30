@@ -71,13 +71,10 @@ public class User {
 	 * @throws SQLException 
 	 * */
 	public User logIn(User user) throws SQLException {
-		Connection connection = Database.getConnection();
 		if (user.getName().equals("customer")) {
 			
 		String sql = "select * from customer where customer_id = "+user.getId();
-		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setString(1, user.getId());
-		ResultSet rs = statement.executeQuery();
+		ResultSet rs = Database.executeQuery(sql);
 //		connection.close();
 //		statement.close();
 		if(rs.next()) {
@@ -91,25 +88,25 @@ public class User {
 			customer.setName(rs.getString("name"));
 			customer.setAddr(addresses);
 			customer.setPasswd(rs.getString("passwd"));
+			Database.closeConnection();
 			return customer;
 		}
+		Database.closeConnection();
 		return null;
 		} else {
 			
-			String sql = "select * from admin where admin_id = ?";
-			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setString(1, user.getId());
-			ResultSet rs = statement.executeQuery();
-			connection.close();
-			statement.close();
+			String sql = "select * from admin where admin_id = "+user.getId();
+			ResultSet rs = Database.executeQuery(sql);
 			if (rs.next()) {
 				Admin admin = new Admin();
 				admin.setId(rs.getString("admin_id"));
 				admin.setName(rs.getString("name"));
 				admin.setState(rs.getInt("position"));
 				admin.setPasswd(rs.getString("passwd"));
+				Database.closeConnection();
 				return admin;
 			}
+			Database.closeConnection();
 			return null;
 			
 		}
@@ -173,6 +170,7 @@ public class User {
 		for(int i = 0;i<size;i++) {
 			products[i]= list.get(i); 
 		}
+		Database.closeConnection();
 		return products;
 	}
 

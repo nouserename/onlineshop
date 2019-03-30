@@ -49,7 +49,7 @@ public class Root extends Admin {
 		 for(int i=0; i<ad.size();i++) {
 			 a[i]=ad.get(i);
 		 }
-			 
+		Database.closeConnection();
 		return a;
 	}
 	
@@ -66,9 +66,11 @@ public class Root extends Admin {
 		String sqlString = " delete * from admin where admin_id = '"+ admin.getId()+"'";
 		int s= Database.executeUpdate(sqlString);
 		if (s==0) {
+			Database.closeConnection();
 			return false;
 			
 		}
+		Database.closeConnection();
 		return true;
 	}
 	
@@ -89,17 +91,23 @@ public class Root extends Admin {
 			String sq = "Update admin set admin_id = '" + admin.getId() + "',position=" + admin.getState() + ",name='" + admin.getName() + "',passwd='"+admin.getPasswd()+"'";
 			int rs= Database.executeUpdate(sq);
 			if(rs==0) {
+				Database.closeConnection();
 				return false;
 			}
-			else {return true;}
+			else {
+				Database.closeConnection();
+				return true;}
 		}
 		else {
 			String a =" Insert INTO admin (admin_id, position, name, passwd) VALUES ('"+admin.getId()+"',"+admin.getState()+",'"+admin.getName()+"','"+admin.getPasswd()+"')";
 			int r= Database.executeUpdate(a);
 			if(r==0) {
+				Database.closeConnection();
 				return false;
 			}
-			else {return true;}
+			else {
+				Database.closeConnection();
+				return true;}
 		}
 		
 	

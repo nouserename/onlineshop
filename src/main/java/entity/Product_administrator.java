@@ -28,9 +28,10 @@ public class Product_administrator extends Admin {
 		String sql = "INSERT INTO `product` (`price`, `name`, `image1`, `image2`, `image3`, `image4`, `image5`, `image6`, `image7`, `description1`, `description2`, `description3`, `description4`, `description5`, `description6`, `group`, `memory`, `pixel`, `battery`, `processor`) VALUES ( '"+product.getPrice()+"', '"+product.getName()+"', '"+product.getImages()[0]+"', '"+product.getImages()[1]+"', '"+product.getImages()[2]+"', '"+product.getImages()[3]+"', '"+product.getImages()[4]+"', '"+product.getImages()[5]+"', '"+product.getImages()[6]+"', '"+product.getDescription()[0]+"', '"+product.getDescription()[1]+"', '"+product.getDescription()[2]+"', '"+product.getDescription()[3]+"', '"+product.getDescription()[4]+"', '"+product.getDescription()[5]+"', '"+product.getGroup()+"', '"+product.getMemory()+"', '"+product.getPixel()+"', '"+product.getBattery()+"', '"+product.getProcessor()+"');";
 		int state = Database.executeUpdate(sql);
 		if (state ==1) {
-			
+			Database.closeConnection();
 			return true;
 		}
+		Database.closeConnection();
 		return false;
 	}
 	
@@ -48,8 +49,10 @@ public class Product_administrator extends Admin {
 		String sql = "dalete from product where product_id = "+product.getId();
 		int state = Database.executeUpdate(sql);
 		if (state==1) {
+			Database.closeConnection();
 			return true;
 		}
+		Database.closeConnection();
 		return false;
 	}
 	
@@ -66,8 +69,10 @@ public class Product_administrator extends Admin {
 		String sql = "UPDATE `product` SET '"+product.getPrice()+"', '"+product.getName()+"', '"+product.getImages()[0]+"', '"+product.getImages()[1]+"', '"+product.getImages()[2]+"', '"+product.getImages()[3]+"', '"+product.getImages()[4]+"', '"+product.getImages()[5]+"', '"+product.getImages()[6]+"', '"+product.getDescription()[0]+"', '"+product.getDescription()[1]+"', '"+product.getDescription()[2]+"', '"+product.getDescription()[3]+"', '"+product.getDescription()[4]+"', '"+product.getDescription()[5]+"', '"+product.getGroup()+"', '"+product.getMemory()+"', '"+product.getPixel()+"', '"+product.getBattery()+"', '"+product.getProcessor()+"' WHERE (`product_id`='"+product.getId()+"');";
 		int state = Database.executeUpdate(sql);
 		if (state==1) {
+			Database.closeConnection();
 			return true;
 		}
+		Database.closeConnection();
 		return false;
 	}
 	/**
