@@ -13,14 +13,9 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
-import org.apache.tomcat.websocket.CaseInsensitiveKeyMap;
 
 import entity.Admin;
 import entity.Customer;
@@ -129,6 +124,7 @@ public class Index extends HttpServlet{
 					writer.println("<p> 用户名或密码错误</p>");
 					writer.flush();
 					writer.close();
+					
 				}
 			}
 		} catch (SQLException e) {

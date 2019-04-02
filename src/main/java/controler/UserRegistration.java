@@ -52,7 +52,7 @@ public class UserRegistration extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
 		super.doPost(req, resp);
-		customer.logOn(req.getParameterValues(""));
+		
 	}
 
 }
