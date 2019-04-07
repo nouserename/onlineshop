@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
-		<title>星云商城-个人中心</title>
+		<title>小米商城-个人中心</title>
 		<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	</head>
 	<body>
@@ -37,14 +37,14 @@
 					</ul>
 				</div>
 				<div class="right fr">
-					<div class="gouwuche fr"><a href="./dingdanzhongxin.html">我的订单</a></div>
+					<div class="gouwuche fr"><a href="">我的订单</a></div>
 					<div class="fr">
 						<ul>
-							<li><a href="../../login.html" target="_blank">登录</a></li>
+							<li><a href="./login.html" target="_blank">登录</a></li>
 							<li>|</li>
-							<li><a href="../../register.html" target="_blank" >注册</a></li>
+							<li><a href="./register.html" target="_blank" >注册</a></li>
 							<li>|</li>
-							<li><a href="#top">个人中心</a></li>
+							<li><a href="./self_info.html">个人中心</a></li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -107,63 +107,36 @@
 			</div>
 		</div>
 		<div class="rtcont fr">
-				<h1 align="center">第一条地址</h1>
-				<form>
-					<div style="border: 3px solid #000">
-						<br /> &emsp;&emsp;收货人&emsp; <input type="text" name="customer">
-						<div style="text-align: right">
-							<input type="button" value="删除" />
-						</div>
-						<br />
-						<br /> &emsp;&emsp;联系方式 <input type="text" name="telephoneNo">
-						<div style="text-align: right">
-							<input type="button" value="编辑" />
-						</div>
-						<br />
-						<br /> &emsp;&emsp;地址&emsp;&emsp; <input type="text"
-							name="address"> <br />
-						<br />
-					</div>
-				</form>
-
-				<h1 align="center">第二条地址</h1>
-				<form>
-					<div style="border: 3px solid #000">
-						<br /> &emsp;&emsp;收货人&emsp; <input type="text" name="customer">
-						<div style="text-align: right">
-							<input type="button" value="删除" />
-						</div>
-						<br />
-						<br /> &emsp;&emsp;联系方式 <input type="text" name="telephoneNo">
-						<div style="text-align: right">
-							<input type="button" value="编辑" />
-						</div>
-						<br />
-						<br /> &emsp;&emsp;地址&emsp;&emsp; <input type="text"
-							name="address"> <br />
-						<br />
-					</div>
-				</form>
-
-				<h1 align="center">第三条地址</h1>
-				<form>
-					<div style="border: 3px solid #000">
-						<br /> &emsp;&emsp;收货人&emsp; <input type="text" name="customer">
-						<div style="text-align: right">
-							<input type="button" value="删除" />
-						</div>
-						<br />
-						<br /> &emsp;&emsp;联系方式 <input type="text" name="telephoneNo">
-						<div style="text-align: right">
-							<input type="button" value="编辑" />
-						</div>
-						<br />
-						<br /> &emsp;&emsp;地址&emsp;&emsp; <input type="text"
-							name="address"> <br />
-						<br />
-					</div>
-				</form>
+			<div class="ddzxbt">交易订单</div>
+			<div class="ddxq">
+				<div class="ddspt fl"><img src="./image/gwc_xiaomi6.jpg" alt=""></div>
+				<div class="ddbh fl">订单号:1705205643098724</div>
+				<div class="ztxx fr">
+					<ul>
+						<li>已发货</li>
+						<li>￥2499.00</li>
+						<li>2017/05/20 13:30</li>
+						<li><a href="">订单详情></a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
 			</div>
+			<div class="ddxq">
+				<div class="ddspt fl"><img src="./image/liebiao_hongmin4_dd.jpg" alt=""></div>
+				<div class="ddbh fl">订单号:170526435444865</div>
+				<div class="ztxx fr">
+					<ul>
+						<li>已发货</li>
+						<li>￥1999.00</li>
+						<li>2017/05/26 14:02</li>
+						<li><a href="">订单详情></a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
 		<div class="clear"></div>
 		</div>
 	</div>
