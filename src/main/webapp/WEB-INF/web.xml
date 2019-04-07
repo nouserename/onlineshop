@@ -9,9 +9,17 @@
   	<display-name>Index</display-name>
   	<servlet-class>controler.Index</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>Payment</servlet-name>
+  	<servlet-class>controler.user.shop.Payment</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Index</servlet-name>
   	<url-pattern>/Index</url-pattern>
   </servlet-mapping>
-  
+  <servlet-mapping>
+  	<servlet-name>Payment</servlet-name>
+  	<url-pattern>/user/shop/easyPay</url-pattern>
+  </servlet-mapping>
+
 </web-app>
