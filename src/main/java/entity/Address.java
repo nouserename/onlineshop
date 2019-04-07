@@ -23,9 +23,13 @@ public class Address {
 	*    
 	*/
 	public Address(String addr) {
-		// TODO 自动生成的构造函数存根
-		//String[] ad = addr.split("&");
-		
+		String[] address = addr.split("/");
+		this.province = address[0];
+		this.city = address[1];
+		this.district = address[2];
+		this.other = address[3];
+		this.phoneNumber = address[4];
+		this.consigneeName = address[5];
 	}
 	
 	
@@ -108,6 +112,11 @@ public class Address {
 	 */
 	public void setOther(String other) {
 		this.other = other;
+	}
+	
+	public String getAddress() {
+		String addressString =  this.province + this.city + this.district + this.other + ";" + this.phoneNumber + ";" + this.consigneeName;
+		return addressString;
 	}
 
 }
