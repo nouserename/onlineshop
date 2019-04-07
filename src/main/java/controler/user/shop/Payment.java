@@ -53,7 +53,6 @@ public class Payment extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
-		
 		//此函数的参数需要前端人员构造一个数组，注意！！！数组中的商品数量用出现的频次表示
 		
 		

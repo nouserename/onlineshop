@@ -117,7 +117,7 @@ public class Index extends HttpServlet{
 
 				currentCustomer = (Customer)user.logIn(user);
 				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
-					req.getSession().setAttribute("admin", currentCustomer);
+					req.getSession().setAttribute("customer", currentCustomer);
 					resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
 					return;
 				}else {
@@ -127,6 +127,10 @@ public class Index extends HttpServlet{
 					writer.println("<p> 用户名或密码错误</p>");
 					writer.flush();
 					writer.close();
+					String aString = ""
+							+ ""
+							+ ""
+							+ "";
 				}
 			}
 		} catch (SQLException e) {

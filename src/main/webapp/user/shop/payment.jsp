@@ -1,3 +1,8 @@
+<%@page import="java.util.Map"%>
+
+<%@page import="java.util.Set"%>
+<%@page import="entity.Customer" %>
+<%@page import="entity.Product" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -86,6 +91,22 @@
 		</div>
 		<div>
 			<form action="easyPay" method="post">
+			<%			 
+					Customer currentCustomer = (Customer)session.getAttribute("customer");
+					
+				 	Map<Product,Integer> map = currentCustomer.searchTrolley(currentCustomer);
+					int len = map.size();
+					
+					Set<Product> keySet = map.keySet();
+					for(Product product:keySet)
+					{
+						
+						out.println("商品信息<input type='checkbox' name = 'trollry' value = '"+product+"'>\n");
+						out.println("<br />");
+					}
+					
+					
+				%>
 				支付宝账号：<input type="text" name="payid"><br>
 				支付宝密码：<input type="password" name="password"><br>
 				<input type="submit" value="确认付款"><br />
