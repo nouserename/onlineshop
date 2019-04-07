@@ -10,7 +10,7 @@
     <title>create new account</title>
     <link rel="stylesheet" href="css/globalcss.css" type="text/css" />
 </head>
-<style>
+<style type="text/css">
 h1 {
   text-align: center;
 }
@@ -22,6 +22,52 @@ div.info{
  margin: 3% 30% 75% 43%;
 }
 </style>
+
+
+<script>
+		var httpRequest = new XMLHttpRequest();
+function test(){
+		httpRequest.open("POST","Index",true);
+    	httpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    	httpRequest.onreadystatechange = responseAJAX;
+		var userid = document.getElementById("userid");
+    	httpRequest.send("userid="+ userid);
+	}
+	
+	
+	function responseAJAX(){
+		if(httpRequest.readyState == 4){
+			if(httpRequest.status == 200){
+				var text = httpRequest.responseText;
+				var ts = document.getElementById("ts");
+				ts.innerHTML = text;
+			}
+		}
+	}
+</script>
+<style type="text/javascript">
+	function test(){
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open("POST","Index",true);
+    	httpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    	httpRequest.onreadystatechange = responseAJAX;
+		var userid = document.getElementById("userid");
+    	httpRequest.send("userid="+ userid);
+	}
+	
+	
+	function responseAJAX(){
+		if(httpRequest.readyState == 4){
+			if(httpRequest.status == 200){
+				var text = httpRequest.responseText;
+				var ts = document.getElementById("ts");
+				ts.innerHTML = text;
+			}
+		}
+	}
+</style>
+
+
 </head>
 <body>
 <h1>������������ID</h1>
@@ -54,6 +100,8 @@ div.info{
   <input type="submit" value="Submit">
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
+     <input type="button" value="test AJAX" onclick="test()">
+    <p><span id="ts"></span></p >
 </form>
     </div>
     

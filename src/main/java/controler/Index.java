@@ -59,78 +59,92 @@ public class Index extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
-		
-		String kind = req.getParameter("kind");
-		String passwd = req.getParameter("passwd");
-		String id = req.getParameter("userid");
-		user.setName(kind);
-		user.setPasswd(passwd);
-		user.setId(id);
-		Admin currentAdmin;
-		Customer currentCustomer;
-		
-		try {
-			if (user.getName().equals("admin")) {
-				currentAdmin =  (Admin) user.logIn(user);
-				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
-					req.getSession().setAttribute("admin", currentAdmin);
-					int admin_kind = currentAdmin.getState();
-					switch (admin_kind) {
-					case Admin.finance_adm:
-						req.getRequestDispatcher("/administrator/financialmanager/financialmanager.jsp").forward(req, resp);
-//						resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/financialmanager.jsp");
-						break;
-					case Admin.aftersale_adm:
-						req.getRequestDispatcher("/administrator/aftersalesmanager/aftersalesmanager.jsp").forward(req, resp);
-//						resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
-						break;
-					case Admin.root_adm:
-						req.getRequestDispatcher("/root/root.jsp").forward(req, resp);
-//						resp.sendRedirect(req.getContextPath()+"/administrator/root/root.jsp");
-						break;
-					case Admin.product_adm:
-						req.getRequestDispatcher("/administrator/productmanager/productmanager.jsp").forward(req, resp);
-//						resp.sendRedirect(req.getContextPath()+"/administrator/productmanager/productmanager.jsp");
-						break;
-					case Admin.order_adm:
-						req.getRequestDispatcher("/administrator/ordermanager/ordermanager.jsp").forward(req, resp);
-//						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
-						break;
-						
-					default:
-						break;
-					}
-					
-					return;
-				}
-				else {
-					
-					PrintWriter writer = resp.getWriter();
-					writer.println("<p> 用户名或密码错误</p>");
-				}
-			} else {
-
-				currentCustomer = (Customer)user.logIn(user);
-				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
-					req.getSession().setAttribute("customer", currentCustomer);
-					System.out.println(req.getSession().getId());
-					req.getRequestDispatcher("/user/userhomepage.jsp").forward(req, resp);
-					//resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
-					return;
-				}else {
-					resp.setContentType("text/html;charset=UTF-8");
-					
-					PrintWriter writer = resp.getWriter();
-					writer.println("<p> 用户名或密码错误</p>");
-					writer.flush();
-					writer.close();
-					
-				}
-			}
-		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+		String test = req.getParameter("userid");
+		if(test .equals("18810819857")) {
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("AJAX suscessed!");
+			writer.flush();
+			writer.close();
+		}else {
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("AJAX is null");
+			writer.flush();
+			writer.close();
 		}
+//		
+//		String kind = req.getParameter("kind");
+//		String passwd = req.getParameter("passwd");
+//		String id = req.getParameter("userid");
+//		user.setName(kind);
+//		user.setPasswd(passwd);
+//		user.setId(id);
+//		Admin currentAdmin;
+//		Customer currentCustomer;
+//		
+//		try {
+//			if (user.getName().equals("admin")) {
+//				currentAdmin =  (Admin) user.logIn(user);
+//				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
+//					req.getSession().setAttribute("admin", currentAdmin);
+//					int admin_kind = currentAdmin.getState();
+//					switch (admin_kind) {
+//					case Admin.finance_adm:
+//						req.getRequestDispatcher("/administrator/financialmanager/financialmanager.jsp").forward(req, resp);
+////						resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/financialmanager.jsp");
+//						break;
+//					case Admin.aftersale_adm:
+//						req.getRequestDispatcher("/administrator/aftersalesmanager/aftersalesmanager.jsp").forward(req, resp);
+////						resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
+//						break;
+//					case Admin.root_adm:
+//						req.getRequestDispatcher("/root/root.jsp").forward(req, resp);
+////						resp.sendRedirect(req.getContextPath()+"/administrator/root/root.jsp");
+//						break;
+//					case Admin.product_adm:
+//						req.getRequestDispatcher("/administrator/productmanager/productmanager.jsp").forward(req, resp);
+////						resp.sendRedirect(req.getContextPath()+"/administrator/productmanager/productmanager.jsp");
+//						break;
+//					case Admin.order_adm:
+//						req.getRequestDispatcher("/administrator/ordermanager/ordermanager.jsp").forward(req, resp);
+////						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
+//						break;
+//						
+//					default:
+//						break;
+//					}
+//					
+//					return;
+//				}
+//				else {
+//					
+//					PrintWriter writer = resp.getWriter();
+//					writer.println("<p> 用户名或密码错误</p>");
+//				}
+//			} else {
+//
+//				currentCustomer = (Customer)user.logIn(user);
+//				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
+//					req.getSession().setAttribute("customer", currentCustomer);
+//					System.out.println(req.getSession().getId());
+//					req.getRequestDispatcher("/user/userhomepage.jsp").forward(req, resp);
+//					//resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
+//					return;
+//				}else {
+//					resp.setContentType("text/html;charset=UTF-8");
+//					
+//					PrintWriter writer = resp.getWriter();
+//					writer.println("<p> 用户名或密码错误</p>");
+//					writer.flush();
+//					writer.close();
+//					
+//				}
+//			}
+//		} catch (SQLException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		}
 		
 		
 		return;
