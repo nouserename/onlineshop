@@ -63,7 +63,7 @@ public class Index extends HttpServlet{
 
 		
 		
-		System.out.println("asdasdad");
+		
 		String kind = req.getParameter("kind");
 		
 		String passwd = req.getParameter("passwd");
@@ -117,6 +117,7 @@ public class Index extends HttpServlet{
 
 				currentCustomer = (Customer)user.logIn(user);
 				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
+					req.getSession().setAttribute("admin", currentCustomer);
 					resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
 					return;
 				}else {
