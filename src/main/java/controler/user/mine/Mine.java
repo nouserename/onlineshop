@@ -9,12 +9,14 @@
 package controler.user.mine;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Address;
 import entity.Customer;
 import entity.Order;
 
@@ -32,7 +34,7 @@ public class Mine extends HttpServlet{
 	public Mine() {
 		// TODO 自动生成的构造函数存根
 		customer = new Customer();
-		orders = customer.searchOrder();
+//		orders = customer.searchOrder();
 	}
 	/**
 	* <p>Title: doGet</p>  
@@ -59,7 +61,19 @@ public class Mine extends HttpServlet{
 	*/ 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO 自动生成的方法存根
-		super.doPost(req, resp);
+
+		Customer customer =  (Customer)req.getSession().getAttribute("customer");
+		Address[] address = customer.getAddr();
+		String ad = customer.getName() + ";" + customer.getId() + ";" + address[0].getAddress() + ";" + address[1].getAddress() + ";" + address[2].getAddress() ;
+		
+		System.out.println(ad);
+	
+		
+		resp.setContentType("text/html;charset=UTF-8");	
+		PrintWriter writer = resp.getWriter();
+		writer.println(ad);
+		writer.flush();
+		writer.close();
+		
 	}
 }

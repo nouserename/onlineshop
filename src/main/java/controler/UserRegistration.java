@@ -9,6 +9,8 @@
 package controler;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,8 +52,37 @@ public class UserRegistration extends HttpServlet{
 	*/ 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO 自动生成的方法存根
-		super.doPost(req, resp);
+		
+		String[] parm = new String[3];
+		
+		parm[0] = req.getParameter("username");
+		parm[1] = req.getParameter("tel");
+		parm[2] = req.getParameter("password");
+		
+		
+		try {
+			boolean bool = customer.logOn(parm);
+			if(bool) {
+				customer.setName(parm[0]);
+				customer.setId(parm[1]);
+				customer.setPasswd(parm[2]);
+				req.getSession().setAttribute("customer", customer);
+				resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
+				return;
+			}else {
+				resp.setContentType("text/html;charset=UTF-8");
+				
+				PrintWriter writer = resp.getWriter();
+				writer.println("<p>注册失败</p>");
+				writer.flush();
+				writer.close();
+			}
+				
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
 		
 	}
 

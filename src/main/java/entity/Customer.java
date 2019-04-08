@@ -84,7 +84,7 @@ public class Customer extends User{
 	 * @throws SQLException   
 	* @Title: logOn  
 	* @Description: 注册  
-	* @param @param parm
+	* @param @param parm.parm[0]是用户名字(name)，parm[1]是账号(customer_id)，parm[2]是密码(passwd)
 	* @param @return    参数  
 	* @return boolean    注册成功返回true
 	* @throws  
@@ -97,7 +97,7 @@ public class Customer extends User{
 			return false;
 		} else {
 
-			String sql = "insert into customer values ('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
+			String sql = "insert into customer(customer_id,name,passwd) values('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
 			int column = Database.executeUpdate(sql);
 			if (column==1) {
 				Database.closeConnection();

@@ -7,8 +7,42 @@
         <meta name="author" content="order by dede58.com"/>
 		<title>星云商城-个人中心</title>
 		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<script type="text/javascript">
+			function personalInfo(){
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open("POST","Mine",true);
+				httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				httpRequest.send(null);	
+				httpRequest.onreadystatechange = function(){
+					if (httpRequest.readyState == 4) {
+				        if (httpRequest.status == 200) {
+				            var obj1 = document.getElementById("nameOfCustomer");
+				            var obj2 = document.getElementById("idOfCustomer");
+				            var obj3 = document.getElementById("address1");
+				            var obj4 = document.getElementById("address2");
+				            var obj5 = document.getElementById("address3");
+				            
+				            var myArray = httpRequest.responseText.split(";");
+				            obj1.innerHTML = myArray[0];
+				            obj2.innerHTML = myArray[1];
+				            obj3.value = myArray[2] + "  电话：" + myArray[3] + "  收货人：" + myArray[4];
+				            obj4.value = myArray[5] + "  电话：" + myArray[6] + "  收货人：" + myArray[7];
+				            obj5.value = myArray[8] + "  电话：" + myArray[9] + "  收货人：" + myArray[10];
+				            
+				            
+				        } else 
+				            alert("AJAX服务器返回错误！");
+				        }
+				    }
+
+				
+						
+				} 
+		</script>
+		
+		
 	</head>
-	<body>
+	<body onload="personalInfo()">
 	<!-- start header -->
 		<header>
 			<div class="top center">
@@ -108,13 +142,23 @@
 		</div>
 		<div class="rtcont fr">
 			<div class="grzlbt ml40">我的资料</div>
-			<div class="subgrzl ml40"><span>昵称</span><span>啦啦维吉尔</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>手机号</span><span>15669097417</span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>昵称</span><span id="nameOfCustomer"></span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>手机号</span><span id="idOfCustomer"></span><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>密码</span><span>************</span><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>个性签名</span><span>一支穿云箭，千军万马来相见！</span><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>我的爱好</span><span>游戏，音乐，旅游，健身</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>收货地址</span><span>浙江省杭州市江干区19号大街571号</span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address1"><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address2"><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address3"><span><a href="">编辑</a></span></div>
 			
+			
+			
+			<!-- <div class="subgrzl ml40"><span>收货地址1</span><span id="address1"></span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>收货地址2</span><span id="address2"></span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>收货地址3</span><span id="address3"></span><span><a href="">编辑</a></span></div> -->
+			<!-- <form action="Mine" method="POST">
+				<input type="button" value="tijiao" onclick="personalInfo()">
+			</form> -->
 		</div>
 		<div class="clear"></div>
 		</div>

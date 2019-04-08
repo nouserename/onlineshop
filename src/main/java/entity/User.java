@@ -83,10 +83,15 @@ public class User {
 			addresses[0] = new Address(rs.getString("addr1"));
 			addresses[1] = new Address(rs.getString("addr2"));
 			addresses[2] = new Address(rs.getString("addr3"));
+			System.out.println(addresses[0].getAddress());
+			System.out.println(addresses[1].getAddress());
+			System.out.println(addresses[2].getAddress());
+			System.out.println("asdalsdjdalksdd");
 			
 			customer.setId(rs.getString("customer_id"));
 			customer.setName(rs.getString("name"));
 			customer.setAddr(addresses);
+			
 			customer.setPasswd(rs.getString("passwd"));
 			Database.closeConnection();
 			return customer;
