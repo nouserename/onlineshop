@@ -12,7 +12,7 @@
 				var httpRequest = new XMLHttpRequest();
 				httpRequest.open("POST","Mine",true);
 				httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				httpRequest.send(null);	
+				httpRequest.send("event="+"onload");	
 				httpRequest.onreadystatechange = function(){
 					if (httpRequest.readyState == 4) {
 				        if (httpRequest.status == 200) {
@@ -34,10 +34,29 @@
 				            alert("AJAX服务器返回错误！");
 				        }
 				    }
-
-				
+				}
+			
+			function overallOrders(){
+				var httpOrders = new XMLHttpRequest();
+				httpOrders.open("POST","Mine",true);
+				httpOrders.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				httpOrders.send("event=overallOrders");
+				httpOrders.onreadystatechange = function(){
+					if(httpOrders.readyState == 4){
+						if(httpOrders.status == 200){
+							var tt = document.body;
+							//alert(tt);
+							var sk = httpOrders.responseText;
+							//alert(sk);
+							tt.InnerHTML = sk;
+							//alert(tt.InnerHTML);
+						}
 						
-				} 
+					}
+				}
+				
+				
+			}
 		</script>
 		
 		
@@ -93,7 +112,7 @@
 			<a href=""><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><a href="">小米手机</a></li>
+					<li><span id="test"></span></li>
 					<li><a href="">红米</a></li>
 					<li><a href="">平板·笔记本</a></li>
 					<li><a href="">电视</a></li>
@@ -125,7 +144,7 @@
 			<div class="ddzx">订单中心</div>
 			<div class="subddzx">
 				<ul>
-					<li><a href="./dingdanzhongxin.html" >全部订单</a></li>
+					<li><span onclick="overallOrders()">全部订单</a></li>
 					<li><a href="">待发货</a></li>
 					<li><a href="">待收货</a></li>
 					<li><a href="">售后订单</a></li>
@@ -145,7 +164,7 @@
 			<div class="subgrzl ml40"><span>昵称</span><span id="nameOfCustomer"></span><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>手机号</span><span id="idOfCustomer"></span><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>密码</span><span>************</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>个性签名</span><span>一支穿云箭，千军万马来相见！</span><span><a href="">编辑</a></span></div>
+			<div class="subgrzl ml40"><span>个性签名</span><span id="signature">一支穿云箭，千军万马来相见！</span><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>我的爱好</span><span>游戏，音乐，旅游，健身</span><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address1"><span><a href="">编辑</a></span></div>
 			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address2"><span><a href="">编辑</a></span></div>
@@ -163,11 +182,12 @@
 		<div class="clear"></div>
 		</div>
 	</div>
+	<!-- <span id="test"></span> -->
 <!-- self_info -->
 		
 		<footer class="mt20 center">			
 			<div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>
-			<div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div> 
+			<div id="testtest">©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div> 
 			<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
 		</footer>
 	</body>
