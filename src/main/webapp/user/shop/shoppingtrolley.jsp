@@ -19,18 +19,18 @@
 	function getSelectNumber(){
 		var len = 0;
 		var price = 0;
-		var pro = document.getElementsByClassName("oneProduct");
-		var proLen = pro.length;
+		var all_pro = document.getElementsByClassName("content2 center");
+		var proLen = all_pro.length;
 		for(var i = 0;i<proLen;i++){
-			if(pro[i].checked == true){
-				var e = pro[i].parentElement;
-				alert(e.length);
+		var pro = all_pro[i].getElementsByClassName("oneProduct");
+			if(pro[0].checked == true){
+				var e = all_pro[i].getElementsByTagName("span")[0];
 				price+=parseInt(e.innerHTML);
 				len++;
 			}
 		}
 		document.getElementById("selectedNumber").innerHTML = len;
-		document.getElementById("selectAllPrice").innerHTML = price;
+		document.getElementById("selectAllPrice").innerHTML = price+"元";
 	}
 	
 	function allCheck(){
@@ -45,6 +45,25 @@
 		}else{
 			for(var i = 0;i<len;i++){
 				pro[i].checked = true;
+			}
+		}
+	}
+	
+	function editTrollryNumber( id){
+		var pro = document.getElementById(id);
+		var num = pro.value;
+		alert(num);
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open("GET","ShoppingTrolley"+"?"+"id="+id+"&num="+num,true);
+		httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		httpRequest.send();
+		httpRequest.onreadystatechange = function(){
+			if (httpRequest.status==200&&httpRequest.readyState==4) {
+				var boolinfo = httpRequest.responseText;
+				if(boolinfo==false){
+					alert("数量加失败了！");
+					pro.value--;
+				}
 			}
 		}
 	}
@@ -66,6 +85,7 @@
 			<div class="clear"></div>
 		</div>
 		<div class="xiantiao"></div>
+				<form id="myFrom" action="ShoppingTrolley" method="post">
 		<div class="gwcxqbj">
 			<div class="gwcxd center">
 				<div class="top2 center">
@@ -79,7 +99,6 @@
 					<div class="sub_top fr">操作</div>
 					<div class="clear"></div>
 				</div>
-				<form id="myFrom" action="" method="post">
 				<div class="content2 center">
 					<div class='sub_content fl '>
 						<input type='checkbox' value='quanxuan' class='oneProduct' />
@@ -121,15 +140,15 @@
 					String info =
 				"<div class='content2 center'>"
 					+"<div class='sub_content fl '>"
-						+"<input type='checkbox' value='quanxuan' class='oneProduct' onclick='getSelectNumber()' />"
+						+"<input type='checkbox' name='fuckingProduct' value='"+product.getId()+"' class='oneProduct' onclick='getSelectNumber()' />"
 					+"</div>"
 					+"<div class='sub_content fl'><img src=''></div>"
 					+"<div class='sub_content fl ft20'>"+product.getName()+"</div>"
 					+"<div class='sub_content fl '>"+price+"元</div>"
 					+"<div class='sub_content fl'>"
-					+"<input class='shuliang' type='number' value='"+count+"' step='1' min='1' >"
+					+"<input class='shuliang' type='number' id='"+product.getId()+"' onclick='editTrollryNumber(this.id)' value='"+count+"' step='1' min='1' >"
 					+"</div>"
-					+"<div  class='sub_content fl'><span>"+price*count+"<span>元</div>"
+					+"<div  class='sub_content fl'><span>"+price*count+"</span>元</div>"
 					+"<div class='sub_content fl'><a href=''>×</a></div>"
 					+"<div class='clear'></div>"
 				+"</div>";
@@ -178,7 +197,6 @@
 					<div class="sub_content fl"><a href="">×</a></div>
 					<div class="clear"></div>
 				</div>
-				</form>
 			</div>
 			<div class="jiesuandan mt20 center">
 				<div class="tishi fl ml20">
@@ -198,6 +216,7 @@
 			</div>
 			
 		</div>
+				</form>
 
   
 

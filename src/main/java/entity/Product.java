@@ -12,6 +12,10 @@ import java.io.IOException;
  *
  */
 public class Product {
+	
+	public Product(int id) {
+		this.id = id;
+	}
 	private int id;
 	private int price;
 	private String name;

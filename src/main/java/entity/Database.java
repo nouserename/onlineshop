@@ -29,6 +29,7 @@ private static final  String username = "root";
 private static final  String password = "root";
 private static Connection connection;
 private static PreparedStatement statement;
+private static java.sql.CallableStatement callableStatement;
     public static void getConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -49,6 +50,7 @@ private static PreparedStatement statement;
 		if (statement!=null) {
 			statement.close();
 		}
+		if(callableStatement!=null)callableStatement.close();
 	} catch (Exception e) {
 		e.fillInStackTrace();
 	}
@@ -70,6 +72,15 @@ private static PreparedStatement statement;
     }
     
     
+    private static boolean callableExecute(Connection connection,String callName) throws SQLException {
+    	callableStatement = connection.prepareCall(callName);
+		return callableStatement.execute();
+    }
+    
+    public static boolean callableExecute(String callName) throws SQLException {
+		getConnection();
+		return callableExecute(connection, callName);
+	}
      
     private static int executeUpdate(Connection connection,String sql) throws SQLException {
     	statement = connection.prepareStatement(sql);

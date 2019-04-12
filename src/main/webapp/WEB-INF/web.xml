@@ -21,13 +21,17 @@
   	<servlet-name>Mine</servlet-name>
   	<servlet-class>controler.user.mine.Mine</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ShoppingTrolley</servlet-name>
+  	<servlet-class>controler.user.shop.ShoppingTrolley</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Index</servlet-name>
   	<url-pattern>/Index</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>Payment</servlet-name>
-  	<url-pattern>/user/shop/easyPay</url-pattern>
+  	<url-pattern>/user/shop/Payment</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>UserRegistration</servlet-name>
@@ -36,5 +40,10 @@
    <servlet-mapping>
   	<servlet-name>Mine</servlet-name>
   	<url-pattern>/user/mine/Mine</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  
+  	<servlet-name>ShoppingTrolley</servlet-name>
+  	<url-pattern>/user/shop/ShoppingTrolley</url-pattern>
   </servlet-mapping>
 </web-app>

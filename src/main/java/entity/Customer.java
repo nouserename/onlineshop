@@ -169,7 +169,7 @@ public class Customer extends User{
 	/**
 	 * @throws SQLException   
 	* @Title: modifyTrolleyProduct  
-	* @Description:  根据第一个参数的proId修改数据库对应的数据，第二个参数表示加一还是减一
+	* @Description:  根据第一个参数的proId修改数据库对应的数据，第二个参数表示加一还是减一,现在第二个参数改了，直接表示要改成的数量
 	* @param @param proId
 	* @param @param num
 	* @param @return    参数  
@@ -178,7 +178,7 @@ public class Customer extends User{
 	*/  
 	public boolean modifyTrolleyProduct(int proId,int operate) throws SQLException {
 		
-		String sql = "update trolley set amount = amount "+operate+" where product_id = "+proId+"";
+		String sql = "update trolley set amount = "+operate+" where product_id = "+proId+" and customer_id = '"+this.getId()+"'";
 		int line = Database.executeUpdate(sql);
 		if (line==1) {
 			Database.closeConnection();
@@ -251,12 +251,9 @@ public class Customer extends User{
 		else {  //该用户包含地址。
 			
 			for(int i = 0; i<products.length;i++) {  //将产品插入order（订单）数据库表
-				String sqlString = "Insert order(customer_id,price,product_id,state) values('" + this.getId() + "'," + products[i].getPrice() + "," + products[i].getId() + "," + Order.NR_waitForReceiving;
-				int a = Database.executeUpdate(sqlString);
-				if(a <= 0) {    //插入失败，返回false.
-					Database.closeConnection();
-					return false;
-				}
+				String callName = "{ call payment('"+this.getId()+"',"+products[i].getId()+","+Order.NR_waitForReceiving+") }";
+				Database.callableExecute(callName);
+				
 			}
 			Database.closeConnection();
 			return true;  //全部商品插入成功。

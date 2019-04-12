@@ -14,6 +14,29 @@
 		<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	</head>
 	<body>
+	<script>
+			var xmlhttp = new XMLHttpRequest();
+		function pay(){
+			xmlhttp.open("POST","Payment",true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange=callback;
+		}
+		
+		function callback(){
+			var flag = xmlhttp.responseText;
+			alert(flag);
+			if(flag=="true"){
+				var body = document.getElementById("formdiv");
+				alert(body);
+				body.innerHTML = "<h1>付款成功</h1>";
+			}
+			if(flag=="false"){
+				var body = document.body;
+				body.innerHTML = "<h1>付款失败</h1>";
+			}
+			
+		}
+	</script>
 	<!-- start header -->
 		<header>
 			<div class="top center">
@@ -89,27 +112,12 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-		<div>
-			<form action="easyPay" method="post">
-			<%			 
-					Customer currentCustomer = (Customer)session.getAttribute("customer");
-					
-				 	Map<Product,Integer> map = currentCustomer.searchTrolley(currentCustomer);
-					int len = map.size();
-					
-					Set<Product> keySet = map.keySet();
-					for(Product product:keySet)
-					{
-						
-						out.println("商品信息<input type='checkbox' name = 'trollry' value = '"+product+"'>\n");
-						out.println("<br />");
-					}
-					
-					
-				%>
+		<div id="formdiv">
+			<form action="Payment" method="post">
+			
 				支付宝账号：<input type="text" name="payid"><br>
 				支付宝密码：<input type="password" name="password"><br>
-				<input type="submit" value="确认付款"><br />
+				<input type="button" value="确认付款" onclick="pay()"><br />
 			</form>
 		</div>
 <!-- end banner_x -->
