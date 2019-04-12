@@ -10,6 +10,9 @@ package controler.user.mine;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -61,19 +64,70 @@ public class Mine extends HttpServlet{
 	*/ 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		Customer customer =  (Customer)req.getSession().getAttribute("customer");
-		Address[] address = customer.getAddr();
-		String ad = customer.getName() + ";" + customer.getId() + ";" + address[0].getAddress() + ";" + address[1].getAddress() + ";" + address[2].getAddress() ;
+		if(req.getParameter("event").equals("onload")) {
+			Customer customer =  (Customer)req.getSession().getAttribute("customer");
+			Address[] address = customer.getAddr();
+			String ad = customer.getName() + ";" + customer.getId() + ";" + address[0].getAddress() + ";" + address[1].getAddress() + ";" + address[2].getAddress() ;
+			
+			System.out.println(ad);
 		
-		System.out.println(ad);
-	
+			
+			resp.setContentType("text/html;charset=UTF-8");	
+			PrintWriter writer = resp.getWriter();
+			writer.println(ad);
+			writer.flush();
+			writer.close();
+		}else if (req.getParameter("event").equals("overallOrders")) {
+			Customer customer =  (Customer)req.getSession().getAttribute("customer");
+			try {
+				int len = customer.searchOrder(customer).length;
+				Order[] overallOrders = new Order[len];
+				overallOrders =	customer.searchOrder(customer);
+				
+				
+				
+				resp.setContentType("text/html;charset=UTF-8");	
+				PrintWriter wr = resp.getWriter();
+				
+				String st = "今天必须成功";
+				System.out.println(st);
+				//writer.println(st);
+				wr.println(st);
+				
+//				writer.println("<div class='ddzxbt'>交易订单</div>");
+				
+//				for(int i=0;i<len;i++) {
+//					String info = customer.searchInfoOfProduct(overallOrders[i].getProduct());
+//					String[] pro = info.split(";");
+//					System.out.println("该商品信息为："+pro[0] + pro[1]);
+//					
+//					writer.println("<div class='ddxq'>"
+//							+ "<div class='ddspt fl'><img src= "+ pro[0] +" alt='加载失败'></div>"
+//							+ "<div class='ddbh fl'>订单号:"+ overallOrders[i].getId() +"</div>"
+//							+ "<div class='ztxx fr'>"
+//							+ "<ul>"
+//							+     "<li>已发货</li>"
+//							+     "<li>" + pro[1] +"</li>"
+//							+     "<li>"+ "地址" +"</li>"
+//							+     "<div class='clear'></div>"
+//							+ "</ul>"
+//							+"</div>"
+//							+"<div class='clear'></div>"
+//							+"</div>"
+//							);
+//					
+//					
+//				}
+				
+				wr.flush();
+				wr.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
-		resp.setContentType("text/html;charset=UTF-8");	
-		PrintWriter writer = resp.getWriter();
-		writer.println(ad);
-		writer.flush();
-		writer.close();
+		
+		
 		
 	}
 }
