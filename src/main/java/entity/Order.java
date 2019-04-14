@@ -24,7 +24,11 @@ public class Order {
 	*    
 	*/
 	public Order(String id,String customerId,int price,int productId,int state) {
-		// TODO 自动生成的构造函数存根
+		this.id = id;
+		this.customerId = customerId;
+		this.price =price;
+		this.productId = productId;
+		this.state = state;
 	}
 	
 	/**  
