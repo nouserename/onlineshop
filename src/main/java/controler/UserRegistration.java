@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Customer;
 import entity.User;
+import tool.Security;
 
 /**
  * @author SongKaikai
@@ -54,12 +55,12 @@ public class UserRegistration extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String[] parm = new String[3];
-		
+		req.setCharacterEncoding("utf-8");
 		parm[0] = req.getParameter("username");
 		parm[1] = req.getParameter("tel");
 		parm[2] = req.getParameter("password");
-		
-		
+		parm[2] =Security.getSHA256StrJava(parm[2]);
+		System.out.println(parm[0]);
 		try {
 			boolean bool = customer.logOn(parm);
 			if(bool) {

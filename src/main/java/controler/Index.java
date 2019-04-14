@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import entity.Admin;
 import entity.Customer;
 import entity.User;
+import tool.Security;
 
 /**
  * @author SongKaikai
@@ -67,6 +68,7 @@ public class Index extends HttpServlet{
 		String kind = req.getParameter("kind");
 		
 		String passwd = req.getParameter("passwd");
+		passwd = Security.getSHA256StrJava(passwd);
 		String id = req.getParameter("userid");
 		user.setName(kind);
 		user.setPasswd(passwd);

@@ -16,11 +16,16 @@
   <servlet>
   	<servlet-name>UserRegistration</servlet-name>
   	<servlet-class>controler.UserRegistration</servlet-class>
+        <init-param>
+        <param-name>charset</param-name>
+        <param-value>utf-8</param-value>
+        </init-param>
   </servlet>
   <servlet>
   	<servlet-name>Mine</servlet-name>
   	<servlet-class>controler.user.mine.Mine</servlet-class>
   </servlet>
+  
   <servlet>
   	<servlet-name>ShoppingTrolley</servlet-name>
   	<servlet-class>controler.user.shop.ShoppingTrolley</servlet-class>
@@ -28,6 +33,10 @@
   <servlet>
   	<servlet-name>UserHomePage</servlet-name>
   	<servlet-class>controler.user.UserHomePage</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddNewPerson</servlet-name>
+  	<servlet-class>controler.root.AddNewPerson</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Index</servlet-name>
@@ -53,6 +62,10 @@
   <servlet-mapping>
   	<servlet-name>UserHomePage</servlet-name>
   	<url-pattern>/user/UserHomePage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddNewPerson</servlet-name>
+  	<url-pattern>/root/AddNewPerson</url-pattern>
   </servlet-mapping>
   
 </web-app>
