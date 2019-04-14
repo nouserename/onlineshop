@@ -9,6 +9,9 @@
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body>
+	<script>
+	
+	</script>
 	<!-- start header -->
 		<header>
 			<div class="top center">
@@ -72,12 +75,12 @@
 				</ul>
 			</div>
 			<div class="search fr">
-				<form action="" method="post">
+				<form action="UserHomePage" method="get">
 					<div class="text fl">
-						<input type="text" class="shuru"  placeholder="小米6&nbsp;小米MIX现货">
+						<input type="text" class="shuru" name="key" placeholder="小米6&nbsp;小米MIX现货">
 					</div>
 					<div class="submit fl">
-						<input type="submit" class="sousuo" value="搜索"/>
+						<input type="submit" class="sousuo"  value="搜索"/>
 					</div>
 					<div class="clear"></div>
 				</form>

@@ -48,7 +48,7 @@
 							//alert(tt);
 							var sk = httpOrders.responseText;
 							//alert(sk);
-							tt.InnerHTML = sk;
+							tt.innerHTML = sk;
 							//alert(tt.InnerHTML);
 						}
 						

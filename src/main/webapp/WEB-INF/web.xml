@@ -25,6 +25,10 @@
   	<servlet-name>ShoppingTrolley</servlet-name>
   	<servlet-class>controler.user.shop.ShoppingTrolley</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UserHomePage</servlet-name>
+  	<servlet-class>controler.user.UserHomePage</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Index</servlet-name>
   	<url-pattern>/Index</url-pattern>
@@ -46,4 +50,9 @@
   	<servlet-name>ShoppingTrolley</servlet-name>
   	<url-pattern>/user/shop/ShoppingTrolley</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserHomePage</servlet-name>
+  	<url-pattern>/user/UserHomePage</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
