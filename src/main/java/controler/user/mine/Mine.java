@@ -68,10 +68,6 @@ public class Mine extends HttpServlet{
 			Customer customer =  (Customer)req.getSession().getAttribute("customer");
 			Address[] address = customer.getAddr();
 			String ad = customer.getName() + ";" + customer.getId() + ";" + address[0].getAddress() + ";" + address[1].getAddress() + ";" + address[2].getAddress() ;
-			
-			System.out.println(ad);
-		
-			
 			resp.setContentType("text/html;charset=UTF-8");	
 			PrintWriter writer = resp.getWriter();
 			writer.println(ad);

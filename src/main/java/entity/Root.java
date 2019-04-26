@@ -28,6 +28,16 @@ public class Root extends Admin {
 	}
 	
 	
+	public Root(Admin admin) throws SQLException {
+		this.setId(admin.getId());
+		this.setName(admin.getName());
+		this.setPasswd(admin.getPasswd());
+		this.setState(root_adm);
+		
+		admins = findAdmin();
+	}
+	
+	
 	
 	/**
 	 * @throws SQLException   
@@ -88,7 +98,7 @@ public class Root extends Admin {
 		String sqlString = " select * from admin where admin_id = '"+ admin.getId()+"'";
 		ResultSet re= Database.executeQuery(sqlString);
 		if(re.next()) {
-			String sq = "Update admin set admin_id = '" + admin.getId() + "',position=" + admin.getState() + ",name='" + admin.getName() + "',passwd='"+admin.getPasswd()+"'";
+			String sq = "Update admin set admin_id = '" + admin.getId() + "',position=" + admin.getState() + ",name='" + admin.getName() + "',passwd='"+admin.getPasswd()+"'"+" where admin_id = '"+ admin.getId()+"'";
 			int rs= Database.executeUpdate(sq);
 			if(rs==0) {
 				Database.closeConnection();

@@ -63,7 +63,7 @@ public class Index extends HttpServlet{
 		
 
 		
-		
+		System.out.println(Security.getSHA256StrJava("123456"));
 		
 		String kind = req.getParameter("kind");
 		
