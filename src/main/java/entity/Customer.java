@@ -13,6 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.el.ELException;
+
+import entity.exception.UserNotFoundException;
+
 /**
  * @author YWB
  *
@@ -22,6 +26,33 @@ public class Customer extends User{
 	private Address[] addr;
 	private Product[] products;
 	private Order[] orders;
+	/**  
+	* 创建一个新的实例 Customer.  
+	*    
+	*/
+	public Customer(String id) {
+		// TODO 自动生成的构造函数存根
+		String sqlString = "select * from customer where customer_id = '"+id+"'";
+		try {
+			ResultSet resultSet = Database.executeQuery(sqlString);
+			if(resultSet.next())
+			{
+				this.setId(id);
+				this.setName(resultSet.getString("name"));
+				this.setPasswd(resultSet.getString("passwd"));
+			}
+			else {
+				throw new UserNotFoundException("根据给定的id没有找到该用户");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UserNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**  
 	* 创建一个新的实例 Customer.  
 	*    

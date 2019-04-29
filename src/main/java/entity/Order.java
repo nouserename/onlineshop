@@ -42,37 +42,37 @@ public class Order {
 	/**  
 	* @Fields field:field:未发货  
 	*/ 
-	final static int NR_waitForReceiving 	= 0;
+	public final static int NR_waitForReceiving 	= 0;
 	
 	/**  
 	* @Fields field:field:未收货  
 	*/ 
-	final static int NR_unCollected 		= 1;
+	public final static int NR_unCollected 		= 1;
 
 	/**  
 	* @Fields field:field:已收货,此状态下可以申请售后(此状态由未收货状态经过7天自动改变而来),申请售后函数暂未实现  
 	*/ 
-	final static int NR_Collected 			= 2;
+	public final static int NR_Collected 			= 2;
 
 	/**  
 	* @Fields field:field:等待审核  
 	*/ 
-	final static int NR_waitForReview 		= 3;
+	public final static int NR_waitForReview 		= 3;
 
 	/**  
 	* @Fields field:field:卖家等待买家退货 
 	*/ 
-	final static int NR_waitForReturn 		= 4;
+	public final static int NR_waitForReturn 		= 4;
 
 	/**  
 	* @Fields field:field:退货完成  
 	*/ 
-	final static int NR_returnedFinish 		= 5;
+	public final static int NR_returnedFinish 		= 5;
 
 	/**  
 	* @Fields field:field:审核未通过 
 	*/ 
-	final static int NR_reviewNotPass 		= 6;
+	public final static int NR_reviewNotPass 		= 6;
 	/**
 	 * @return id
 	 */

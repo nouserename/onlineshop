@@ -39,8 +39,17 @@ public class Finance_administrator extends Admin implements FindOrder{
 	}
 	
 	public boolean received(int orderId) {
-		//TODO
-		return true;
+		String sqlString = "update `orders` set state = "+Order.NR_returnedFinish+" where order_id = "+orderId;
+		try {
+			Database.executeUpdate(sqlString);
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			Database.closeConnection();
+		}
 	}
 
 	/**

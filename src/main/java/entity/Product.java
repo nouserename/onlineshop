@@ -6,6 +6,10 @@
 package entity;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import entity.exception.ProdutNotFoundException;
 
 /**
  * @author YWB
@@ -14,7 +18,29 @@ import java.io.IOException;
 public class Product {
 	
 	public Product(int id) {
+		
+		
 		this.id = id;
+		
+		String sqlString = "select name,price from product where product_id = "+id;
+		try {
+			ResultSet resultSet = Database.executeQuery(sqlString);
+			if(resultSet.next())
+			{
+				this.name = resultSet.getString("name");
+				this.price = resultSet.getInt("price");
+			}
+			else {
+				throw new ProdutNotFoundException("此产品不存在");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ProdutNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	private int id;
 	private int price;

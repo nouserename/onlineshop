@@ -38,6 +38,20 @@
   	<servlet-name>AddNewPerson</servlet-name>
   	<servlet-class>controler.root.AddNewPerson</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>OrderManager</servlet-name>
+  	<servlet-class>controler.administrator.ordermanager.OrderManager</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FinancialManager</servlet-name>
+  	<servlet-class>controler.administrator.financialmanager.FinancialManager</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AfterSalesManager</servlet-name>
+  	<servlet-class>controler.administrator.aftersalesmanager.AfterSalesManager</servlet-class>
+  </servlet>
+
+  
   <servlet-mapping>
   	<servlet-name>Index</servlet-name>
   	<url-pattern>/Index</url-pattern>
@@ -67,5 +81,19 @@
   	<servlet-name>AddNewPerson</servlet-name>
   	<url-pattern>/root/AddNewPerson</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>OrderManager</servlet-name>
+  	<url-pattern>/administrator/ordermanager/OrderManager</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FinancialManager</servlet-name>
+  	<url-pattern>/administrator/financialmanager/FinancialManager</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AfterSalesManager</servlet-name>
+  	<url-pattern>/administrator/aftersalesmanager/AfterSalesManager</url-pattern>
+  </servlet-mapping>
+
+
   
 </web-app>

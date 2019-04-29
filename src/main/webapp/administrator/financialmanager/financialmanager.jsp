@@ -1,3 +1,8 @@
+<%@page import="entity.Product"%>
+<%@page import="entity.Customer"%>
+<%@page import="entity.Order"%>
+<%@page import="entity.Order_administrator"%>
+<%@page import="entity.Admin"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -7,17 +12,32 @@
 <title>financial</title>
 </head>
 <body>
-<div align="center">
-<input type="text" name="s" class="input" placeholder="输入 回车搜索" autofocus x-webkit-speech>
-<input type="button" name="搜索" id="but1" class="btn" value="搜索">&emsp;&emsp;<input type="button" name="显示全部" id="but2" class="btn" value="显示全部"><br /><br />
-</div>
-<div style="position: absolute;right:300px;"><!--等待审核产品详情-->
-订单编号&emsp;<input type="text" name="s1" ><br />
-</div>
-<div style="position: absolute;right:100px;"><input name="打钱" type="button" id="btn5" title="打钱" value="打钱" style="height:30px;width:100px;"/>
-</div><br />
-<div style="position: absolute;right:300px;">
-&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" name="s2"><br /><!--审核状态--> 
-</div>
+<table>
+<tr>
+<th>订单编号</th>
+<th>客户手机号</th>
+<th>客户名字</th>
+<th>产品名字</th>
+<th>产品价格</th>
+<th>操作</th>
+</tr>
+<%
+	Admin a = (Admin)request.getSession().getAttribute("admin");
+    Order[] orders = a.searchOrder(Order.NR_waitForReturn);
+    Customer customer;
+	Product product;
+	int len = orders.length;
+	for(int i = 0;i<len;i++)
+	{
+		customer = new Customer(orders[i].getCustomer());
+		product = new Product(orders[i].getProduct());
+		out.println("<tr> <td>"+orders[i].getId()+"</td> <td>"+customer.getId()+"</td> <td>"+customer.getName()+"</td> <td>"+product.getName()+"</td> <td>"+product.getPrice()+"</td> <td> <form method='get' action='/onlineshop/administrator/financialmanager/FinancialManager'><input hidden type='text' name='orderId' value='"+orders[i].getId()+"'><input type='submit' value='打钱'></form></td></tr>");
+	}
+    
+%>
+
+
+</table>
+
 </body>
 </html>

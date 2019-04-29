@@ -77,8 +77,7 @@ public class Mine extends HttpServlet{
 			Customer customer =  (Customer)req.getSession().getAttribute("customer");
 			try {
 				int len = customer.searchOrder(customer).length;
-				Order[] overallOrders = new Order[len];
-				overallOrders =	customer.searchOrder(customer);
+				Order[] overallOrders =	customer.searchOrder(customer);
 				
 				
 				

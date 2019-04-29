@@ -22,7 +22,18 @@ public class Order_administrator extends Admin {
 	
 	
 	
-	
+	/**  
+	* 创建一个新的实例 Order_administrator.  
+	*    
+	*/
+	public Order_administrator(Admin admin) {
+		// TODO 自动生成的构造函数存根
+		this.setId(admin.getId());
+		this.setName(admin.getName());
+		this.setPasswd(admin.getPasswd());
+		this.setState(Admin.order_adm);
+		
+	}
 	
 	
 	/**  
@@ -43,7 +54,7 @@ public class Order_administrator extends Admin {
 	* @throws  
 	*/  
 	public boolean print() throws SQLException {
-		String sql = "UPDATE `order` SET `state`='"+Order.NR_waitForReceiving+"' WHERE (`state`='"+Order.NR_waitForReceiving+"')";
+		String sql = "UPDATE `orders` SET `state`='"+Order.NR_unCollected+"' WHERE (`state`='"+Order.NR_waitForReceiving+"')";
 		int line = Database.executeUpdate(sql);
 		if (line>0) {
 			Database.closeConnection();
@@ -61,6 +72,7 @@ public class Order_administrator extends Admin {
 	* @return  
 	* @see entity.User#search(int)  
 	*/ 
+	@Deprecated
 	@Override
 	public Order[] search(int state) {
 		// TODO 自动生成的方法存根

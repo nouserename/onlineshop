@@ -1,3 +1,9 @@
+<%@page import="entity.Product"%>
+<%@page import="entity.Customer"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="entity.Order"%>
+<%@page import="entity.Order_administrator"%>
+<%@page import="entity.Admin"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -7,19 +13,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style="position:absolute; top:10px;right:0px;">
-    <button>打印</button>
-</div>
+<form action="/onlineshop/administrator/ordermanager/OrderManager" method="get">
+<input type="submit" value="打印">
+</form>
 <table>
-
+<tr>
+<th>订单编号</th>
+<th>客户手机号</th>
+<th>客户名字</th>
+<th>产品名字</th>
+<th>产品价格</th>
+</tr>
 <%
-	
+	Admin a = (Admin)request.getSession().getAttribute("admin");
+	Order_administrator order_administrator = new Order_administrator(a);
+	Order[] orders = order_administrator.searchOrder(Order.NR_waitForReceiving);
+	Customer customer;
+	Product product;
+	int len = orders.length;
+	for(int i = 0;i<len;i++)
+	{
+		customer = new Customer(orders[i].getCustomer());
+		product = new Product(orders[i].getProduct());
+		out.println("<tr> <td>"+orders[i].getId()+"</td> <td>"+customer.getId()+"</td> <td>"+customer.getName()+"</td> <td>"+product.getName()+"</td> <td>"+product.getPrice()+"</td> </tr>");
+	}
 %>
 
 </table>
-<div style="position: absolute;top:10px;right:200px;"><!--等待发货产品详情-->
-订单编号&emsp;<input type="text" name="s1" ><br />
-&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" name="s2"><br /><!--未发货状态--> 
-</div>
+
 </body>
 </html>

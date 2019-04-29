@@ -128,7 +128,7 @@ public class User {
 	* @throws  
 	*/  
 	public Order[] searchOrder(int state) throws SQLException {
-		String sql = "select * from order where state = "+state;
+		String sql = "select * from orders where state = "+state;
 		ResultSet resultSet = Database.executeQuery(sql);
 		ArrayList<Order> list = new ArrayList<Order>();
 		while (resultSet.next()) {

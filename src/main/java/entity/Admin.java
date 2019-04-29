@@ -71,6 +71,7 @@ public class Admin extends User{
 	* @return Order []    返回类型  
 	* @throws  
 	*/  
+	@Deprecated
 	public Order[] search(int state) {
 		// TODO 自动生成的方法存根
 		return null;

@@ -33,16 +33,19 @@ public class Aftersales_administrator extends Admin{
 		String sql;
 
 		if (agrNage) {
-			sql = "UPDATE order set state = "+NR_waitForReturn+" where order_id = "+o.getId();
+			sql = "UPDATE `orders` set state = "+NR_waitForReturn+" where order_id = "+o.getId();
 		} else {
-			sql = "UPDATE order set state = "+NR_reviewNotPass+" where order_id = "+o.getId();
+			sql = "UPDATE `orders` set state = "+NR_reviewNotPass+" where order_id = "+o.getId();
 		}
 		int line = Database.executeUpdate(sql);
 		if (line==1) {
 			
+			Database.closeConnection();
 			return true;
 		}
+		Database.closeConnection();
 		return false;
+		
 	}
 
 	/**
