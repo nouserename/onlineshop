@@ -128,7 +128,7 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .peijian .main .content .remen:hover{margin-top: -2px;box-shadow: 0px 0px 30px #ccc;}
 .peijian .main .content .remen:nth-of-type(5){margin:0;}
 .peijian .main .content .remen .xinpin span{display: block;margin:0 auto;font-size: 10px;line-height:20px;height: 20px;color:#fff;width: 65px;background: #83c44e;text-align: center;}
-.peijian .main .content .remen .tu a img{margin:10px 42px 20px 42px;}
+.peijian .main .content .remen .tu a img{margin:10px 42px 20px 42px;width:150px;height:150px;}
 .peijian .main .content .remen .miaoshu{width: 234px;height: 25px;line-height: 25px;text-align: center;overflow: hidden;}
 .peijian .main .content .remen .miaoshu a{color:#000;font-size: 14px;}
 .peijian .main .content .remen .jiage{color:#ff6700;font-size: 14px;text-align:center;width: 234px;height: 25px;line-height: 25px;}
@@ -201,7 +201,7 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .gwcxqbj .gwcxd .content2 .sub_content .shuliang{width: 70px;height: 35px;border:2px solid #ccc;text-align: center;font-size:16px;color:#ff6700;}
 .gwcxqbj .gwcxd .content2 .sub_content a{display: block;width: 20px;height: 20px;border-radius: 10px;color:#000;}
 .gwcxqbj .gwcxd .content2 .sub_content a:hover{color:#ff6700;}
-/*缁撶畻鍗�*/
+/*缁撶畻鍗�?*/
 .jiesuandan{width:1226px;height: 50px;background: #fff;}
 .jiesuandan .tishi{width: 400px;height: 50px;line-height: 50px;}
 .jiesuandan .tishi ul li{float: left; font-size: 14px;display: inline-block;padding:0 10px;color:#666;}
