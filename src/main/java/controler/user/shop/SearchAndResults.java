@@ -83,12 +83,9 @@ public class SearchAndResults extends HttpServlet{
 //					<div class="jiage">1499.00Ԫ</div>
 //				</div>
 					String info =
-					"<div class=\"mingxing fl mb20\" style=\"border:2px solid #fff;width:230px;cursor:pointer;\" onmouseout=\"this.style.border='2px solid #fff'\" onmousemove=\"this.style.border='2px solid red'\">"
-							+ "<div class=\"sub_mingxing\"><a href=\"\"><img src="+product.getImages()[0]+" alt=\"\"></a></div>\r\n" 
-						    + "<div class=\"pinpai\"><a href=\"\">"+product.getName()+"</a></div>\r\n" 
-							+ "<div class=\"youhui\">"+product.getProcessor()+"</div>\r\n"  
-							+ "<div class=\"jiage\">"+product.getPrice()+"</div>"	
-					+"</div>";
+					"<div class='mingxing fl mb20' style='border:2px solid #fff;width:225px;cursor:pointer;' onmouseout=\"this.style.border='2px solid #fff'\" onmousemove=\"this.style.border='2px solid red' \"> <div class='sub_mingxing'><a href='./shop/productdetails.jsp?proId="+product.getId()+"'><img src='../"+product.getImages()[0]+"' alt=''></a></div> <div class='pinpai'><a href=''>"+product.getName()+"</a></div> <div class='youhui'>"+product.getProcessor()+"</div> <div class='jiage'>"+product.getPrice()+"</div> </div>";
+					
+					
 					writer.println(info);
 				}
 				writer.flush();
