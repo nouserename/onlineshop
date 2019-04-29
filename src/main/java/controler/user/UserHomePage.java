@@ -32,8 +32,7 @@ public class UserHomePage extends HttpServlet{
 	*/ 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		doPost(req, resp);
 	}
 
 	/**
@@ -48,7 +47,16 @@ public class UserHomePage extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+				req.setCharacterEncoding("UTF-8");
+				System.out.println(req.getCharacterEncoding());
+				
+				
+				String keyWord = req.getParameter("key");
+				System.out.println(keyWord);
+				
+				
+				req.getSession().setAttribute("keyword", keyWord);
+				req.getRequestDispatcher("/user/shop/searchandresults.jsp").forward(req, resp);		
 	}
 
 }

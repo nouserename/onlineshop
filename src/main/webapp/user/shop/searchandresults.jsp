@@ -7,8 +7,28 @@
         <meta name="author" content="order by dede58.com"/>
 		<title>小米手机列表</title>
 		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<script type="text/javascript">
+	
+		function searchproduct() 
+		{
+			var allPhone = document.getElementById("allPhone");
+			var html = allPhone.innerHTML;
+	
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.open("POST","shop/SearchAndResults",true);
+			httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			httpRequest.send();
+			httpRequest.onreadystatechange = function(){
+				if (httpRequest.status==200&&httpRequest.readyState==4) {
+					var proInfo = httpRequest.responseText;
+					allPhone.innerHTML = html+proInfo;
+				}
+			}
+		}
+	</script>
+		
 	</head>
-	<body>
+	<body onload="searchproduct()">
 	<!-- start header -->
 		<header>
 			<div class="top center">
@@ -92,7 +112,7 @@
 	<!-- start danpin -->
 		<div class="danpin center">
 			
-			<div class="biaoti center">小米手机</div>
+			<div class="biaoti center" id="allPhone">小米手机</div>
 			<div class="main center">
 				<div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
 					<div class="sub_mingxing"><a href="./xiangqing.html" target="_blank"><img src="./image/liebiao_xiaomi6.jpg" alt=""></a></div>
