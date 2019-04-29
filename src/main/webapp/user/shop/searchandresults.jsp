@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
 		<title>小米手机列表</title>
-		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<script type="text/javascript">
 	
 		function searchproduct() 
@@ -110,7 +110,7 @@
 	<!-- end banner -->
 
 	<!-- start danpin -->
-		<div class="danpin center">
+		<div class="danpin center" style="height: auto;">
 			
 			<div class="biaoti center" id="allPhone">小米手机</div>
 			<div class="main center">

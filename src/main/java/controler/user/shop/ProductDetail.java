@@ -9,6 +9,8 @@
 package controler.user.shop;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +25,10 @@ import entity.Product;
  *
  */
 public class ProductDetail extends HttpServlet{
-	Customer customer = new Customer();
+	/**  
+	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
+	*/ 
+	private static final long serialVersionUID = 1L;
 	Product[] product;
 
 	/**
@@ -38,8 +43,23 @@ public class ProductDetail extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
-		super.doGet(req, resp);
-		product = customer.search("");
+		Customer customer = (Customer)req.getSession().getAttribute("customer");
+		String proId = req.getParameter("proId");
+		PrintWriter printWriter = resp.getWriter();
+		try {
+			if (customer.addProduct2Trolley(Integer.parseInt(proId))) {
+				printWriter.print("yes");
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			printWriter.print("no");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			printWriter.print("no");
+			e.printStackTrace();
+		}
+		
 		
 	}
 
@@ -55,7 +75,7 @@ public class ProductDetail extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
-		super.doPost(req, resp);
+		doGet(req, resp);
 	}
 	
 

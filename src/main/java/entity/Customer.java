@@ -13,8 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.el.ELException;
-
 import entity.exception.UserNotFoundException;
 
 /**
@@ -383,6 +381,38 @@ public class Customer extends User{
 			Database.closeConnection();
 			return false;
 		}
+	}
+	
+	public Product searchProduct(int proId)
+	{
+		Product product = null;
+		String sqlString = "select * from product where product_id = "+proId;
+		try {
+			ResultSet resultSet = Database.executeQuery(sqlString);
+			if(resultSet.next())
+			{
+				product = new Product(resultSet.getInt("product_id"),resultSet.getInt("price"),
+						resultSet.getString("name"),resultSet.getString("image1"),
+						resultSet.getString("image2"),resultSet.getString("image3"),
+						resultSet.getString("image4"),resultSet.getString("image5"),
+						resultSet.getString("image6"),resultSet.getString("image7"),resultSet.getString("description1"),
+						resultSet.getString("description2"),resultSet.getString("description3"),
+						resultSet.getString("description4"),resultSet.getString("description5"),
+						resultSet.getString("description6"),resultSet.getString("group"),
+						resultSet.getInt("memory"),resultSet.getInt("pixel"),
+						resultSet.getInt("battery"),resultSet.getString("processor"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			Database.closeConnection();
+		}
+		return product;
+		
 	}
 	
 	

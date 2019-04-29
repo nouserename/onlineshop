@@ -75,7 +75,7 @@
 				</ul>
 			</div>
 			<div class="search fr">
-				<form action="UserHomePage" method="get">
+				<form action="UserHomePage" method="post">
 					<div class="text fl">
 						<input type="text" class="shuru" name="key" placeholder="小米6&nbsp;小米MIX现货">
 					</div>

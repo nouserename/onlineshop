@@ -50,6 +50,14 @@
   	<servlet-name>AfterSalesManager</servlet-name>
   	<servlet-class>controler.administrator.aftersalesmanager.AfterSalesManager</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ProductDetail</servlet-name>
+  	<servlet-class>controler.user.shop.ProductDetail</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SearchAndResults</servlet-name>
+  	<servlet-class>controler.user.shop.SearchAndResults</servlet-class>
+  </servlet>
 
   
   <servlet-mapping>
@@ -92,6 +100,14 @@
   <servlet-mapping>
   	<servlet-name>AfterSalesManager</servlet-name>
   	<url-pattern>/administrator/aftersalesmanager/AfterSalesManager</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProductDetail</servlet-name>
+  	<url-pattern>/user/shop/ProductDetail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SearchAndResults</servlet-name>
+  	<url-pattern>/user/shop/SearchAndResults</url-pattern>
   </servlet-mapping>
 
 

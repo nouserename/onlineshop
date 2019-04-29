@@ -9,6 +9,7 @@
         <meta name="author" content="order by dede58.com"/>
 		<title>会员登录</title>
 		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		 <script src="./js/verificationCode.js" type="text/javascript"></script>
 		
 	</head>
 	<body>
@@ -18,6 +19,7 @@
 				<a href="./index.html" target="_blank"><img src="./image/mistore_logo.png" alt=""></a>
 			</div>
 		</div>
+		
 		<form  method="post" action="Index" class="form center">
 		<div class="login">
 			<div class="login_center">
@@ -35,14 +37,13 @@
 						<div class="right fl"><img src="./image/yanzhengma.jpg"></div>
 						<div class="clear"></div>
 					</div>
-					<div class="username">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<label>用户：<input type="radio" name="kind" id="radio1" value="customer"></label>
-							<label>管理者：<input type="radio" name="kind" id="radio2" value="admin"></label>
+					<div class="username" style="height: 20px;line-height: 20px;margin: 10px;" >
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label style="text-align: center;">用户：<input type="radio" name="kind" id="radio1" value="customer"></label>
+							<label style="text-align: center;">管理者：<input type="radio" name="kind" id="radio2" value="admin"></label>
 					</div>
 				</div>
-				<div class="login_submit">
+				<div class="login_submit" style="margin: 10px;">
 					<input class="submit" type="submit" name="submit" value="立即登录" >
 				</div>
 				
@@ -51,7 +52,7 @@
 		</form>
 		<footer>
 			<div class="copyright">简体 | 繁体 | English | 常见问题</div>
-			<div class="copyright">小米公司版权所有-京ICP备10046444-<img src="./image/ghs.png" alt="">京公网安备11010802020134号-京ICP证110507号</div>
+			<div class="copyright">星云公司版权所有-京ICP备10046444-<img src="./image/ghs.png" alt="">京公网安备11010802020134号-京ICP证110507号</div>
 
 		</footer>
 	</body>
