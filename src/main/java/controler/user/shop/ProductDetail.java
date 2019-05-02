@@ -45,9 +45,13 @@ public class ProductDetail extends HttpServlet{
 		// TODO 自动生成的方法存根
 		Customer customer = (Customer)req.getSession().getAttribute("customer");
 		String proId = req.getParameter("proId");
+		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter printWriter = resp.getWriter();
 		try {
 			if (customer.addProduct2Trolley(Integer.parseInt(proId))) {
+				printWriter.print("yes");
+			}
+			else {
 				printWriter.print("yes");
 			}
 		} catch (NumberFormatException e) {
@@ -75,7 +79,30 @@ public class ProductDetail extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
-		doGet(req, resp);
+		Customer customer = (Customer)req.getSession().getAttribute("customer");
+		String proId = req.getParameter("pid");
+		System.out.println(proId);
+		resp.setContentType("text/html;charset=UTF-8");
+		PrintWriter printWriter = resp.getWriter();
+		try {
+			if (customer.addProduct2Trolley(Integer.parseInt(proId))) {
+				printWriter.print("yes");
+				String[] productsid = {proId};
+				req.getSession().setAttribute("trollryvale", productsid);
+				req.getRequestDispatcher("/user/shop/payment.jsp").forward(req, resp);
+			}
+			else {
+				printWriter.print("yes");
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			printWriter.print("no");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			printWriter.print("no");
+			e.printStackTrace();
+		}
 	}
 	
 

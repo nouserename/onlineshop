@@ -1,3 +1,8 @@
+<%@page import="tool.Security"%>
+<%@page import="entity.Product"%>
+<%@page import="entity.Customer"%>
+<%@page import="static controler.Index.*" %>
+<%@page import="java.io.File" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -9,7 +14,16 @@
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body>
-	<script>
+	<%
+		Customer customer = (Customer)request.getSession().getAttribute("customer");
+		if(customer==null)
+		{
+			Thread.sleep(1000);
+			out.println("<script type=\"text/javascript\"> function wornning(){alert(\"您还没有登陆，亲先登陆！\"); window.location.href=\"../index.jsp \";}</script>");
+		}
+	%>
+	<script type="text/javascript">
+	window.onload =  wornning();
 	
 	</script>
 	<!-- start header -->
@@ -17,7 +31,7 @@
 			<div class="top center">
 				<div class="left fl">
 					<ul>
-						<li><a href="http://www.mi.com/" target="_blank">星云商城</a></li>
+						<li><a href="#" target="_blank">星云商城</a></li>
 						<li>|</li>
 						<li><a href="">星云UI</a></li>
 						<li>|</li>
@@ -77,7 +91,7 @@
 			<div class="search fr">
 				<form action="UserHomePage" method="post">
 					<div class="text fl">
-						<input type="text" class="shuru" name="key" placeholder="小米6&nbsp;小米MIX现货">
+						<input type="text" class="shuru" name="key" placeholder="Nebula">
 					</div>
 					<div class="submit fl">
 						<input type="submit" class="sousuo"  value="搜索"/>
@@ -111,7 +125,7 @@
 		<div class="danpin center">
 		<div class="peijian w">
 			<div class="biaoti center">属于你的Nebula系列</div>
-			<div class="main center">
+			<div class="main center" style="height: auto;">
 				<div class="content">
 					<div class="remen fl">
 					<div class="xinpin"><span>新品</span></div>
@@ -180,7 +194,7 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-				<div class="content">
+				<div class="content" >
 					<div class="remen fl">
 					<div class="xinpin"><span style="background:#fff"></span></div>
 						<div class="tu"><a href="./shop/productdetails.jsp?proId=6"><img src="../image/Nebula6.jpg"></a></div>
@@ -246,14 +260,63 @@
 							</a>
 						</div>
 					</div>
-					<div class="remenlast fr">
+					<!-- <div class="remenlast fr">
 						<div class="hongmi"><a href=""><img src="./image/hongmin4.png" alt=""></a></div>
 						<div class="liulangengduo"><a href=""><img src="./image/liulangengduo.png" alt=""></a></div>					
-					</div>
+					</div> -->
 					<div class="clear"></div>
+					
 				</div>				
+					<%
+					String a = "<div class=\"content\" style=\"margin-top:14px; \">";
+					String b = "<div class=\"clear\"></div></div>";
+					Product[] products = customer.searchProduct("");
+					int down = 5;
+					int len = products.length;
+					int i = 0;
+					int j = 0;
+					int step = 0;
+					while(step<len)
+					{
+						
+							out.println(a);
+						
+					for(i = step;i<(step+5)&&i<len;i++)
+					{
+						
+						if(products[i].getId()>0)
+						{
+							String t = Security.createWord(3, 10);
+							String n = products[i].getImages()[0].split("/")[1];
+							String imgP = "http://"+nip+":"+npt+File.separator+"onlineshop"+File.separator+"image"+File.separator+n;
+							String info = " <div class=\"remen fl\"> ";
+							info+="<div class=\"xinpin\"><span style=\"background:#fff\"></span></div> ";
+							info+="<div class=\"tu\"><a href=\"./shop/productdetails.jsp?proId="+products[i].getId()+" \"><img src="+imgP+"></a></div> ";
+							info+="<div class=\"miaoshu\"><a href=\"./shop/productdetails.jsp?proId="+products[i].getId()+" \">"+products[i].getName()+"</a></div> ";
+							info+="<div class=\"jiage\">"+products[i].getPrice()+"元</div> ";
+							info+="<div class=\"pingjia\">"+(int)(1+Math.random()*(1000-1+1))+"人评价</div> ";
+							info+="<div class=\"piao\"> ";
+							info+="<a href=\"./shop/productdetails.jsp?proId="+products[i].getId()+" \"> ";
+							info+="<span>扎西德勒</span>";
+							info+="<span>来至于"+t+"的评价</span>";
+							info+="</a></div></div>";
+							
+								out.println(info);
+							
+							
+						}
+						
+						
+					}
+						out.println(b);
+					
+					step+=5;
+					}
+					
+					%>
 			</div>
 		</div>
+		<div class="clear"></div>
 		<footer class="mt20 center">			
 			<div class="mt20">星云商城|星云UI|NebulaChat|星云书城|星云路由器|星云天猫店|星云淘宝直营店|星云移动|隐私政策|</div>
 			<div>©xingyun.bjut.edu.cn 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div> 

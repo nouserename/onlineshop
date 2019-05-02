@@ -1,76 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>addproducts</title>
+    <title>add products</title>
 </head>
 <style>
 
-
-body{
-line-height: 250%;
-    position: absolute;
-    left: 30%;
-    top:10%
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
-
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 </style>
 </head>
 <body>
-
-<div class="info">
-    <form action=" ">
-        ÉÌÆ·Ãû³Æ:<input type="text" name="productsname">
-        ¼Û¸ñ:<input type="text" name="price">
-        <br>
-        ÏñËØ:<input type="text" name="pixel">
-        µç³ØÈİÁ¿:<input type="text" name="battery">
-        <br>
-        ÄÚ´æ:<input type="text" name="EMS memory">
-        ÏµÁĞÃû³Æ:<input type="text" name="product line">
-        <br>
-        CPU:<input type="text" name="cpu">
-        <script>
-        </form>
-function myFunction() {
-  var x = document.getElementById("myFile");
-  var x = document.getElementById("1");
-   var x = document.getElementById("2");
-    var x = document.getElementById("3");
-     var x = document.getElementById("4");
-      var x = document.getElementById("5");
-       var x = document.getElementById("6");
-  x.disabled = true;
-}
- </script>
-<br><br>
-
-
-        ËõÂÔÍ¼£º<input type="file" id="myFile">
-        ÓÃ»§Ê×Ò³Õ¹Ê¾Í¼£º<input type="file" id="1">
-       <br> ÉÌÆ·ÏêÏ¸1Í¼£º<input type="file" id="2">
-        ÉÌÆ·ÏêÏ¸2Í¼£º<input type="file" id="3">
-       <br> ÉÌÆ·ÏêÏ¸3Í¼£º<input type="file" id="4">
-        ÉÌÆ·ÏêÏ¸4Í¼£º<input type="file" id="5">
- <br> ÉÌÆ·ÏêÏ¸5Í¼£º<input type="file" id="6">
-    <br><br>
-
-      ÉÌÆ·ÏêÏ¸1ÎÄ×Ö:<input type="text" name="1">
-        ÉÌÆ·ÏêÏ¸2ÎÄ×Ö:<input type="text" name="2">
-        <br>
-        ÉÌÆ·ÏêÏ¸3ÎÄ×Ö:<input type="text" name="3">
-       ÉÌÆ·ÏêÏ¸4ÎÄ×Ö:<input type="text" name="4">
-        <br>
-        ÉÌÆ·ÏêÏ¸5ÎÄ×Ö:<input type="text" name="5">
-        <br>
-        ÓÃ»§Ê×Ò³ÎÄ×Ö:<input type="text" name="6">
-        <br>
-        <input type="submit" value="Submit">
-
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </form>
-    </div>
+<form action="/onlineshop/administrator/productmanager/NewlyIncreased" method="post" enctype="multipart/form-data"> 
+åç§°ï¼š<input type="text" name="name"><br/>
+åƒç´ <input type="number" name="pixel" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))"><br/>
+å†…å­˜<input type="number" name="mem" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))"><br/>
+å¤„ç†å™¨<input type="text" name="cpu"><br/>
+æè¿°<input type="text" name="des"><br/>
+ä»·æ ¼<input type="number" name="price" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))"><br/>
+ç”µæ± <input type="number" name="buttery" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))"><br/>
+æ‰€å±ç³»åˆ—<input type="text" name="series"><br/>
+å›¾ç‰‡<input type="file" name="picture">
+<input type="submit" value="æäº¤">
+</form>
 </body>
 </html>

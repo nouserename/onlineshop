@@ -14,6 +14,29 @@ import java.sql.SQLException;
  */
 public class Product_administrator extends Admin {
 	
+	
+	
+	/**  
+	* 创建一个新的实例 Product_administrator.  
+	*    
+	*/
+	public Product_administrator() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	/**  
+	* 创建一个新的实例 Product_administrator.  
+	*    
+	*/
+	public Product_administrator(Admin admin) {
+		// TODO Auto-generated constructor stub
+		this.setId(admin.getId());
+		this.setName(admin.getName());
+		this.setPasswd(admin.getPasswd());
+		this.setState(Admin.product_adm);
+	}
+	
 	/**
 	 * @throws SQLException   
 	* @Title: addProduct  
@@ -46,7 +69,7 @@ public class Product_administrator extends Admin {
 	*/  
 	public boolean rmProduct(Product product) throws SQLException {
 		//TODO
-		String sql = "dalete from product where product_id = "+product.getId();
+		String sql = "delete from product where product_id = "+product.getId();
 		int state = Database.executeUpdate(sql);
 		if (state==1) {
 			Database.closeConnection();

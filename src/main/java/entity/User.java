@@ -9,10 +9,7 @@
 
 package entity;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -160,9 +157,9 @@ public class User {
 		ResultSet resultSet = Database.executeQuery(sql);
 		ArrayList<Product> list = new ArrayList<Product>();
 		
-		System.out.println("为什么又查不到了1");
+		
 		while (resultSet.next()) {
-			System.out.println("为什么又查不到了2");
+			
 			list.add(new Product(resultSet.getInt("product_id"),resultSet.getInt("price"),
 					resultSet.getString("name"),resultSet.getString("image1"),
 					resultSet.getString("image2"),resultSet.getString("image3"),

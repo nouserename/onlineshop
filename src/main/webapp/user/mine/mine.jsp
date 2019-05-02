@@ -67,37 +67,36 @@
 			<div class="top center">
 				<div class="left fl">
 					<ul>
-						<li><a href="http://www.mi.com/" target="_blank">小米商城</a></li>
+						<li><a href="#" target="_blank">星云商城</a></li>
 						<li>|</li>
-						<li><a href="">MIUI</a></li>
+						<li><a href="">星云UI</a></li>
 						<li>|</li>
-						<li><a href="">米聊</a></li>
+						<li><a href="">NebulaChat</a></li>
 						<li>|</li>
 						<li><a href="">游戏</a></li>
 						<li>|</li>
-						<li><a href="">多看阅读</a></li>
+						<li><a href="">星云阅读</a></li>
 						<li>|</li>
-						<li><a href="">云服务</a></li>
+						<li><a href="">星云cloud</a></li>
 						<li>|</li>
-						<li><a href="">金融</a></li>
+						<li><a href="">星云financial</a></li>
 						<li>|</li>
-						<li><a href="">小米商城移动版</a></li>
+						<li><a href="">开发者</a></li>
 						<li>|</li>
 						<li><a href="">问题反馈</a></li>
 						<li>|</li>
-						<li><a href="">Select Region</a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
 				<div class="right fr">
-					<div class="gouwuche fr"><a href="./dingdanzhongxin.html">我的订单</a></div>
+					<div class="gouwuche fr"><a href="shop/shoppingtrolley.jsp">购物车</a></div>
 					<div class="fr">
 						<ul>
-							<li><a href="../../login.html" target="_blank">登录</a></li>
+							<li><a href="./login.html" target="_blank">登录</a></li>
 							<li>|</li>
-							<li><a href="../../register.html" target="_blank" >注册</a></li>
+							<li><a href="./register.html" target="_blank" >注册</a></li>
 							<li>|</li>
-							<li><a href="#top">个人中心</a></li>
+							<li><a href="mine/mine.jsp">我的</a></li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -106,30 +105,32 @@
 			</div>
 		</header>
 	<!--end header -->
-	<!-- start banner_x -->
+
+<!-- start banner_x -->
 		<div class="banner_x center">
 			<a href="./index.html" target="_blank"><div class="logo fl"></div></a>
 			<a href=""><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><span id="test"></span></li>
-					<li><a href="">红米</a></li>
-					<li><a href="">平板·笔记本</a></li>
-					<li><a href="">电视</a></li>
-					<li><a href="">盒子·影音</a></li>
-					<li><a href="">路由器</a></li>
-					<li><a href="">智能硬件</a></li>
-					<li><a href="">服务</a></li>
-					<li><a href="">社区</a></li>
+					<li><a href="./liebiao.html" target="_blank">Nebula1</a></li>
+					<li><a href="">Nebula2</a></li>
+					<li><a href="">Nebula3</a></li>
+					<li><a href="">Nebula4</a></li>
+					<li><a href="">Nebula5</a></li>
+					<li><a href="">Nebula6</a></li>
+					<li><a href="">NebulaX</a></li>
+					<li><a href="">NebulaX-plus</a></li>
+					<li><a href="">Nebula&galaxy</a></li>
+					<li><a href="">moon</a></li>
 				</ul>
 			</div>
 			<div class="search fr">
-				<form action="" method="post">
+				<form action="UserHomePage" method="post">
 					<div class="text fl">
-						<input type="text" class="shuru"  placeholder="小米6&nbsp;小米MIX现货">
+						<input type="text" class="shuru" name="key" placeholder="Nebula">
 					</div>
 					<div class="submit fl">
-						<input type="submit" class="sousuo" value="搜索"/>
+						<input type="submit" class="sousuo"  value="搜索"/>
 					</div>
 					<div class="clear"></div>
 				</form>

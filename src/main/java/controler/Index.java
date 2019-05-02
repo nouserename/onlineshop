@@ -33,6 +33,8 @@ public class Index extends HttpServlet{
 	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
 	*/ 
 	private static final long serialVersionUID = -7356128917124282172L;
+	public static final String nip = "127.0.0.1";
+	public static final String npt = "8080";
 	private User user = new User();
 	/**
 	* <p>Title: doGet</p>  
@@ -63,7 +65,6 @@ public class Index extends HttpServlet{
 		
 
 		
-		System.out.println(Security.getSHA256StrJava("123456"));
 		
 		String kind = req.getParameter("kind");
 		
@@ -79,6 +80,7 @@ public class Index extends HttpServlet{
 		try {
 			if (user.getName().equals("admin")) {
 				currentAdmin =  (Admin) user.logIn(user);
+			System.out.println(currentAdmin.getId()+"---------");
 				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
 					req.getSession().setAttribute("admin", currentAdmin);
 					int admin_kind = currentAdmin.getState();

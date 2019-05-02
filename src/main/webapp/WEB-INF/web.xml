@@ -58,6 +58,14 @@
   	<servlet-name>SearchAndResults</servlet-name>
   	<servlet-class>controler.user.shop.SearchAndResults</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ProductManager</servlet-name>
+  	<servlet-class>controler.administrator.productmanager.ProductManager</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>NewlyIncreased</servlet-name>
+  	<servlet-class>controler.administrator.productmanager.NewlyIncreased</servlet-class>
+  </servlet>
 
   
   <servlet-mapping>
@@ -109,7 +117,14 @@
   	<servlet-name>SearchAndResults</servlet-name>
   	<url-pattern>/user/shop/SearchAndResults</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProductManager</servlet-name>
+  	<url-pattern>/administrator/productmanager/ProductManager</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NewlyIncreased</servlet-name>
+  	<url-pattern>/administrator/productmanager/NewlyIncreased</url-pattern>
+  </servlet-mapping>
 
 
-  
 </web-app>

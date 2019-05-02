@@ -16,7 +16,7 @@
 		<!-- login -->
 		<div class="top center">
 			<div class="logo center">
-				<a href="./index.html" target="_blank"><img src="./image/mistore_logo.png" alt=""></a>
+				<a href="#" target="_blank"><img src="./image/mistore_logo.png" alt=""></a>
 			</div>
 		</div>
 		

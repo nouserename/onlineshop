@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Customer;
-import entity.Order;
 import entity.Product;
 
 /**
@@ -26,6 +25,11 @@ import entity.Product;
  *
  */
 public class Payment extends HttpServlet{
+
+	/**  
+	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
+	*/ 
+	private static final long serialVersionUID = 1L;
 
 	/**
 	* <p>Title: doGet</p>  
@@ -70,6 +74,7 @@ public class Payment extends HttpServlet{
 			PrintWriter writer = resp.getWriter();
 			if (b) {
 				writer.print("true");
+				req.getSession().removeAttribute("trollryvale");
 			} else {
 				writer.print("false");
 

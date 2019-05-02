@@ -61,7 +61,10 @@ public class Product {
 	private String processor;
 	
 	
-	public Product(int id,int price,String name,
+	
+	
+	
+	public Product(int id, int price,String name,
 			String image,String image2,String image3,
 			String image4,String image5,String image6,
 			String image7,String description1,
@@ -69,7 +72,43 @@ public class Product {
 			String description4,String description5,
 			String description6,String group,int memory,
 			int pixel,int battery,String processor) throws IOException {
+		this.price = price;
 		this.id = id;
+		this.name = name;
+		this.images[0] = image;
+		this.images[1] = image2;
+		this.images[2] = image3;
+		this.images[3] = image4;
+		this.images[4] = image5;
+		this.images[5] = image6;
+		this.images[6] = image7;
+		this.description[0] = description1;
+		this.description[2] = description2;
+		this.description[3] = description3;
+		this.description[4] = description4;
+		this.description[5] = description5;
+		this.group = group;
+		this.memory = memory;
+		this.pixel = pixel;
+		this.battery = battery;
+		this.processor = processor;
+		
+		
+		// TODO 自动生成的构造函数存根
+	}
+	
+	
+	
+	
+	
+	public Product(int price,String name,
+			String image,String image2,String image3,
+			String image4,String image5,String image6,
+			String image7,String description1,
+			String description2,String description3,
+			String description4,String description5,
+			String description6,String group,int memory,
+			int pixel,int battery,String processor) throws IOException {
 		this.price = price;
 		this.name = name;
 		this.images[0] = image;

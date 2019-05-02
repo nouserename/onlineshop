@@ -18,13 +18,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Customer;
-import entity.Product;
 
 /**
  * @author SongKaikai
  *
  */
 public class ShoppingTrolley extends HttpServlet{
+
+	/**  
+	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
+	*/ 
+	private static final long serialVersionUID = 1L;
 
 	/**
 	* <p>Title: doGet</p>  
@@ -40,12 +44,13 @@ public class ShoppingTrolley extends HttpServlet{
 		// TODO Auto-generated method stub
 		String id = req.getParameter("id");
 		String num = req.getParameter("num");
-		System.out.println(id+"---"+num);
+		resp.setContentType("text/html;charset=UTF-8");
+		PrintWriter writer = resp.getWriter();
 		Customer customer = (Customer)req.getSession().getAttribute("customer");
 		try {
 			boolean b = customer.modifyTrolleyProduct(Integer.parseInt(id), Integer.parseInt(num));
-			resp.setContentType("text/html;charset=UTF-8");
-			PrintWriter writer = resp.getWriter();
+			
+			
 			if (b) {
 				
 				writer.print("true");
@@ -59,6 +64,9 @@ public class ShoppingTrolley extends HttpServlet{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			writer.flush();
+			writer.close();
 		}
 	}
 

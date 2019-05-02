@@ -68,5 +68,23 @@ public class Security {
 		 }
 		 return encodeStr;
 		}
+	
+	/**  
+	* @Title: createWord  
+	* @Description: TODO生成随机单词  
+	* @param @param min
+	* @param @param max
+	* @param @return    参数  
+	* @return String    返回类型  
+	* @throws  
+	*/  
+	public static String createWord(int min, int max) {
+        int count = (int) (Math.random() * (max - min + 1)) + min;
+        String str = "";
+        for (int i = 0; i < count; i++) {
+            str += (char) ((int) (Math.random() * 26) + 'a');
+        }
+        return str;
+    }
 
 }
