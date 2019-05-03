@@ -10,6 +10,7 @@
 package controler;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -63,6 +64,26 @@ public class loginFilter implements Filter{
 		
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse)response;
+		String user_agent = httpServletRequest.getHeader("user-agent");
+		if(user_agent.equals("")||user_agent==null
+				||
+				user_agent.contains("python")
+				||
+				user_agent.contains("java")
+				||
+				user_agent.contains("c++")
+				
+				)
+		{
+			httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/error.jsp");
+		}
+		Enumeration<String> aString = httpServletRequest.getHeaderNames();
+		while(aString.hasMoreElements())
+		{
+			String key = (String) aString.nextElement();
+	        String value = httpServletRequest.getHeader(key);
+	        System.out.println(key+":"+value);
+		}
 		if (httpServletRequest.getServletPath().endsWith("index.jsp")
 				||
 				httpServletRequest.getServletPath().endsWith("error.jsp")
