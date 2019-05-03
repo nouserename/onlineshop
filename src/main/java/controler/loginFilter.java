@@ -76,6 +76,10 @@ public class loginFilter implements Filter{
 				httpServletRequest.getServletPath().endsWith("Index")
 				||
 				httpServletRequest.getServletPath().endsWith("Login.jsp")
+				||
+				httpServletRequest.getServletPath().endsWith(".css")
+				||
+				httpServletRequest.getServletPath().endsWith(".js")
 				) {
 			chain.doFilter(request, response);
 			
