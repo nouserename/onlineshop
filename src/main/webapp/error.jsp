@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1> 出错了！！！！！</h1>
-<a href="index.jsp">点我返回首页</a>
+<a href="/onlineshop/index.jsp">点我返回首页</a>
 </body>
 </html>

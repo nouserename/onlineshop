@@ -120,6 +120,7 @@ public class Index extends HttpServlet{
 			} else {
 
 				currentCustomer = (Customer)user.logIn(user);
+				//System.out.println(currentCustomer.getId()+"-------------");
 				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
 					req.getSession().setAttribute("customer", currentCustomer);
 					resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");

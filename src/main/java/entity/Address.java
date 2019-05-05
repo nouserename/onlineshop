@@ -23,13 +23,23 @@ public class Address {
 	*    
 	*/
 	public Address(String addr) {
-		String[] address = addr.split("/");
-		this.province = address[0];
-		this.city = address[1];
-		this.district = address[2];
-		this.other = address[3];
-		this.phoneNumber = address[4];
-		this.consigneeName = address[5];
+		if (addr!=null&&!addr.equals("")) {
+			String[] address = addr.split("/");
+			this.province = address[0];
+			this.city = address[1];
+			this.district = address[2];
+			this.other = address[3];
+			this.phoneNumber = address[4];
+			this.consigneeName = address[5];
+			
+		} else {
+			this.province = null;
+			this.city = null;
+			this.district = null;
+			this.other = null;
+			this.phoneNumber = null;
+			this.consigneeName = null;
+		}
 	}
 	
 	

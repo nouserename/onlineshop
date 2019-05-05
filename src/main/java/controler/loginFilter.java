@@ -10,7 +10,6 @@
 package controler;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -77,13 +76,7 @@ public class loginFilter implements Filter{
 		{
 			httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/error.jsp");
 		}
-		Enumeration<String> aString = httpServletRequest.getHeaderNames();
-		while(aString.hasMoreElements())
-		{
-			String key = (String) aString.nextElement();
-	        String value = httpServletRequest.getHeader(key);
-	        System.out.println(key+":"+value);
-		}
+		
 		if (httpServletRequest.getServletPath().endsWith("index.jsp")
 				||
 				httpServletRequest.getServletPath().endsWith("error.jsp")
@@ -101,6 +94,10 @@ public class loginFilter implements Filter{
 				httpServletRequest.getServletPath().endsWith(".css")
 				||
 				httpServletRequest.getServletPath().endsWith(".js")
+				||
+				httpServletRequest.getServletPath().endsWith("userregistration.jsp")
+				||
+				httpServletRequest.getServletPath().endsWith("UserRegistration")
 				) {
 			chain.doFilter(request, response);
 			

@@ -9,7 +9,6 @@
 package controler.root;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -26,6 +25,11 @@ import tool.Security;
  *
  */
 public class AddNewPerson extends HttpServlet{
+
+	/**  
+	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
+	*/ 
+	private static final long serialVersionUID = 1L;
 
 	/**
 	* <p>Title: doGet</p>  
