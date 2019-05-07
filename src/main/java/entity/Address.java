@@ -118,5 +118,9 @@ public class Address {
 		String addressString =  this.province + this.city + this.district + this.other + ";" + this.phoneNumber + ";" + this.consigneeName;
 		return addressString;
 	}
+	
+	public String justAddress() {
+		return this.consigneeName + "/" + this.phoneNumber+ "/" + this.province + "/" + this.getCity() + "/" + this.getDistrict() + "/" + this.getOther();
+	}
 
 }
