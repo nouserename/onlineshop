@@ -54,8 +54,6 @@ public class SearchAndResults extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO 自动生成的方法存根
-		System.out.println("找到了1");
-		req.setCharacterEncoding("UTF-8");
 		String productname = req.getSession().getAttribute("keyword").toString();
 		//String productname = productnam.getBytes("utf-8").toString();
 		System.out.println(productname);

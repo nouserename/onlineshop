@@ -11,7 +11,7 @@
 		<meta charset="UTF-8">
         <meta name="author" content="北京工业大学"/>
 		<title>星云商城</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="/onlineshop/css/style.css">
 	</head>
 	<body>
 	<%
@@ -76,16 +76,16 @@
 			<a href=""><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><a href="./liebiao.html" target="_blank">Nebula1</a></li>
-					<li><a href="">Nebula2</a></li>
-					<li><a href="">Nebula3</a></li>
-					<li><a href="">Nebula4</a></li>
-					<li><a href="">Nebula5</a></li>
-					<li><a href="">Nebula6</a></li>
-					<li><a href="">NebulaX</a></li>
-					<li><a href="">NebulaX-plus</a></li>
-					<li><a href="">Nebula&galaxy</a></li>
-					<li><a href="">moon</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=1" target="_blank">Nebula1</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=2">Nebula2</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=3">Nebula3</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=4">Nebula4</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=5">Nebula5</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=6">Nebula6</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=7">NebulaX</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=8">NebulaX-plus</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=9">Nebula&galaxy</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=10">moon</a></li>
 				</ul>
 			</div>
 			<div class="search fr">

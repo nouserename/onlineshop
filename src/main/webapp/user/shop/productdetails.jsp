@@ -13,9 +13,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-        <meta name="author" content="order by dede58.com"/>
-		<title>小米6立即购买-小米商城</title>
-		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+        <meta name="author" content="order by 星云项目开发小组"/>
+		<title>商品详情页</title>
+		<link rel="stylesheet" type="text/css" href="/onlineshop/css/style.css">
 	</head>
 	<body>
 <%
@@ -76,7 +76,7 @@
 			<div class="top center">
 				<div class="left fl">
 					<ul>
-						<li><a href="#" target="_blank">星云商城</a></li>
+						<li><a href="/onlineshop/user/userhomepage.jsp" target="_blank">星云商城</a></li>
 						<li>|</li>
 						<li><a href="">星云UI</a></li>
 						<li>|</li>
@@ -121,16 +121,16 @@
 			<a href=""><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
-					<li><a href="./liebiao.html" target="_blank">Nebula1</a></li>
-					<li><a href="">Nebula2</a></li>
-					<li><a href="">Nebula3</a></li>
-					<li><a href="">Nebula4</a></li>
-					<li><a href="">Nebula5</a></li>
-					<li><a href="">Nebula6</a></li>
-					<li><a href="">NebulaX</a></li>
-					<li><a href="">NebulaX-plus</a></li>
-					<li><a href="">Nebula&galaxy</a></li>
-					<li><a href="">moon</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=1" target="_blank">Nebula1</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=2">Nebula2</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=3">Nebula3</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=4">Nebula4</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=5">Nebula5</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=6">Nebula6</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=7">NebulaX</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=8">NebulaX-plus</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=9">Nebula&galaxy</a></li>
+					<li><a href="/onlineshop/user/shop/productdetails.jsp?proId=10">moon</a></li>
 				</ul>
 			</div>
 			<div class="search fr">
@@ -169,15 +169,15 @@
 		<div class="neirong w">
 			<div class="xiaomi6 fl"><%product.getName(); %></div>
 			<nav class="fr">
-				<li><a href="">概述</a></li>
+				<li><a href="">显示屏</a></li>
 				<li>|</li>
-				<li><a href="">变焦双摄</a></li>
+				<li><a href="">星云face</a></li>
 				<li>|</li>
-				<li><a href="">设计</a></li>
+				<li><a href="">摄像头</a></li>
 				<li>|</li>
-				<li><a href="">参数</a></li>
+				<li><a href="">处理器</a></li>
 				<li>|</li>
-				<li><a href="">F码通道</a></li>
+				<li><a href="">设计理念</a></li>
 				<li>|</li>
 				<li><a href="">用户评价</a></li>
 				<div class="clear"></div>
@@ -186,7 +186,7 @@
 		</div>	
 	</div>
 	
-	<div class="jieshao mt20 w">
+	<div class="jieshao mt20 w" style="height: auto;">
 	<%
 		String im = "image";
 		String n = product.getImages()[0].split("/")[1];
@@ -246,6 +246,18 @@
 		<div class="clear"></div>
 	</div>
 	</form>
+	<div>
+	<h1>  这里写描述</h1>
+	</div>
+	<div>
+	<h1>  这里写描述</h1>
+	</div>
+	<div>
+	<h1>  这里写描述</h1>
+	</div>
+	<div>
+	<h1>  这里写描述</h1>
+	</div>
 	<!-- footer -->
 	<footer class="mt20 center">			
 			<div class="mt20">星云商城|星云UI|NebulaChat|星云书城|星云路由器|星云天猫店|星云淘宝直营店|星云移动|隐私政策|</div>

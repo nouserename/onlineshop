@@ -71,6 +71,11 @@ public class Index extends HttpServlet{
 		String passwd = req.getParameter("passwd");
 		passwd = Security.getSHA256StrJava(passwd);
 		String id = req.getParameter("userid");
+		if(id==null||id.equals("")||passwd == null||passwd.equals("")||kind==null||kind.equals(""))
+		{
+			resp.sendRedirect(req.getContextPath()+"/error.jsp");
+			return;
+		}
 		user.setName(kind);
 		user.setPasswd(passwd);
 		user.setId(id);
@@ -80,7 +85,6 @@ public class Index extends HttpServlet{
 		try {
 			if (user.getName().equals("admin")) {
 				currentAdmin =  (Admin) user.logIn(user);
-			System.out.println(currentAdmin.getId()+"---------");
 				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
 					req.getSession().setAttribute("admin", currentAdmin);
 					int admin_kind = currentAdmin.getState();
