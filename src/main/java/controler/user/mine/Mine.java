@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Address;
 import entity.Customer;
+import entity.Database;
 import entity.Order;
 
 /**
@@ -35,8 +36,7 @@ public class Mine extends HttpServlet{
 	Order[] orders;
 	Customer customer;
 	public Mine() {
-		// TODO 自动生成的构造函数存根
-		customer = new Customer();
+		// TODO 自动生成的构		customer = new Customer();
 //		orders = customer.searchOrder();
 	}
 	/**
@@ -65,6 +65,7 @@ public class Mine extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(req.getParameter("event").equals("onload")) {
+			System.out.println("加载了两次！");
 			Customer customer =  (Customer)req.getSession().getAttribute("customer");
 			Address[] address = customer.getAddr();
 			String ad = customer.getName() + ";" + customer.getId() + ";" + address[0].getAddress() + ";" + address[1].getAddress() + ";" + address[2].getAddress() ;
@@ -74,55 +75,101 @@ public class Mine extends HttpServlet{
 			writer.flush();
 			writer.close();
 		}else if (req.getParameter("event").equals("overallOrders")) {
-			Customer customer =  (Customer)req.getSession().getAttribute("customer");
-			try {
-				int len = customer.searchOrder(customer).length;
-				Order[] overallOrders =	customer.searchOrder(customer);
-				
-				
-				
-				resp.setContentType("text/html;charset=UTF-8");	
-				PrintWriter wr = resp.getWriter();
-				
+			printOrder(req, resp, -1);	//输出全部订单
+		}else if(req.getParameter("event").equals("daifahuo")){
+			printOrder(req, resp, Order.NR_waitForReceiving);
+		}else if (req.getParameter("event").equals("daishouhuo")) {
+			printOrder(req, resp, Order.NR_unCollected);
+		}else if (req.getParameter("event").equals("address1")) {
+			String str = req.getParameter("address");
+			modifyAddress(req, resp, str, 1);
+		}else if (req.getParameter("event").equals("address2")) {
+			String str = req.getParameter("address");
+			modifyAddress(req, resp, str, 2);
+		}else{
+			System.out.println(req.getParameter("event"));
+			String str = req.getParameter("address");
+			modifyAddress(req, resp, str, 3);
+		}
+	}
+	
+	void modifyAddress(HttpServletRequest req, HttpServletResponse resp,String address,int num)
+	{
+		Customer customer =  (Customer)req.getSession().getAttribute("customer");
+		String sql = "UPDATE customer SET addr" + num + "='" + address + "' WHERE customer_id=" + customer.getId();
+		try {
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = resp.getWriter();
+			
+			if(Database.executeUpdate(sql) == 0)
+				writer.println("修改失败，请重新尝试!");
+			else
+				writer.println("修改成功！");
+			writer.flush();
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	void printOrder(HttpServletRequest req, HttpServletResponse resp,int state) {
+		Customer customer =  (Customer)req.getSession().getAttribute("customer");
+		try {
+			
+			resp.setContentType("text/html;charset=UTF-8");	
+			PrintWriter writer = resp.getWriter();
+			
+			String[] str = customer.searchOrderFullInfo(customer,state);	//查询该状态订单
+			
+			if(str == null)
+			{
+				writer.println("<div class='ddzxbt'>交易订单</div>");
+				writer.println("<div class='ddxq'>订单为空！</div>");
+			}else {
 				String st = "今天必须成功";
 				System.out.println(st);
 				//writer.println(st);
-				wr.println(st);
+				//wr.println(st);
 				
-//				writer.println("<div class='ddzxbt'>交易订单</div>");
+				writer.println("<div class='ddzxbt'>交易订单</div>");
+				System.out.println("怎么回事!");
 				
-//				for(int i=0;i<len;i++) {
-//					String info = customer.searchInfoOfProduct(overallOrders[i].getProduct());
-//					String[] pro = info.split(";");
-//					System.out.println("该商品信息为："+pro[0] + pro[1]);
-//					
-//					writer.println("<div class='ddxq'>"
-//							+ "<div class='ddspt fl'><img src= "+ pro[0] +" alt='加载失败'></div>"
-//							+ "<div class='ddbh fl'>订单号:"+ overallOrders[i].getId() +"</div>"
-//							+ "<div class='ztxx fr'>"
-//							+ "<ul>"
-//							+     "<li>已发货</li>"
-//							+     "<li>" + pro[1] +"</li>"
-//							+     "<li>"+ "地址" +"</li>"
-//							+     "<div class='clear'></div>"
-//							+ "</ul>"
-//							+"</div>"
-//							+"<div class='clear'></div>"
-//							+"</div>"
-//							);
-//					
-//					
-//				}
+				for(int i=0;i<str.length;i++)
+				{
+					System.out.println(str[i]);
+					String[] stringSplit = str[i].split(";");
+					System.out.println(stringSplit[0]);
+					writer.println("<div class='ddxq'>"
+							+ "<div class='ddspt fl'><img src= '../../"+ stringSplit[0] +"' alt='加载失败' style=\"height:5em;width:5em;\"></div>"
+							+ "<div class='ddbh fl'>订单号:"+ stringSplit[1] +"</div>"
+							+ "<div class='ztxx fr'>"
+							+ "<ul>"
+							+     "<li>已发货</li>"
+							+     "<li>" + stringSplit[2] +"</li>"
+							+     "<li>"+ "地址" +"</li>"
+							+     "<div class='clear'></div>"
+							+ "</ul>"
+							+"</div>"
+							+"<div class='clear'></div>"
+							+"</div>"
+							);	
+				}
 				
-				wr.flush();
-				wr.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+				
 			}
+			writer.flush();
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		
-		
-		
 	}
+	
 }
+
+

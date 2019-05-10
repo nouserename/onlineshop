@@ -7,6 +7,17 @@
         <meta name="author" content="order by dede58.com"/>
 		<title>星云商城-个人中心</title>
 		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<script type="text/javascript">
+		function confirm(){
+			var newpw = document.getElementById("newpw").value;
+			var confirmpw = document.getElementById("confirmpw").value;
+			if(newpw != confirmpw)
+			{
+					alert("两次输入的密码不相等！");
+					return false;
+			}
+		}
+		</script>
 	</head>
 	<body>
 	<!-- start header -->
@@ -88,38 +99,20 @@
 	<div class="grzxbj">
 		<div class="selfinfo center">
 		<div class="lfnav fl">
-			<div class="ddzx">订单中心</div>
-			<div class="subddzx">
-				<ul>
-					<li><a href="./dingdanzhongxin.html" >全部订单</a></li>
-					<li><a href="">待发货</a></li>
-					<li><a href="">待收货</a></li>
-					<li><a href="">售后订单</a></li>
-				</ul>
-			</div>
-			<div class="ddzx">个人中心</div>
-			<div class="subddzx">
-				<ul>
-					<li><a href="./self_info.html" style="color:#ff6700;font-weight:bold;">我的个人中心</a></li>
-					<li><a href="">地址管理</a></li>
-					<li><a href="">修改密码</a></li>
-				</ul>
-			</div>
+			<div class="ddzx"><a href="mine.jsp">订单中心</a></div>
 		</div>
 		<div class="rtcont fr">
-				<form action=" ">
+				<form action="ModifyMyPasswd" method="POST">
 
-
-					<label for="originalpw">原密码：</label> <input type="password"
-						name="originalpw" id="originalpw" /> <label for="newpw">新密码：</label>
-					<input type="password" name="newpw" id="newpw" />
-
-
+					<label for="originalpw" id="originalpwlabel">原密码：</label> <input type="password" name="originalpw" id="originalpw" /> 
+					<br>
+					<label for="newpw" id="newpwlabel">新密码：</label><input type="password" name="newpw" id="newpw" />
+					<br>
 
 					<div align="center"></div>
-					<label for="confirmpw">确认密码：</label> <input type="password"
-						name="confirmpw" id="confirmpw" /> <input type="button" name="确认"
-						id="btn" title="确认" value="确认">
+					<label for="confirmpw" id="confirmpwlabel">确认密码：</label> <input type="password" name="confirmpw" id="confirmpw" onblur="confirm()"/> 
+					<br>
+					<input type="submit" name="确认" id="btnskk" title="确认" value="确认" onclick="confirm()">
 				</form>
 			</div>
 		<div class="clear"></div>

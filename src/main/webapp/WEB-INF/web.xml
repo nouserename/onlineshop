@@ -80,6 +80,14 @@
   	<servlet-name>NewlyIncreased</servlet-name>
   	<servlet-class>controler.administrator.productmanager.NewlyIncreased</servlet-class>
   </servlet>
+    <servlet>
+  	<servlet-name>ModifyMyPasswd</servlet-name>
+  	<servlet-class>controler.user.mine.ModifyMyPasswd</servlet-class>
+  </servlet>
+   <servlet>
+  	<servlet-name>AddressAdministration</servlet-name>
+  	<servlet-class>controler.user.mine.AddressAdministration</servlet-class>
+  </servlet>
 
   
   <servlet-mapping>
@@ -139,7 +147,14 @@
   	<servlet-name>NewlyIncreased</servlet-name>
   	<url-pattern>/administrator/productmanager/NewlyIncreased</url-pattern>
   </servlet-mapping>
-
+<servlet-mapping>
+  	<servlet-name>ModifyMyPasswd</servlet-name>
+  	<url-pattern>/user/mine/ModifyMyPasswd</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  	<servlet-name>AddressAdministration</servlet-name>
+  	<url-pattern>/user/mine/AddressAdministration</url-pattern>
+  </servlet-mapping>
 
 <error-page>  
  <error-code>404</error-code>  
