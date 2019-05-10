@@ -72,6 +72,9 @@
     </style>
     <script type="text/javascript">      
     // 
+    
+    
+    	
         window.onload = function(){
             var Words = document.getElementById("words");
             var Who = document.getElementById("who");
@@ -87,18 +90,54 @@
                     alert("消息不能为空");
                     return;
                 }
-                if(Who.value == 0){
+                /* if(Who.value == 0){
 	                //如果Who.value为0n那么是 A说
                     str = '<div class="atalk"><span>A说 :' + TalkWords.value +'</span></div>';
                 }
                 else{
                     str = '<div class="btalk"><span>B说 :' + TalkWords.value +'</span></div>' ;  
-                }
+                } */
                 Words.innerHTML = Words.innerHTML + str;
+                var httpRequest = new XMLHttpRequest();
+            	httpRequest.open("post","RequestCustomerService",true);
+            	httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            	httpRequest.send("word="+TalkWords.value);
+            	httpRequest.onreadystatechange = function(){
+            		if(httpRequest.status==200&&httpRequest.readyState==4)
+            			{
+            				var word = httpRequest.responseText;
+            				if(word!=""){
+            				Words.innerHTML = Words.innerHTML + '<div class="btalk"><span>' + TalkWords.value +'</span></div>';
+            					
+            				}
+            			}
+            	}
+            	
             }
+            self.setInterval("monitor()",1000);
+            
+            
+            
             
         }
 
+        	function monitor(){
+        		var Words = document.getElementById("words");
+        		var httpRequest1 = new XMLHttpRequest();
+            	httpRequest1.open("get","RequestCustomerService",true);
+            	httpRequest1.send();
+            	httpRequest1.onreadystatechange = function(){
+            		if(httpRequest1.status==200&&httpRequest1.readyState==4){
+            			var return_word = httpRequest1.responseText;
+            			if(return_word!="")
+            				{
+            				
+            			Words.innerHTML = Words.innerHTML +  return_word ;
+            				}
+            		}
+            	}
+        }
+    
 
     </script>
 </head>

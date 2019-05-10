@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Admin;
 import entity.Customer;
+import entity.Service;
 import entity.User;
 import tool.Security;
 
@@ -85,6 +86,7 @@ public class Index extends HttpServlet{
 		try {
 			if (user.getName().equals("admin")) {
 				currentAdmin =  (Admin) user.logIn(user);
+			
 				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
 					req.getSession().setAttribute("admin", currentAdmin);
 					int admin_kind = currentAdmin.getState();
@@ -108,6 +110,11 @@ public class Index extends HttpServlet{
 					case Admin.order_adm:
 						req.getRequestDispatcher("/administrator/ordermanager/ordermanager.jsp").forward(req, resp);
 //						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
+						break;
+					case Admin.service:
+						Service service = new Service(currentAdmin);
+						req.getSession().setAttribute("admin", service);
+						req.getRequestDispatcher("/administrator/customerservice/customerservice.jsp").forward(req, resp);
 						break;
 						
 					default:

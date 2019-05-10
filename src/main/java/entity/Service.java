@@ -11,6 +11,24 @@ package entity;
  */
 public class Service extends Admin implements FindOrder{
 
+	public String customerIdString;
+	
+	
+	public Service(Admin admin){
+		this.setId(admin.getId());
+		this.setName(admin.getName());
+		this.setPasswd(admin.getPasswd());
+	}
+	
+	
+	
+	/**  
+	* 创建一个新的实例 Service.  
+	*    
+	*/
+	public Service() {
+		// TODO Auto-generated constructor stub
+	}
 	/* （非 Javadoc）
 	 * @see entity.FindOrder#findOrder(entity.Customer)
 	 */
