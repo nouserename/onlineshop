@@ -39,8 +39,7 @@ public class AddressAdministration extends HttpServlet{
 		writer.println(addr[0].justAddress() + ";" + addr[1].justAddress() + ";" + addr[2].justAddress());
 		writer.flush();
 		writer.close();
-		
-		
+			
 	}
 	
 	/* (non-Javadoc)
@@ -48,29 +47,40 @@ public class AddressAdministration extends HttpServlet{
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Customer customer = (Customer)req.getSession().getAttribute("customer");
+		Address[] addr = customer.getAddr();
 		if(req.getParameter("event").equals("onload"))
 		{
 			resp.setContentType("text/html;charset=UTF-8");
 			PrintWriter writer = resp.getWriter();
 			
-			Customer customer = (Customer)req.getSession().getAttribute("customer");
-			Address[] addr = customer.getAddr();
+			//Customer customer = (Customer)req.getSession().getAttribute("customer");
+			//Address[] addr = customer.getAddr();
 			
 			writer.println(addr[0].justAddress() + ";" + addr[1].justAddress() + ";" + addr[2].justAddress());
 			writer.flush();
 			writer.close();
 		}else if (req.getParameter("table").equals("table1")) {
-			updateInfo(req, resp, 1);
+			updateInfo(req, resp, 1 ,addr[0]);
+			//Address[] addr = customer.getAddr();
+			req.getRequestDispatcher("mine.jsp").forward(req, resp);
 		}else if (req.getParameter("table").equals("table2")) {
-			updateInfo(req, resp, 2);
+			updateInfo(req, resp, 2,addr[1]);
+			req.getRequestDispatcher("mine.jsp").forward(req, resp);
 		}else {
-			updateInfo(req, resp, 3);
+			updateInfo(req, resp, 3,addr[2]);
+			req.getRequestDispatcher("mine.jsp").forward(req, resp);
 		}
 	}
 	
 	
-	void updateInfo(HttpServletRequest req, HttpServletResponse resp,int i) {
-		
+	void updateInfo(HttpServletRequest req, HttpServletResponse resp,int i,Address addr) {
+		addr.setCity(req.getParameter("city"));
+		addr.setConsigneeName(req.getParameter("customer"));
+		addr.setDistrict(req.getParameter("district"));
+		addr.setOther(req.getParameter("other"));
+		addr.setPhoneNumber(req.getParameter("telephoneNo"));
+		addr.setProvince(req.getParameter("province"));
 		
 		Customer customer = (Customer)req.getSession().getAttribute("customer");
 		
@@ -82,7 +92,6 @@ public class AddressAdministration extends HttpServlet{
 		try {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter writer = resp.getWriter();
-			System.out.println("–ﬁ∏ƒ:"+sql);
 			if (Database.executeUpdate(sql) == 0) {
 				writer.println("<script>alert(\"–ﬁ∏ƒ ß∞‹£¨«Î…‘∫Û‘Ÿ ‘£°\")</script>");
 			}else {

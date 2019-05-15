@@ -24,23 +24,23 @@
 <![endif]-->
         <!-- Css files -->
         <!-- Icons -->
-        <link href="css/assets/css/icons.css" rel="stylesheet" />
+        <link href="/onlineshop/css/assets/css/icons.css" rel="stylesheet" />
         <!-- jQueryUI -->
-        <link href="css/assets/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
+        <link href="/onlineshop/css/assets/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
         <!-- Bootstrap stylesheets (included template modifications) -->
-        <link href="css/assets/css/bootstrap.css" rel="stylesheet" />
+        <link href="/onlineshop/css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- Plugins stylesheets (all plugin custom css) -->
-        <link href="css/assets/css/plugins.css" rel="stylesheet" />
+        <link href="/onlineshop/css/assets/css/plugins.css" rel="stylesheet" />
         <!-- Main stylesheets (template main css file) -->
-        <link href="css/assets/css/main.css" rel="stylesheet" />
+        <link href="/onlineshop/css/assets/css/main.css" rel="stylesheet" />
         <!-- Custom stylesheets ( Put your own changes here ) -->
-        <link href="css/assets/css/custom.css" rel="stylesheet" />
+        <link href="/onlineshop/css/assets/css/custom.css" rel="stylesheet" />
         <!-- Fav and touch icons -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="css/assets/img/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="css/assets/img/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="css/assets/img/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="css/assets/img/ico/apple-touch-icon-57-precomposed.png">
-        <link rel="icon" href="css/assets/img/ico/favicon.ico" type="image/png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/onlineshop/css/assets/img/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/onlineshop/css/assets/img/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/onlineshop/css/assets/img/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/onlineshop/css/assets/img/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="icon" href="/onlineshop/css/assets/img/ico/favicon.ico" type="image/png">
         <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
         <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
@@ -111,7 +111,7 @@
                                     </li>
                                     <li class="mail-list clearfix">
                                         <a href="#">
-                                            <img src="css/assets/img/avatars/128.jpg" class="mail-avatar pull-left" alt="avatar">
+                                            <img src="/onlineshop/css/assets/img/avatars/128.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status"><i class="en-dot"></i></span> Jason Rivera
                                                 <span class="notification">2</span>
@@ -124,7 +124,7 @@
                                     </li>
                                     <li class="mail-list clearfix">
                                         <a href="#">
-                                            <img src="css/assets/img/avatars/129.jpg" class="mail-avatar pull-left" alt="avatar">
+                                            <img src="/onlineshop/css/assets/img/avatars/129.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status off"><i class="en-dot"></i></span> Steeve Mclark
                                                 <span class="notification">6</span>
@@ -137,7 +137,7 @@
                                     </li>
                                     <li class="mail-list clearfix">
                                         <a href="#">
-                                            <img src="css/assets/img/avatars/130.jpg" class="mail-avatar pull-left" alt="avatar">
+                                            <img src="/onlineshop/css/assets/img/avatars/130.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status off"><i class="en-dot"></i></span> Fellix Jones
                                                 <span class="notification">1</span>
@@ -150,7 +150,7 @@
                                     </li>
                                     <li class="mail-list clearfix">
                                         <a href="#">
-                                            <img src="css/assets/img/avatars/131.jpg" class="mail-avatar pull-left" alt="avatar">
+                                            <img src="/onlineshop/css/assets/img/avatars/131.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status"><i class="en-dot"></i></span> Tina Dowsen
                                                 <span class="notification">5</span>
@@ -208,7 +208,7 @@
                             </li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">
-                                    <img class="user-avatar" src="css/assets/img/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
+                                    <img class="user-avatar" src="/onlineshop/css/assets/img/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
                                 <ul class="dropdown-menu right" role="menu">
                                     <li><a href="profile.html"><i class="st-user"></i> Profile</a>
                                     </li>
@@ -473,24 +473,24 @@
                                     <ul class="in">
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle
                                                 <span class="has-message"><i class="im-pencil"></i></span>
                                             </a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/54.jpg" alt="@alagoon">Anthony Lagoon</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/54.jpg" alt="@alagoon">Anthony Lagoon</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/52.jpg" alt="@koridhandy">Kory Handy</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/52.jpg" alt="@koridhandy">Kory Handy</a>
                                             <span class="status"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/50.jpg" alt="@divya">Divia Manyan</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/50.jpg" alt="@divya">Divia Manyan</a>
                                             <span class="status"><i class="en-dot"></i></span>
                                         </li>
                                     </ul>
@@ -500,17 +500,17 @@
                                     <ul class="in">
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/51.jpg" alt="@kolage">Eric Hofman</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/51.jpg" alt="@kolage">Eric Hofman</a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/55.jpg" alt="@mikebeecham">Mike Beecham</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/55.jpg" alt="@mikebeecham">Mike Beecham</a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/53.jpg" alt="@derekebradley">Darek Bradly</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/53.jpg" alt="@derekebradley">Darek Bradly</a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                     </ul>
@@ -525,22 +525,22 @@
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/58.jpg" alt="@frankiefreesbie">Frankie Freesibie</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/58.jpg" alt="@frankiefreesbie">Frankie Freesibie</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/57.jpg" alt="@joannefournier">Joane Fornier</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/57.jpg" alt="@joannefournier">Joane Fornier</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="css/assets/img/avatars/59.jpg" alt="@aiiaiiaii">Alia Alien</a>
+                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/59.jpg" alt="@aiiaiiaii">Alia Alien</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                     </ul>
@@ -553,7 +553,7 @@
                             <ul class="chat-ui chat-messages">
                                 <li class="chat-user">
                                     <p class="avatar">
-                                        <img src="css/assets/img/avatars/49.jpg" alt="@chadengle">
+                                        <img src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">
                                     </p>
                                     <p class="chat-name">Chad Engle <span class="chat-time">15 seconds ago</span>
                                     </p>
@@ -562,7 +562,7 @@
                                 </li>
                                 <li class="chat-me">
                                     <p class="avatar">
-                                        <img src="css/assets/img/avatars/48.jpg" alt="SuggeElson">
+                                        <img src="/onlineshop/css/assets/img/avatars/48.jpg" alt="SuggeElson">
                                     </p>
                                     <p class="chat-name">SuggeElson <span class="chat-time">10 seconds ago</span>
                                     </p>
@@ -571,7 +571,7 @@
                                 </li>
                                 <li class="chat-user">
                                     <p class="avatar">
-                                        <img src="css/assets/img/avatars/49.jpg" alt="@chadengle">
+                                        <img src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">
                                     </p>
                                     <p class="chat-name">Chad Engle <span class="chat-time">now</span>
                                     </p>
@@ -739,57 +739,57 @@
         <!-- End #content -->
         <!-- Javascripts -->
         <!-- Load pace first -->
-        <script src="css/assets/plugins/core/pace/pace.min.js"></script>
+        <script src="/onlineshop/css/assets/plugins/core/pace/pace.min.js"></script>
         <!-- Important javascript libs(put in all pages) -->
-        <script src="css/assets/js/jquery-1.8.3.min.js"></script>
+        <script src="/onlineshop/css/assets/js/jquery-1.8.3.min.js"></script>
         <script>
-        window.jQuery || document.write('<script src="css/assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
+        window.jQuery || document.write('<script src="/onlineshop/css/assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
         </script>
-        <script src="css/assets/js/jquery-ui.js"></script>
+        <script src="/onlineshop/css/assets/js/jquery-ui.js"></script>
         <script>
-        window.jQuery || document.write('<script src="css/assets/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+        window.jQuery || document.write('<script src="/onlineshop/css/assets/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
         </script>
         <!--[if lt IE 9]>
-  <script type="text/javascript" src="css/assets/js/libs/excanvas.min.js"></script>
+  <script type="text/javascript" src="/onlineshop/css/assets/js/libs/excanvas.min.js"></script>
   <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <script type="text/javascript" src="css/assets/js/libs/respond.min.js"></script>
+  <script type="text/javascript" src="/onlineshop/css/assets/js/libs/respond.min.js"></script>
 <![endif]-->
         <!-- Bootstrap plugins -->
-        <script src="css/assets/js/bootstrap/bootstrap.js"></script>
+        <script src="/onlineshop/css/assets/js/bootstrap/bootstrap.js"></script>
         <!-- Core plugins ( not remove ever) -->
         <!-- Handle responsive view functions -->
-        <script src="css/assets/js/jRespond.min.js"></script>
+        <script src="/onlineshop/css/assets/js/jRespond.min.js"></script>
         <!-- Custom scroll for sidebars,tables and etc. -->
-        <script src="css/assets/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="css/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+        <script src="/onlineshop/css/assets/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="/onlineshop/css/assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
         <!-- Resize text area in most pages -->
-        <script src="css/assets/plugins/forms/autosize/jquery.autosize.js"></script>
+        <script src="/onlineshop/css/assets/plugins/forms/autosize/jquery.autosize.js"></script>
         <!-- Proivde quick search for many widgets -->
-        <script src="css/assets/plugins/core/quicksearch/jquery.quicksearch.js"></script>
+        <script src="/onlineshop/css/assets/plugins/core/quicksearch/jquery.quicksearch.js"></script>
         <!-- Bootbox confirm dialog for reset postion on panels -->
-        <script src="css/assets/plugins/ui/bootbox/bootbox.js"></script>
+        <script src="/onlineshop/css/assets/plugins/ui/bootbox/bootbox.js"></script>
         <!-- Other plugins ( load only nessesary plugins for every page) -->
-        <script src="css/assets/plugins/charts/flot/jquery.flot.js"></script>
-        <script src="css/assets/plugins/charts/flot/jquery.flot.pie.js"></script>
-        <script src="css/assets/plugins/charts/flot/jquery.flot.resize.js"></script>
-        <script src="css/assets/plugins/charts/flot/jquery.flot.time.js"></script>
-        <script src="css/assets/plugins/charts/flot/jquery.flot.growraf.js"></script>
-        <script src="css/assets/plugins/charts/flot/jquery.flot.categories.js"></script>
-        <script src="css/assets/plugins/charts/flot/jquery.flot.stack.js"></script>
-        <script src="css/assets/plugins/charts/flot/jquery.flot.tooltip.min.js"></script>
-        <script src="css/assets/plugins/charts/flot/date.js"></script>
-        <script src="css/assets/plugins/charts/sparklines/jquery.sparkline.js"></script>
-        <script src="css/assets/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
-        <script src="css/assets/plugins/forms/icheck/jquery.icheck.js"></script>
-        <script src="css/assets/plugins/forms/tags/jquery.tagsinput.min.js"></script>
-        <script src="css/assets/plugins/forms/tinymce/tinymce.min.js"></script>
-        <script src="css/assets/plugins/misc/highlight/highlight.pack.js"></script>
-        <script src="css/assets/plugins/misc/countTo/jquery.countTo.js"></script>
-        <script src="css/assets/plugins/ui/weather/skyicons.js"></script>
-        <script src="css/assets/plugins/ui/notify/jquery.gritter.js"></script>
-        <script src="css/assets/plugins/ui/calendar/fullcalendar.js"></script>
-        <script src="css/assets/js/jquery.sprFlat.js"></script>
-        <script src="css/assets/js/app.js"></script>
-        <script src="css/assets/js/pages/dashboard.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.pie.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.resize.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.time.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.growraf.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.categories.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.stack.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/flot/date.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/sparklines/jquery.sparkline.js"></script>
+        <script src="/onlineshop/css/assets/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+        <script src="/onlineshop/css/assets/plugins/forms/icheck/jquery.icheck.js"></script>
+        <script src="/onlineshop/css/assets/plugins/forms/tags/jquery.tagsinput.min.js"></script>
+        <script src="/onlineshop/css/assets/plugins/forms/tinymce/tinymce.min.js"></script>
+        <script src="/onlineshop/css/assets/plugins/misc/highlight/highlight.pack.js"></script>
+        <script src="/onlineshop/css/assets/plugins/misc/countTo/jquery.countTo.js"></script>
+        <script src="/onlineshop/css/assets/plugins/ui/weather/skyicons.js"></script>
+        <script src="/onlineshop/css/assets/plugins/ui/notify/jquery.gritter.js"></script>
+        <script src="/onlineshop/css/assets/plugins/ui/calendar/fullcalendar.js"></script>
+        <script src="/onlineshop/css/assets/js/jquery.sprFlat.js"></script>
+        <script src="/onlineshop/css/assets/js/app.js"></script>
+        <script src="/onlineshop/css/assets/js/pages/dashboard.js"></script>
 </body>
 </html>

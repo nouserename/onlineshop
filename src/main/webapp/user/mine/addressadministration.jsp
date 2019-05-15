@@ -29,6 +29,7 @@
 							document.getElementById("district"+i).value = infoDivision[4];
 							document.getElementById("other"+i).value = infoDivision[5];
 						}
+						//window.history.back(-1);
 					}
 				}
 			}
@@ -144,7 +145,7 @@
 				<h1 align="center">第二条地址</h1>
 				<form action="AddressAdministration" method="post">
 					<div style="border: 3px solid #000">
-						<input type="hidden" name="table" value="table1">
+						<input type="hidden" name="table" value="table2">
 						<input type="hidden" name="event" value="isWrong2">
 						<br />
 						&emsp;&emsp;<label class="peopleOfReceive">收货人:&emsp; <input type="text" name="customer" id="peopleOfReceive2"></label>
@@ -168,7 +169,7 @@
 				<h1 align="center">第三条地址</h1>
 				<form action="AddressAdministration" method="post">
 					<div style="border: 3px solid #000">
-						<input type="hidden" name="table" value="table1">
+						<input type="hidden" name="table" value="table3">
 						<input type="hidden" name="event" value="isWrong3">
 						<br />
 						&emsp;&emsp;<label class="peopleOfReceive">收货人:&emsp; <input type="text" name="customer" id="peopleOfReceive3"></label>

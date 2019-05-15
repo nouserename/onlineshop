@@ -50,8 +50,23 @@ public class Mine extends HttpServlet{
 	*/ 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO 自动生成的方法存根
-		super.doGet(req, resp);
+		String id = req.getParameter("id");
+		System.out.println("该订单号是：" + id);
+		Customer customer =  (Customer)req.getSession().getAttribute("customer");
+		try {
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = resp.getWriter();
+			boolean bool = customer.applyAfterSales(Integer.parseInt(id));
+			System.out.println("该SQL的结果是：" + bool);
+			if(bool)
+				writer.println("申请成功！");
+			else
+				writer.println("申请失败，请稍后再试！");
+			writer.flush();
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	/**
 	* <p>Title: doPost</p>  
@@ -65,7 +80,7 @@ public class Mine extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(req.getParameter("event").equals("onload")) {
-			System.out.println("加载了两次！");
+			//System.out.println("加载了两次！");
 			Customer customer =  (Customer)req.getSession().getAttribute("customer");
 			Address[] address = customer.getAddr();
 			String ad = customer.getName() + ";" + customer.getId() + ";" + address[0].getAddress() + ";" + address[1].getAddress() + ";" + address[2].getAddress() ;
@@ -75,11 +90,14 @@ public class Mine extends HttpServlet{
 			writer.flush();
 			writer.close();
 		}else if (req.getParameter("event").equals("overallOrders")) {
+			//System.out.println("输出全部订单！");
 			printOrder(req, resp, -1);	//输出全部订单
 		}else if(req.getParameter("event").equals("daifahuo")){
 			printOrder(req, resp, Order.NR_waitForReceiving);
 		}else if (req.getParameter("event").equals("daishouhuo")) {
 			printOrder(req, resp, Order.NR_unCollected);
+		}else if (req.getParameter("event").equals("dengdaishenhe")) {
+			printOrder(req, resp, Order.NR_waitForReview);
 		}else if (req.getParameter("event").equals("address1")) {
 			String str = req.getParameter("address");
 			modifyAddress(req, resp, str, 1);
@@ -132,27 +150,26 @@ public class Mine extends HttpServlet{
 				writer.println("<div class='ddzxbt'>交易订单</div>");
 				writer.println("<div class='ddxq'>订单为空！</div>");
 			}else {
-				String st = "今天必须成功";
-				System.out.println(st);
+				//String st = "今天必须成功";
+				//System.out.println(st);
 				//writer.println(st);
 				//wr.println(st);
 				
 				writer.println("<div class='ddzxbt'>交易订单</div>");
-				System.out.println("怎么回事!");
+				//System.out.println("怎么回事!");
 				
 				for(int i=0;i<str.length;i++)
 				{
-					System.out.println(str[i]);
 					String[] stringSplit = str[i].split(";");
-					System.out.println(stringSplit[0]);
 					writer.println("<div class='ddxq'>"
 							+ "<div class='ddspt fl'><img src= '../../"+ stringSplit[0] +"' alt='加载失败' style=\"height:5em;width:5em;\"></div>"
 							+ "<div class='ddbh fl'>订单号:"+ stringSplit[1] +"</div>"
 							+ "<div class='ztxx fr'>"
 							+ "<ul>"
-							+     "<li>已发货</li>"
-							+     "<li>" + stringSplit[2] +"</li>"
+							+     "<li id=\"li"+ stringSplit[1] + "\"><font size=\"2em\">"+ exchangeState(Integer.parseInt(stringSplit[2])) +"</font></li>"
+							+     "<li>" + stringSplit[3] +"</li>"
 							+     "<li>"+ "地址" +"</li>"
+							+	  "<li><button class=\"applyAfterSales\" id=\"button" + stringSplit[1] + " \" onclick=\"applyAfterSales('"+ stringSplit[1] + "')\">申请售后</input></li>"
 							+     "<div class='clear'></div>"
 							+ "</ul>"
 							+"</div>"
@@ -167,6 +184,27 @@ public class Mine extends HttpServlet{
 			writer.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	String exchangeState(int state) {
+		switch (state) {
+		case Order.NR_waitForReceiving:
+			return "未发货";
+		case Order.NR_unCollected:
+			return "未收货";
+		case Order.NR_Collected:
+			return "已收货";
+		case Order.NR_waitForReview:
+			return "等待审核";
+		case Order.NR_waitForReturn:
+			return "卖家等待买家退货 ";
+		case Order.NR_returnedFinish:
+			return "退货完成";
+		case Order.NR_reviewNotPass:
+			return "审核未通过";
+		default:
+			return "状态出错";
 		}
 	}
 	

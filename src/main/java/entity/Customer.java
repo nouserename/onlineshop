@@ -13,7 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.internal.compiler.batch.Main;
+
 import entity.exception.UserNotFoundException;
+import tool.Security;
 
 /**
  * @author YWB
@@ -299,8 +302,10 @@ public class Customer extends User{
 	* @throws  
 	*/  
 	public Order[] searchOrder(Customer customer) throws SQLException{
-		String sqlString = "Select * from order where id = '" + customer.getId() + "'";
+		String sqlString = "Select * from orders where customer_id = '" + customer.getId() + "'";
 		ResultSet resultSet = Database.executeQuery(sqlString);
+		
+		
 		
 		List<Order> orderList = new ArrayList<Order>();
 		
@@ -308,11 +313,19 @@ public class Customer extends User{
 			orderList.add(new Order(resultSet.getString("order_id"), resultSet.getString("customer_id"), 
 					Integer.parseInt(resultSet.getString("price")), Integer.parseInt(resultSet.getString("product_id")), 
 					Integer.parseInt(resultSet.getString("state"))));
+			
 		}
+		
+		if(orderList.get(0).getId() == null)	//如果什么也没有查到则直接返回空。	
+			return null;
+		
 		
 		Order[] orderArray = new Order[orderList.size()];
 		
+		
 		for(int i=0; i<orderList.size();i++) {
+			orderArray[i] = new Order();
+			System.out.println("是这一句话"+orderList.get(i).getId());
 			orderArray[i].setId(orderList.get(i).getId());
 			orderArray[i].setCustomer(orderList.get(i).getCustomer());
 			orderArray[i].setTotalPrice(orderList.get(i).getTotalPrice());
@@ -363,9 +376,9 @@ public class Customer extends User{
 	public boolean modifyPasswd(String oldPasswd,String newPasswd) throws SQLException {
 		String sqlString = "Select passwd from customer Where customer_id = '" + this.getId() +"'";
 		ResultSet resultSet = Database.executeQuery(sqlString);
-		
-		if(oldPasswd == resultSet.getString("passwd")) {
-			String sqlString2 = "Update customer set passwd = '" + newPasswd + "' WHERE customer_id = '" + this.getId() + "'";
+		resultSet.next();
+		if(Security.getSHA256StrJava(oldPasswd).equals(resultSet.getString("passwd"))) {
+			String sqlString2 = "Update customer set passwd = '" + Security.getSHA256StrJava(newPasswd) + "' WHERE customer_id = '" + this.getId() + "'";
 			int state = Database.executeUpdate(sqlString2);
 			
 			if(state != 0) {
@@ -378,9 +391,13 @@ public class Customer extends User{
 			}
 		}
 		else {
+			System.out.println("修改错误");
 			Database.closeConnection();
 			return false;
 		}
+		
+		
+		
 	}
 	
 	public Product searchProduct(int proId)
@@ -414,10 +431,82 @@ public class Customer extends User{
 		return product;
 		
 	}
+
+	/**
+	 * @throws SQLException   
+	* @Title: searchInfoOfProduct  
+	* @Description: TODO(这里用一句话描述这个方法的作用)  
+	* @param @param product
+	* @param @return    参数  
+	* @return String    返回类型  
+	* @throws  
+	*/  
+	public String searchInfoOfProduct(int product) throws SQLException {
+		String sqlString = "SELECT image1,price FROM product where product_id = '" + product +"'";
+		ResultSet resultSet = Database.executeQuery(sqlString);
+		resultSet.next();
+		String str = resultSet.getString("image1") + ";" +resultSet.getString("price");
+		
+		return str;
+	}
 	
 	
 	
+	/**  
+	* @Title: searchOrderFullInofo
+	* @Description: 此函数用于查询当前客户的所有订单和对用的产品信息  
+	* @param @return    参数  
+	* @return Order[]    返回类型  
+	* @throws  
+	*/  
+	public String[] searchOrderFullInfo(Customer customer,int state) throws SQLException{
+		ResultSet resultSet;
+		if(state == -1) {	//查询所有订单
+			String sql1 = "SELECT * FROM orders LEFT JOIN product ON orders.product_id = product.product_id WHERE customer_id = '" + customer.getId() + "'";
+			resultSet = Database.executeQuery(sql1);
+			
+		}else {
+			String sql2 = "SELECT * FROM orders LEFT JOIN product ON orders.product_id = product.product_id WHERE customer_id = '" + customer.getId() + "' AND state ='" + state + "'";
+			resultSet = Database.executeQuery(sql2);
+		}
+		
+		List<String> list = new ArrayList<String>();
+		
+		while (resultSet.next()) {
+			list.add(resultSet.getString("image1") + ";" + resultSet.getString("order_id") + ";" + resultSet.getString("state") + ";" + resultSet.getString("price"));
+		}
+		
+		if(list.get(0) == null)
+			return null;
+		
+		String str[] = new String[list.size()];
+		for(int i=0;i<list.size();i++)
+			str[i] = list.get(i);
+		
+		return str;
+		
+		
+		
+	}
 	
+
+	/**  
+	* @Title: searchOrderFullInofo
+	* @Description: 此函数用于查询当前客户的所有订单和对用的产品信息  
+	* @param @return    参数  
+	* @return Order[]    返回类型  
+	* @throws  
+	*/  
+	public boolean applyAfterSales(int orderid) throws SQLException {
+		String sql = "UPDATE orders SET state=" + Order.NR_waitForReview + " WHERE order_id=" + orderid;
+		System.out.println(sql);
+		int k = Database.executeUpdate(sql);
+		System.out.println("已经申请售后！");
+		Database.closeConnection();
+		if(k==0)
+			return false;
+		return true;
+	}
 	
 	
 	
