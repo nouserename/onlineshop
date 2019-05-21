@@ -476,7 +476,7 @@ public class Customer extends User{
 			list.add(resultSet.getString("image1") + ";" + resultSet.getString("order_id") + ";" + resultSet.getString("state") + ";" + resultSet.getString("price"));
 		}
 		
-		if(list.get(0) == null)
+		if(list.isEmpty())
 			return null;
 		
 		String str[] = new String[list.size()];
@@ -492,9 +492,9 @@ public class Customer extends User{
 
 	/**  
 	* @Title: searchOrderFullInofo
-	* @Description: 此函数用于查询当前客户的所有订单和对用的产品信息  
+	* @Description: 此函数用于将当前订单的状态该为等待审核  
 	* @param @return    参数  
-	* @return Order[]    返回类型  
+	* @return boolean    返回类型  
 	* @throws  
 	*/  
 	public boolean applyAfterSales(int orderid) throws SQLException {
@@ -508,9 +508,39 @@ public class Customer extends User{
 		return true;
 	}
 	
+	/**  
+	* @Title: searchOrderFullInofo
+	* @Description: 此函数用于将当前订单的状态改为已收到
+	* @param @return    参数  
+	* @return boolean    返回类型  
+	* @throws  
+	*/  
+	public boolean receiveCommodity(int orderid) throws SQLException{
+		String sql = "UPDATE orders SET state=" + Order.NR_Collected + " WHERE order_id=" + orderid;
+		System.out.println(sql);
+		int k = Database.executeUpdate(sql);
+		System.out.println("已经收到商品！");
+		Database.closeConnection();
+		if(k==0)
+			return false;
+		return true;
+	}
 	
-	
-	
+	/**  
+	* @Title: searchOrderFullInofo
+	* @Description: 此函数用于将当前订单的状态改为已收到
+	* @param @return    参数  
+	* @return boolean    返回类型  
+	* @throws  
+	*/  
+	public String firstAddress() throws SQLException{
+		String sql = "SELECT addr1 FROM customer WHERE customer_id=" + this.getId();
+		ResultSet resultSet = Database.executeQuery(sql);
+		resultSet.next();
+		String[] addr = resultSet.getString("addr1").split("/");
+		String result = addr[0] + addr[1] + addr[2] + addr[3];
+		return result;
+	}
 	
 	
 	

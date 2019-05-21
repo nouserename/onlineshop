@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,18 +51,30 @@ public class Mine extends HttpServlet{
 	*/ 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		System.out.println("该订单号是：" + id);
+		String confirmString = req.getParameter("event");
+		System.out.println(confirmString);
 		Customer customer =  (Customer)req.getSession().getAttribute("customer");
 		try {
+			//设置返回的表头
 			resp.setContentType("text/html;charset=UTF-8");
 			PrintWriter writer = resp.getWriter();
-			boolean bool = customer.applyAfterSales(Integer.parseInt(id));
-			System.out.println("该SQL的结果是：" + bool);
-			if(bool)
-				writer.println("申请成功！");
-			else
-				writer.println("申请失败，请稍后再试！");
+			
+			if(confirmString.equals("applyAfterSales"))	//说明该状态是申请售后
+			{
+				String afterId = req.getParameter("afterId");
+				boolean bool = customer.applyAfterSales(Integer.parseInt(afterId));
+				System.out.println("该SQL的结果是：" + bool);
+				if(bool)
+					writer.println("申请售后成功！");
+				else
+					writer.println("申请售后失败，请稍后再试！");				
+			}else {	//说明改状态是收到货物
+				String receiveId = req.getParameter("receiveId");
+				if(customer.receiveCommodity(Integer.parseInt(receiveId)))
+					writer.println("货物已收到！");
+				else
+					writer.println(" 状态修改失败！");	
+			}
 			writer.flush();
 			writer.close();
 		} catch (Exception e) {
@@ -89,13 +102,15 @@ public class Mine extends HttpServlet{
 			writer.println(ad);
 			writer.flush();
 			writer.close();
-		}else if (req.getParameter("event").equals("overallOrders")) {
+		}else if (req.getParameter("event").equals("quanbudingdan")) {
 			//System.out.println("输出全部订单！");
 			printOrder(req, resp, -1);	//输出全部订单
-		}else if(req.getParameter("event").equals("daifahuo")){
+		}else if(req.getParameter("event").equals("weifahuo")){
 			printOrder(req, resp, Order.NR_waitForReceiving);
-		}else if (req.getParameter("event").equals("daishouhuo")) {
+		}else if (req.getParameter("event").equals("weishouhuo")) {
 			printOrder(req, resp, Order.NR_unCollected);
+		}else if (req.getParameter("event").equals("yishoudao")) {
+			printOrder(req, resp, Order.NR_Collected);
 		}else if (req.getParameter("event").equals("dengdaishenhe")) {
 			printOrder(req, resp, Order.NR_waitForReview);
 		}else if (req.getParameter("event").equals("address1")) {
@@ -150,17 +165,16 @@ public class Mine extends HttpServlet{
 				writer.println("<div class='ddzxbt'>交易订单</div>");
 				writer.println("<div class='ddxq'>订单为空！</div>");
 			}else {
-				//String st = "今天必须成功";
-				//System.out.println(st);
-				//writer.println(st);
-				//wr.println(st);
 				
-				writer.println("<div class='ddzxbt'>交易订单</div>");
-				//System.out.println("怎么回事!");
+				writer.println("<div class='ddzxbt' id='orderdisplay'>交易订单</div>");
+				String addr = customer.firstAddress();
 				
 				for(int i=0;i<str.length;i++)
 				{
 					String[] stringSplit = str[i].split(";");
+					
+					
+					
 					writer.println("<div class='ddxq'>"
 							+ "<div class='ddspt fl'><img src= '../../"+ stringSplit[0] +"' alt='加载失败' style=\"height:5em;width:5em;\"></div>"
 							+ "<div class='ddbh fl'>订单号:"+ stringSplit[1] +"</div>"
@@ -168,8 +182,8 @@ public class Mine extends HttpServlet{
 							+ "<ul>"
 							+     "<li id=\"li"+ stringSplit[1] + "\"><font size=\"2em\">"+ exchangeState(Integer.parseInt(stringSplit[2])) +"</font></li>"
 							+     "<li>" + stringSplit[3] +"</li>"
-							+     "<li>"+ "地址" +"</li>"
-							+	  "<li><button class=\"applyAfterSales\" id=\"button" + stringSplit[1] + " \" onclick=\"applyAfterSales('"+ stringSplit[1] + "')\">申请售后</input></li>"
+							+     "<li><input type=\"hidden\" id=addr"+ stringSplit[1] +" value=\"" + addr +"\"><a href=\"#\" onclick=\"displayAddress("+ stringSplit[1] +")\">点击获取地址</a></li>"
+							+	  "<li>" + confirmFuntion(Integer.parseInt(stringSplit[2]), stringSplit[1]) +"</li>"
 							+     "<div class='clear'></div>"
 							+ "</ul>"
 							+"</div>"
@@ -206,6 +220,15 @@ public class Mine extends HttpServlet{
 		default:
 			return "状态出错";
 		}
+	}
+	
+	String confirmFuntion(int state,String orderid) {
+		if (state == Order.NR_unCollected || state == Order.NR_waitForReceiving)
+			return "<button class=\"confirmState\" id=\"button" + orderid +"\"onclick=\"confirmReciveCommodity(" + orderid +")\">已收到货物</button>";
+		else if (state == Order.NR_Collected)
+			return "<button class=\"confirmState\" id=\"button" + orderid +"\"onclick=\"applyAfterSales("+ orderid +")\">申请售后</button>";	
+		else
+			return "";
 	}
 	
 }

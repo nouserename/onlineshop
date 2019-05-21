@@ -43,24 +43,7 @@
 				    }
 				}
 			
-			function overallOrders(){
-				var httpOrders = new XMLHttpRequest();
-				httpOrders.open("POST","Mine",true);
-				httpOrders.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				httpOrders.send("event="+"overallOrders");
-				httpOrders.onreadystatechange = function(){
-					if(httpOrders.readyState == 4){
-						if(httpOrders.status == 200){
-							var tt = document.getElementById("orderinfo");
-							var sk = httpOrders.responseText;
-							tt.innerHTML = sk;
-						}
-						
-					}
-				}
-				
-				
-			}
+		
 			
 			function orderState(state){
 				var httpOrders = new XMLHttpRequest();
@@ -74,6 +57,18 @@
 							var tt = document.getElementById("orderinfo");
 							var sk = httpOrders.responseText;
 							tt.innerHTML = sk;
+							
+							var dingdan = document.getElementById("orderdisplay");
+							if(state == "quanbudingdan")
+								dingdan.innerHTML = "全部订单";
+							else if(state == "weifahuo")
+								dingdan.innerHTML = "未发货订单";
+							else if(state == "weishouhuo")
+								dingdan.innerHTML = "未收货订单";
+							else if(state == "yishoudao")
+								dingdan.innerHTML = "已收到订单";
+							else if(state == "dengdaishenhe")
+								dingdan.innerHTML = "等待审核订单";
 						}
 						
 					}
@@ -84,25 +79,67 @@
 				var msg = "确定要申请售后吗？";
 				if(confirm(msg) == true)
 				{					
-				var httpOrders = new XMLHttpRequest();
-				httpOrders.open("GET","Mine?id=" + orderid,true);
-				httpOrders.send();
-				
-				httpOrders.onreadystatechange = function(){
-					if(httpOrders.readyState == 4 && httpOrders.status == 200){
-						alert(httpOrders.responseText);
-						//if(httpOrders.responseText == "申请成功！")
-						//{
-							document.getElementById("overallOrders").onclick();
+					var httpOrders = new XMLHttpRequest();
+					httpOrders.open("GET","Mine?event=applyAfterSales&afterId=" + orderid,true);
+					httpOrders.send();
+					
+					httpOrders.onreadystatechange = function(){
+						if(httpOrders.readyState == 4 && httpOrders.status == 200){
+							alert(httpOrders.responseText);
 							
-							//document.getElementById("li" + orderid).innerHTML = "等待审核";
-						//}
+							
+							var orderDisplay = document.getElementById("orderdisplay").innerHTML;
+							if(orderDisplay == "全部订单")
+								document.getElementById("overallOrders").onclick();
+							else if(orderDisplay == "未发货订单")
+								document.getElementById("weifahuo").onclick();
+							else if(orderDisplay == "未收货订单")
+								document.getElementById("weishouohuo").onclick();
+							else if(orderDisplay == "已收到订单")
+								document.getElementById("yishoudao").onclick();
+							else if(orderDisplay == "等待审核订单")
+								document.getElementById("dengdaishenhe").onclick();
+							}
 						}
-					}
 				}else{					
 					return false;
 				}
 				
+			}
+			
+			function confirmReciveCommodity(orderid){
+				var msg = "确定收到货物了吗？";
+				if(confirm(msg) == true)
+				{
+					var httpOrders = new XMLHttpRequest();
+					httpOrders.open("GET","Mine?event=confirmReciveCommodity&receiveId=" + orderid,true);
+					httpOrders.send();
+					
+					httpOrders.onreadystatechange = function(){
+						if(httpOrders.readyState == 4 && httpOrders.status == 200)
+						{
+							alert(httpOrders.responseText);
+						
+							var orderDisplay = document.getElementById("orderdisplay").innerHTML;
+							if(orderDisplay == "全部订单")
+								document.getElementById("overallOrders").onclick();
+							else if(orderDisplay == "未发货订单")
+								document.getElementById("weifahuo").onclick();
+							else if(orderDisplay == "未收货订单")
+								document.getElementById("weishouhuo").onclick();
+							else if(orderDisplay == "已收到订单")
+								document.getElementById("yishoudao").onclick();
+							else if(orderDisplay == "等待审核订单")
+								document.getElementById("dengdaishenhe").onclick();
+						}
+					}
+				}else
+					return false;
+			}
+			
+			function displayAddress(orderid)
+			{
+				alert(document.getElementById("addr" + orderid).value);
 			}
 		</script>
 		
@@ -181,10 +218,11 @@
 			<div class="ddzx">订单中心</div>
 			<div class="subddzx">
 				<ul>
-					<li><a href="#" onclick="overallOrders()" id="overallOrders">全部订单</a></li>
-					<li><a href="#" onclick="orderState('daifahuo')">未发货</a></li>
-					<li><a href="#" onclick="orderState('daishouhuo')">未收货</a></li>
-					<li><a href="#" onclick="orderState('dengdaishenhe')">等待审核</a></li>
+					<li><a href="#" onclick="orderState('quanbudingdan')" id="overallOrders">全部订单</a></li>
+					<li><a href="#" onclick="orderState('weifahuo')" id="weifahuo">未发货</a></li>
+					<li><a href="#" onclick="orderState('weishouhuo')" id="weishouhuo">未收货</a></li>
+					<li><a href="#" onclick="orderState('yishoudao')" id="yishoudao">已收到</a></li>
+					<li><a href="#" onclick="orderState('dengdaishenhe')" id="dengdaishenhe">等待审核</a></li>
 				</ul>
 			</div>
 			<div class="ddzx">个人中心</div>
