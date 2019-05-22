@@ -22,8 +22,10 @@ function query(){
 	httpRequest.onreadystatechange = function(){
 		if(httpRequest.status==200&&httpRequest.readyState==4){
 			var result = httpRequest.responseText;
-			if(result=="null"){
+			if(result=='no'){
 				h3.innerHTML = "当前没有等待服务的客户";
+				form.innerHTML = "" ;
+
 			}else{
 				h3.innerHTML = "当前需要服务的客户是"+result;
 				form.innerHTML = "<input type='text' hidden value = '"+result+"' name='customerId'> <input type='submit' value='开始服务'>" ;
