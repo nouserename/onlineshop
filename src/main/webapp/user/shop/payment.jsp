@@ -24,10 +24,8 @@
 		
 		function callback(){
 			var flag = xmlhttp.responseText;
-			alert(flag);
 			if(flag=="true"){
 				var body = document.getElementById("formdiv");
-				alert(body);
 				body.innerHTML = "<h1>付款成功</h1>";
 			}
 			if(flag=="false"){

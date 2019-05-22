@@ -246,18 +246,7 @@
 		<div class="clear"></div>
 	</div>
 	</form>
-	<div>
-	<h1>  这里写描述</h1>
-	</div>
-	<div>
-	<h1>  这里写描述</h1>
-	</div>
-	<div>
-	<h1>  这里写描述</h1>
-	</div>
-	<div>
-	<h1>  这里写描述</h1>
-	</div>
+	
 	<!-- footer -->
 	<footer class="mt20 center">			
 			<div class="mt20">星云商城|星云UI|NebulaChat|星云书城|星云路由器|星云天猫店|星云淘宝直营店|星云移动|隐私政策|</div>

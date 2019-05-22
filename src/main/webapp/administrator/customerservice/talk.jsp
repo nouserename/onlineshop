@@ -108,7 +108,7 @@
             				var word = httpRequest.responseText;
             				if(word!=""){
             				Words.innerHTML = Words.innerHTML + '<div class="btalk"><span>' + TalkWords.value +'</span></div>';
-            					
+            					TalkWords.value = "";
             				}
             			}
             	}
@@ -132,7 +132,8 @@
             			if(return_word!="")
             				{
             				
-            			Words.innerHTML = Words.innerHTML +  return_word ;
+            					Words.innerHTML = Words.innerHTML +  return_word ;
+            					
             				}
             		}
             	}
@@ -142,16 +143,13 @@
     </script>
 </head>
 <body>
+<a href="customerservice.jsp">返回首页</a>
     <div class="talk_con">
         <div class="talk_show" id="words">
-            <div class="atalk"><span id="asay">A说：吃饭了吗？</span></div>
-            <div class="btalk"><span id="bsay">B说：还没呢，你呢？</span></div>
+            
         </div>
         <div class="talk_input">
-            <select class="whotalk" id="who">
-                <option value="0">A说：</option>
-                <option value="1">B说：</option>
-            </select>
+            
             <input type="text" class="talk_word" id="talkwords">
             <input type="button" value="发送" class="talk_sub" id="talksub">
         </div>

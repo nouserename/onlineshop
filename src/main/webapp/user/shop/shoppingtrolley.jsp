@@ -34,19 +34,26 @@
 	}
 	
 	function allCheck(){
+		var price = 0;
 			var pro = document.getElementsByClassName("oneProduct");
-			
+			var all_pro = document.getElementsByClassName("content2 center");
 			var len = pro.length;
 		var all = document.getElementById("selectAll");
 		if(all.checked==false){
 			for(var i = 0;i<len;i++){
 				pro[i].checked = false;
 			}
+			price = 0;
+			len = 0;
 		}else{
 			for(var i = 0;i<len;i++){
 				pro[i].checked = true;
+				var e = all_pro[i].getElementsByTagName("span")[0];
+				price+=parseInt(e.innerHTML);
 			}
 		}
+		document.getElementById("selectedNumber").innerHTML = len;
+		document.getElementById("selectAllPrice").innerHTML = price+"元";
 	}
 	
 	function editTrollryNumber( id){
@@ -99,20 +106,7 @@
 					<div class="sub_top fr">操作</div>
 					<div class="clear"></div>
 				</div>
-				<div class="content2 center">
-					<div class='sub_content fl '>
-						<input type='checkbox' value='quanxuan' class='oneProduct' />
-					</div>
-					<div class='sub_content fl'><img src=''></div>
-					<div class='sub_content fl ft20'>小米6全网通6GB内存+64GB 亮黑色</div>
-					<div class='sub_content fl '>2499元</div>
-					<div class="sub_content fl">
-						<input class='shuliang' type='number' value='1' step='1' min='1' >
-					</div>
-					<div class='sub_content fl'>2499元</div>
-					<div class='sub_content fl'><a href=''>×</a></div>
-					<div class='clear'></div>
-				</div>
+				
 				<%
 				Customer customer = (Customer)request.getSession().getAttribute("customer");
 				Map<Product,Integer> map = customer.searchTrolley(customer);
@@ -135,7 +129,7 @@
 // 					out.print("<div class='clear'></div>");
 // 					out.print("</div>");
 					int count = map.get(product);
-					double price = product.getPrice();
+					int price = (int)product.getPrice();
 					allPrice+=count*price;
 					String info =
 				"<div class='content2 center'>"
@@ -148,14 +142,14 @@
 					+"<div class='sub_content fl'>"
 					+"<input class='shuliang' type='number' id='"+product.getId()+"' onclick='editTrollryNumber(this.id)' value='"+count+"' step='1' min='1' >"
 					+"</div>"
-					+"<div  class='sub_content fl'><span>"+price*count+"</span>元</div>"
+					+"<div  class='sub_content fl'><span>"+price*count+"</span></div>"
 					+"<div class='sub_content fl'><a href=''>×</a></div>"
 					+"<div class='clear'></div>"
 				+"</div>";
 					out.println(info);
 				}
 				%>
-				<div class="content2 center">
+				<!-- <div class="content2 center">
 					<div class='sub_content fl '>
 						<input type='checkbox' value='quanxuan' class='oneProduct' />
 					</div>
@@ -168,8 +162,8 @@
 					<div class='sub_content fl'>2499元</div>
 					<div class='sub_content fl'><a href=''>×</a></div>
 					<div class='clear'></div>
-				</div>
-				<div class="content2 center">
+				</div> -->
+				<!-- <div class="content2 center">
 					<div class='sub_content fl '>
 						<input type='checkbox' value='quanxuan' class='oneProduct' />
 					</div>
@@ -182,8 +176,8 @@
 					<div class='sub_content fl'>2499元</div>
 					<div class='sub_content fl'><a href=''>×</a></div>
 					<div class='clear'></div>
-				</div>
-				<div class="content2 center">
+				</div> -->
+				<!-- <div class="content2 center">
 					<div class="sub_content fl ">
 						<input type="checkbox" value="quanxuan" class="oneProduct" />
 					</div>
@@ -196,7 +190,7 @@
 					<div class="sub_content fl">2499元</div>
 					<div class="sub_content fl"><a href="">×</a></div>
 					<div class="clear"></div>
-				</div>
+				</div> -->
 			</div>
 			<div class="jiesuandan mt20 center">
 				<div class="tishi fl ml20">

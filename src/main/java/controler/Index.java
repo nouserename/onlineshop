@@ -114,7 +114,8 @@ public class Index extends HttpServlet{
 					case Admin.service:
 						Service service = new Service(currentAdmin);
 						req.getSession().setAttribute("admin", service);
-						req.getRequestDispatcher("/administrator/customerservice/customerservice.jsp").forward(req, resp);
+						//req.getRequestDispatcher("/administrator/customerservice/customerservice.jsp").forward(req, resp);
+						resp.sendRedirect("/onlineshop/administrator/customerservice/customerservice.jsp");
 						break;
 						
 					default:

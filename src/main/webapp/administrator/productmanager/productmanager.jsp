@@ -726,7 +726,7 @@
                 <div class="outlet">
                     <!-- Start .outlet -->
                     <!-- Page start here ( usual with .row ) -->
-                  <a href="newlyincreased.jsp">新增手机</a>
+                  <a href="/onlineshop/administrator/productmanager/newlyincreased.jsp">新增手机</a>
 					<table>
 					<tr>
 					<th>产品编号</th>

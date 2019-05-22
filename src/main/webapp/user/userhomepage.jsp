@@ -12,6 +12,22 @@
         <meta name="author" content="北京工业大学"/>
 		<title>星云商城</title>
 		<link rel="stylesheet" type="text/css" href="/onlineshop/css/style.css">
+		<script type="text/javascript">
+			function kefu(){
+				var req = new XMLHttpRequest();
+				req.open("get","UserHomePage",true);
+				req.send();
+				req.onreadystatechange=function(){
+					if(req.status==200&&req.readyState==4){
+						if(req.responseText=="ok"){
+							window.location.href="/onlineshop/user/shop/requestcustomerservice.jsp";
+						}
+					}
+				}
+				}
+		
+		
+		</script>
 	</head>
 	<body>
 	<%
@@ -22,10 +38,6 @@
 			out.println("<script type=\"text/javascript\"> function wornning(){alert(\"您还没有登陆，亲先登陆！\"); window.location.href=\"../index.jsp \";}</script>");
 		}
 	%>
-	<script type="text/javascript">
-	window.onload =  wornning();
-	
-	</script>
 	<!-- start header -->
 		<header>
 			<div class="top center">
@@ -56,9 +68,9 @@
 					<div class="gouwuche fr"><a href="shop/shoppingtrolley.jsp">购物车</a></div>
 					<div class="fr">
 						<ul>
-							<li><a href="./login.html" target="_blank">登录</a></li>
+							<li><a href="/onlineshop/index.jsp" target="_blank">登录</a></li>
 							<li>|</li>
-							<li><a href="./register.html" target="_blank" >注册</a></li>
+							<li><label onclick="kefu()">客服</label></li>
 							<li>|</li>
 							<li><a href="mine/mine.jsp">我的</a></li>
 						</ul>

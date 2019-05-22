@@ -49,14 +49,14 @@ public class CustomerService extends HttpServlet{
 		Customer customer;
 		PrintWriter writer = resp.getWriter();
 		
-		String id = "null";
+		String id = "no";
 		try {
 			customer = queue.element();
 			id = customer.getId();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally {
-			writer.println(id);
+			writer.print(id);
 			writer.flush();
 			writer.close();
 		}
@@ -79,6 +79,10 @@ public class CustomerService extends HttpServlet{
 		Queue<Customer> queue = (Queue<Customer>)getServletContext().getAttribute("serviceObj");
 		Customer customer;
 		customer = queue.poll();
+		System.out.println(queue.size()+"-------========");
+		for (Customer customer1 : queue) {
+			System.out.println(customer1.getId()+"--------00000000000000");
+		}
 		Service service = (Service)(Admin)req.getSession().getAttribute("admin");
 		service.customerIdString = customer.getId();
 		resp.sendRedirect(req.getContextPath()+"/administrator/customerservice/talk.jsp");
