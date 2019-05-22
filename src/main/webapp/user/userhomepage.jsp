@@ -68,7 +68,7 @@
 					<div class="gouwuche fr"><a href="shop/shoppingtrolley.jsp">购物车</a></div>
 					<div class="fr">
 						<ul>
-							<li><a href="./login.html" target="_blank">登录</a></li>
+							<li><a href="/onlineshop/index.jsp" target="_blank">登录</a></li>
 							<li>|</li>
 							<li><label onclick="kefu()">客服</label></li>
 							<li>|</li>
