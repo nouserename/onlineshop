@@ -12,6 +12,7 @@
 			#address2{position:relative;left:3em;width: 40em;height:3em;border-radius:5px;border:0.5;}
 			#address3{position:relative;left:3em;width: 40em;height:3em;border-radius:5px;border:0.5;}
 			.editor{position:relative;left:46.7em;top:-3em;}
+			.applyAfterSales{width:3em;height:3em;font-size:0.8em}
 		</style>
 		<script type="text/javascript">
 			function personalInfo(){
@@ -31,9 +32,9 @@
 				            var myArray = httpRequest.responseText.split(";");
 				            obj1.innerHTML = myArray[0];
 				            obj2.innerHTML = myArray[1];
-				            obj3.value = myArray[2] + "电话：" + myArray[3] + "收货人：" + myArray[4];
-				            obj4.value = myArray[5] + "电话：" + myArray[6] + "收货人：" + myArray[7];
-				            obj5.value = myArray[8] + "电话：" + myArray[9] + "收货人：" + myArray[10];
+				            obj3.value = "地址：" + myArray[2] + "   电话：" + myArray[3] + "   收货人：" + myArray[4];
+				            obj4.value = "地址：" + myArray[5] + "   电话：" + myArray[6] + "   收货人：" + myArray[7];
+				            obj5.value = "地址：" + myArray[8] + "   电话：" + myArray[9] + "   收货人：" + myArray[10];
 				            
 				            
 				        } else 
@@ -42,33 +43,9 @@
 				    }
 				}
 			
-			function overallOrders(){
-				//alert("函数起作用了");
-				var httpOrders = new XMLHttpRequest();
-				httpOrders.open("POST","Mine",true);
-				httpOrders.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				httpOrders.send("event="+"overallOrders");
-				//alert("函数起作用了skk");
-				httpOrders.onreadystatechange = function(){
-					if(httpOrders.readyState == 4){
-						if(httpOrders.status == 200){
-							alert("返回了！");
-							var tt = document.getElementById("orderinfo");
-							var sk = httpOrders.responseText;
-							//alert(sk);
-							tt.innerHTML = sk;
-							//alert(tt.InnerHTML);
-						}
-						
-					}
-				}
-				
-				
-			}
+		
 			
 			function orderState(state){
-				alert("发送请求了");
-				alert(state);
 				var httpOrders = new XMLHttpRequest();
 				httpOrders.open("POST","Mine",true);
 				httpOrders.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -77,16 +54,92 @@
 				httpOrders.onreadystatechange = function(){
 					if(httpOrders.readyState == 4){
 						if(httpOrders.status == 200){
-							//alert("返回了！");
 							var tt = document.getElementById("orderinfo");
 							var sk = httpOrders.responseText;
-							//alert(sk);
 							tt.innerHTML = sk;
-							//alert(tt.InnerHTML);
+							
+							var dingdan = document.getElementById("orderdisplay");
+							if(state == "quanbudingdan")
+								dingdan.innerHTML = "全部订单";
+							else if(state == "weifahuo")
+								dingdan.innerHTML = "未发货订单";
+							else if(state == "weishouhuo")
+								dingdan.innerHTML = "未收货订单";
+							else if(state == "yishoudao")
+								dingdan.innerHTML = "已收到订单";
+							else if(state == "dengdaishenhe")
+								dingdan.innerHTML = "等待审核订单";
 						}
 						
 					}
 				}
+			}
+			
+			function applyAfterSales(orderid){
+				var msg = "确定要申请售后吗？";
+				if(confirm(msg) == true)
+				{					
+					var httpOrders = new XMLHttpRequest();
+					httpOrders.open("GET","Mine?event=applyAfterSales&afterId=" + orderid,true);
+					httpOrders.send();
+					
+					httpOrders.onreadystatechange = function(){
+						if(httpOrders.readyState == 4 && httpOrders.status == 200){
+							alert(httpOrders.responseText);
+							
+							
+							var orderDisplay = document.getElementById("orderdisplay").innerHTML;
+							if(orderDisplay == "全部订单")
+								document.getElementById("overallOrders").onclick();
+							else if(orderDisplay == "未发货订单")
+								document.getElementById("weifahuo").onclick();
+							else if(orderDisplay == "未收货订单")
+								document.getElementById("weishouohuo").onclick();
+							else if(orderDisplay == "已收到订单")
+								document.getElementById("yishoudao").onclick();
+							else if(orderDisplay == "等待审核订单")
+								document.getElementById("dengdaishenhe").onclick();
+							}
+						}
+				}else{					
+					return false;
+				}
+				
+			}
+			
+			function confirmReciveCommodity(orderid){
+				var msg = "确定收到货物了吗？";
+				if(confirm(msg) == true)
+				{
+					var httpOrders = new XMLHttpRequest();
+					httpOrders.open("GET","Mine?event=confirmReciveCommodity&receiveId=" + orderid,true);
+					httpOrders.send();
+					
+					httpOrders.onreadystatechange = function(){
+						if(httpOrders.readyState == 4 && httpOrders.status == 200)
+						{
+							alert(httpOrders.responseText);
+						
+							var orderDisplay = document.getElementById("orderdisplay").innerHTML;
+							if(orderDisplay == "全部订单")
+								document.getElementById("overallOrders").onclick();
+							else if(orderDisplay == "未发货订单")
+								document.getElementById("weifahuo").onclick();
+							else if(orderDisplay == "未收货订单")
+								document.getElementById("weishouhuo").onclick();
+							else if(orderDisplay == "已收到订单")
+								document.getElementById("yishoudao").onclick();
+							else if(orderDisplay == "等待审核订单")
+								document.getElementById("dengdaishenhe").onclick();
+						}
+					}
+				}else
+					return false;
+			}
+			
+			function displayAddress(orderid)
+			{
+				alert(document.getElementById("addr" + orderid).value);
 			}
 		</script>
 		
@@ -155,18 +208,7 @@
 					<li><a href="">moon</a></li>
 				</ul>
 			</div>
-			<div class="search fr">
-				<form action="UserHomePage" method="post">
-					<div class="text fl">
-						<input type="text" class="shuru" name="key" placeholder="Nebula">
-					</div>
-					<div class="submit fl">
-						<input type="submit" class="sousuo"  value="搜索"/>
-					</div>
-					<div class="clear"></div>
-				</form>
-				<div class="clear"></div>
-			</div>
+			
 		</div>
 <!-- end banner_x -->
 <!-- self_info -->
@@ -176,9 +218,11 @@
 			<div class="ddzx">订单中心</div>
 			<div class="subddzx">
 				<ul>
-					<li><a href="#" onclick="overallOrders()">全部订单</a></li>
-					<li><a href="#" onclick="orderState('daifahuo')">待发货</a></li>
-					<li><a href="#" onclick="orderState('daishouhuo')">待收货</a></li>
+					<li><a href="#" onclick="orderState('quanbudingdan')" id="overallOrders">全部订单</a></li>
+					<li><a href="#" onclick="orderState('weifahuo')" id="weifahuo">未发货</a></li>
+					<li><a href="#" onclick="orderState('weishouhuo')" id="weishouhuo">未收货</a></li>
+					<li><a href="#" onclick="orderState('yishoudao')" id="yishoudao">已收到</a></li>
+					<li><a href="#" onclick="orderState('dengdaishenhe')" id="dengdaishenhe">等待审核</a></li>
 				</ul>
 			</div>
 			<div class="ddzx">个人中心</div>
@@ -198,18 +242,13 @@
 			<div class="subgrzl ml40"><span>个性签名</span><span id="signature">一支穿云箭，千军万马来相见！</span></div>
 			<div class="subgrzl ml40"><span>我的爱好</span><span>游戏，音乐，旅游，健身</span></div>
 			
-			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address1" readonly="readonly"><span></span></div>
-			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address2" readonly="readonly"><span></span></div>
-			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address3" readonly="readonly"><span></span></div>
+			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address1" readonly="readonly"></div>
+			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address2" readonly="readonly"></div>
+			<div class="subgrzl ml40"><span>收货地址1</span><input type="text" id="address3" readonly="readonly"></div>
 			
 			
 			
-			<!-- <div class="subgrzl ml40"><span>收货地址1</span><span id="address1"></span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>收货地址2</span><span id="address2"></span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>收货地址3</span><span id="address3"></span><span><a href="">编辑</a></span></div> -->
-			<!-- <form action="Mine" method="POST">
-				<input type="button" value="tijiao" onclick="personalInfo()">
-			</form> -->
+			
 		</div>
 		<div class="clear"></div>
 		</div>
