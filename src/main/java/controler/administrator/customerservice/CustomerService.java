@@ -8,12 +8,80 @@
 */ 
 package controler.administrator.customerservice;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Queue;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import entity.Admin;
+import entity.Customer;
+import entity.Service;
 
 /**
  * @author SongKaikai
  *
  */
 public class CustomerService extends HttpServlet{
+
+	/**  
+	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
+	*/ 
+	private static final long serialVersionUID = 1L;
+
+	/**
+	* <p>Title: doGet</p>  
+	* <p>Description: </p>  
+	* @param req
+	* @param resp
+	* @throws ServletException
+	* @throws IOException  
+	* @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)  
+	*/ 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
+		Queue<Customer> queue = (Queue<Customer>)getServletContext().getAttribute("serviceObj");
+		Customer customer;
+		PrintWriter writer = resp.getWriter();
+		
+		String id = "null";
+		try {
+			customer = queue.element();
+			id = customer.getId();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			writer.println(id);
+			writer.flush();
+			writer.close();
+		}
+		
+	}
+
+	/**
+	* <p>Title: doPost</p>  
+	* <p>Description: </p>  
+	* @param req
+	* @param resp
+	* @throws ServletException
+	* @throws IOException  
+	* @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)  
+	*/ 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
+		Queue<Customer> queue = (Queue<Customer>)getServletContext().getAttribute("serviceObj");
+		Customer customer;
+		customer = queue.poll();
+		Service service = (Service)(Admin)req.getSession().getAttribute("admin");
+		service.customerIdString = customer.getId();
+		resp.sendRedirect(req.getContextPath()+"/administrator/customerservice/talk.jsp");
+	}
 
 }

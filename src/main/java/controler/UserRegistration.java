@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Customer;
-import entity.User;
 import tool.Security;
 
 /**
@@ -26,6 +25,10 @@ import tool.Security;
  *
  */
 public class UserRegistration extends HttpServlet{
+	/**  
+	* @Fields field:field:{todo}(用一句话描述这个变量表示什么)  
+	*/ 
+	private static final long serialVersionUID = 1L;
 	private Customer customer  = new Customer();
 	/**
 	* <p>Title: doGet</p>  
@@ -68,7 +71,7 @@ public class UserRegistration extends HttpServlet{
 				customer.setId(parm[1]);
 				customer.setPasswd(parm[2]);
 				req.getSession().setAttribute("customer", customer);
-				resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
+				resp.sendRedirect(req.getContextPath()+"/registrationSuccess.jsp");
 				return;
 			}else {
 				resp.setContentType("text/html;charset=UTF-8");

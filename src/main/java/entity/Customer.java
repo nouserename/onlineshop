@@ -129,7 +129,7 @@ public class Customer extends User{
 			return false;
 		} else {
 
-			String sql = "insert into customer(customer_id,name,passwd) values('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"')";
+			String sql = "insert into customer(customer_id,name,passwd,addr1,addr2,addr3) values('"+parm[1]+"','"+parm[0]+"','"+parm[2]+"','','','')";
 			int column = Database.executeUpdate(sql);
 			if (column==1) {
 				Database.closeConnection();

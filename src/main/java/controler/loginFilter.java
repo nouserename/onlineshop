@@ -63,6 +63,20 @@ public class loginFilter implements Filter{
 		
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse)response;
+		String user_agent = httpServletRequest.getHeader("user-agent");
+		if(user_agent.equals("")||user_agent==null
+				||
+				user_agent.contains("python")
+				||
+				user_agent.contains("java")
+				||
+				user_agent.contains("c++")
+				
+				)
+		{
+			httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/error.jsp");
+		}
+		
 		if (httpServletRequest.getServletPath().endsWith("index.jsp")
 				||
 				httpServletRequest.getServletPath().endsWith("error.jsp")
@@ -76,6 +90,14 @@ public class loginFilter implements Filter{
 				httpServletRequest.getServletPath().endsWith("Index")
 				||
 				httpServletRequest.getServletPath().endsWith("Login.jsp")
+				||
+				httpServletRequest.getServletPath().endsWith(".css")
+				||
+				httpServletRequest.getServletPath().endsWith(".js")
+				||
+				httpServletRequest.getServletPath().endsWith("userregistration.jsp")
+				||
+				httpServletRequest.getServletPath().endsWith("UserRegistration")
 				) {
 			chain.doFilter(request, response);
 			

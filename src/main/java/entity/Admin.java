@@ -19,6 +19,7 @@ public class Admin extends User{
 	public final static int root_adm = 3;
 	public final static int product_adm = 4;
 	public final static int order_adm = 5;
+	public final static int service = 6;
 	
 	public Admin(String id,int state,String name,String passwd) {
 		// TODO Auto-generated constructor stub

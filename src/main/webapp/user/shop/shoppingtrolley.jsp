@@ -9,8 +9,8 @@
 	<head>
 		<meta charset="UTF-8">
         <meta name="author" content="Nebula"/>
-		<title>我的购物车-小米商城</title>
-		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<title>我的购物车-星云商城</title>
+		<link rel="stylesheet" type="text/css" href="/onlineshop/css/style.css">
 	</head>
 	<body>
 	<!-- start header -->

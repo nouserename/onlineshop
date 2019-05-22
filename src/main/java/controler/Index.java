@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Admin;
 import entity.Customer;
+import entity.Service;
 import entity.User;
 import tool.Security;
 
@@ -71,6 +72,11 @@ public class Index extends HttpServlet{
 		String passwd = req.getParameter("passwd");
 		passwd = Security.getSHA256StrJava(passwd);
 		String id = req.getParameter("userid");
+		if(id==null||id.equals("")||passwd == null||passwd.equals("")||kind==null||kind.equals(""))
+		{
+			resp.sendRedirect(req.getContextPath()+"/error.jsp");
+			return;
+		}
 		user.setName(kind);
 		user.setPasswd(passwd);
 		user.setId(id);
@@ -80,7 +86,7 @@ public class Index extends HttpServlet{
 		try {
 			if (user.getName().equals("admin")) {
 				currentAdmin =  (Admin) user.logIn(user);
-			System.out.println(currentAdmin.getId()+"---------");
+			
 				if (currentAdmin!=null&&user.getPasswd().equals(currentAdmin.getPasswd())) {
 					req.getSession().setAttribute("admin", currentAdmin);
 					int admin_kind = currentAdmin.getState();
@@ -105,6 +111,11 @@ public class Index extends HttpServlet{
 						req.getRequestDispatcher("/administrator/ordermanager/ordermanager.jsp").forward(req, resp);
 //						resp.sendRedirect(req.getContextPath()+"/administrator/ordermanager/ordermanager.jsp");
 						break;
+					case Admin.service:
+						Service service = new Service(currentAdmin);
+						req.getSession().setAttribute("admin", service);
+						req.getRequestDispatcher("/administrator/customerservice/customerservice.jsp").forward(req, resp);
+						break;
 						
 					default:
 						break;
@@ -120,6 +131,7 @@ public class Index extends HttpServlet{
 			} else {
 
 				currentCustomer = (Customer)user.logIn(user);
+				//System.out.println(currentCustomer.getId()+"-------------");
 				if (currentCustomer!=null&&user.getPasswd().equals(currentCustomer.getPasswd())) {
 					req.getSession().setAttribute("customer", currentCustomer);
 					resp.sendRedirect(req.getContextPath()+"/user/userhomepage.jsp");
