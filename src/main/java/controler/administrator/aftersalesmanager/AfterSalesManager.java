@@ -50,6 +50,7 @@ public class AfterSalesManager extends HttpServlet{
 		{
 			try {
 				new Aftersales_administrator().verify(true, o);
+				
 				resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -63,6 +64,7 @@ public class AfterSalesManager extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			resp.sendRedirect(req.getContextPath()+"/administrator/aftersalesmanager/aftersalesmanager.jsp");
 		}
 		else {

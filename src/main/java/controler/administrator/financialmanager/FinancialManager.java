@@ -43,8 +43,11 @@ public class FinancialManager extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String id = req.getParameter("orderId");
 		if (new Finance_administrator().received(Integer.parseInt(id))) {
+			
+			//resp.sendRedirect("../../financialmanager.jsp");
 			resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/financialmanager.jsp");
 		}else {
+			//resp.sendRedirect("../../tmp.jsp");
 			resp.sendRedirect(req.getContextPath()+"/administrator/financialmanager/tmp.jsp");
 		}
 		
