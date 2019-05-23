@@ -56,8 +56,8 @@
             <div class="container-fluid">
                 <div class="navbar">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html">
-                            <i class="im-windows8 text-logo-element animated bounceIn"></i><span class="text-logo">spr</span><span class="text-slogan">flat</span> 
+                        <a class="navbar-brand" href="#">
+                            <i class="im-windows8 text-logo-element animated bounceIn"></i><span class="text-logo" style="font-size:1.2em">星云商城后台</span> 
                         </a>
                     </div>
                     <nav class="top-nav" role="navigation">
@@ -70,9 +70,9 @@
                                 <a href="#" class="full-screen"><i class="fa-fullscreen"></i></a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown"><i class="ec-cog"></i><span class="notification">10</span></a>
+                                <a href="#" data-toggle="dropdown"><i class="ec-cog"></i><span class="notification"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#"><i class="en-database"></i> Database <span class="notification">3</span></a>
+                                    <li><a href="#"><i class="en-database"></i> Database <span class="notification"></span></a>
                                     </li>
                                     <li><a href="#"><i class="st-cube"></i> Packages <span class="notification blue">17</span></a>
                                     </li>
@@ -95,7 +95,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown"><i class="ec-mail"></i><span class="notification">4</span></a>
+                                <a href="#" data-toggle="dropdown"><i class="ec-mail"></i><span class="notification"></span></a>
                                 <ul class="dropdown-menu email" role="menu">
                                     <li class="mail-head">
                                         <div class="clearfix">
@@ -120,7 +120,7 @@
                                             <img src="/onlineshop/css/assets/img/avatars/128.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status"><i class="en-dot"></i></span> Jason Rivera
-                                                <span class="notification">2</span>
+                                                <span class="notification"></span>
                                                 <span class="time">12:30 am</span>
                                             </p>
                                             <p class="msg">
@@ -133,7 +133,7 @@
                                             <img src="/onlineshop/css/assets/img/avatars/129.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status off"><i class="en-dot"></i></span> Steeve Mclark
-                                                <span class="notification">6</span>
+                                                <span class="notification"></span>
                                                 <span class="time">10:26 am</span>
                                             </p>
                                             <p class="msg">
@@ -146,7 +146,7 @@
                                             <img src="/onlineshop/css/assets/img/avatars/130.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status off"><i class="en-dot"></i></span> Fellix Jones
-                                                <span class="notification">1</span>
+                                                <span class="notification"></span>
                                                 <span class="time">7:15 am</span>
                                             </p>
                                             <p class="msg">
@@ -159,7 +159,7 @@
                                             <img src="/onlineshop/css/assets/img/avatars/131.jpg" class="mail-avatar pull-left" alt="avatar">
                                             <p class="name">
                                                 <span class="status"><i class="en-dot"></i></span> Tina Dowsen
-                                                <span class="notification">5</span>
+                                                <span class="notification"></span>
                                                 <span class="time">03:46 am</span>
                                             </p>
                                             <p class="msg">
@@ -178,7 +178,7 @@
                                 <a href="#" id="toggle-header-area"><i class="ec-download"></i></a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown"><i class="br-alarm"></i> <span class="notification">5</span></a>
+                                <a href="#" data-toggle="dropdown"><i class="br-alarm"></i> <span class="notification"></span></a>
                                 <ul class="dropdown-menu notification-menu right" role="menu">
                                     <li class="clearfix">
                                         <i class="ec-chat"></i> 
@@ -213,8 +213,8 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">
-                                    <img class="user-avatar" src="/onlineshop/css/assets/img/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
+                                <a href="#" data-toggle="dropdown" style="font-size:2em">
+                                    	欢迎李欣桐！
                                 <ul class="dropdown-menu right" role="menu">
                                     <li><a href="profile.html"><i class="st-user"></i> Profile</a>
                                     </li>
@@ -222,12 +222,11 @@
                                     </li>
                                     <li><a href="#"><i class="st-settings"></i> Settings</a>
                                     </li>
-                                    <li><a href="login.html"><i class="im-exit"></i> Logout</a>
+                                    <li><a href="index.jsp"><i class="im-exit"></i> Logout</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li id="toggle-right-sidebar-li"><a href="#" id="toggle-right-sidebar"><i class="ec-users"></i> <span class="notification">3</span></a>
-                            </li>
+                           
                         </ul>
                     </nav>
                 </div>
@@ -304,306 +303,22 @@
                             </button>
                         </form>
                     </li>
-                    <li><a href="index.html">Dashboard <i class="im-screen"></i></a>
+                    <li><a href="index.jsp">登录页面 <i class="im-screen"></i></a>
                     </li>
-                    <li><a href="charts.html">Charts <i class="st-chart"></i></a>
-                    </li>
+                    
+                    
                     <li>
-                        <a href="#"> Forms <i class="im-paragraph-justify"></i></a>
-                        <ul class="nav sub">
-                            <li><a href="forms.html"><i class="ec-pencil2"></i> Form Stuff</a>
-                            </li>
-                            <li><a href="form-validation.html"><i class="im-checkbox-checked"></i> Form Validation</a>
-                            </li>
-                            <li><a href="form-wizard.html"><i class="im-wand"></i> Form Wizard</a>
-                            </li>
-                            <li><a href="wysiwyg.html"><i class="fa-pencil"></i> WYSIWYG editor</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"> Tables <i class="im-table2"></i></a>
-                        <ul class="nav sub">
-                            <li><a href="tables.html"><i class="en-arrow-right7"></i> Static tables</a>
-                            </li>
-                            <li><a href="data-tables.html"><i class="en-arrow-right7"></i> Data tables</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"> UI Elements <i class="st-lab"></i></a>
-                        <ul class="nav sub">
-                            <li><a href="notifications.html"><i class="fa-bell"></i> Notifications</a>
-                            </li>
-                            <li><a href="panels.html"><i class="br-window"></i> Panels</a>
-                            </li>
-                            <li><a href="tiles.html"><i class="im-windows8"></i> Tiles</a>
-                            </li>
-                            <li><a href="elements.html"><i class="st-cube"></i> Elements</a>
-                            </li>
-                            <li><a href="icons.html"><i class="im-stack"></i> Icons</a>
-                            </li>
-                            <li><a href="buttons.html"><i class="im-play2"></i> Buttons</a>
-                            </li>
-                            <li><a href="calendar.html"><i class="im-calendar2"></i> Calendar</a>
-                            </li>
-                            <li><a href="grid.html"><i class="st-grid"></i> Grid</a>
-                            </li>
-                            <li><a href="typo.html"><i class="im-font"></i> Typography</a>
-                            </li>
-                            <li><a href="list.html"><i class="fa-list"></i> Lists</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="ec-mail"></i> Email app</a>
-                        <ul class="nav sub">
-                            <li><a href="email-inbox.html"><i class="ec-archive"></i> Inbox</a>
-                            </li>
-                            <li><a href="email-read.html"><i class="br-eye"></i> Read email</a>
-                            </li>
-                            <li><a href="email-write.html"><i class="ec-pencil2"></i> Write email</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="file.html"><i class="en-upload"></i> File Manager</a>
-                    </li>
-                    <li><a href="gallery.html"><i class="im-images"></i> Gallery</a>
-                    </li>
-                    <li><a href="widgets.html"><i class="st-diamond"></i> Widgets </a>
-                    </li>
-                    <li><a href="#"><i class="ec-location"></i> Maps</a>
-                        <ul class="nav sub">
-                            <li><a href="maps-google.html"><i class="im-map2"></i> Google maps</a>
-                            </li>
-                            <li><a href="maps-vector.html"><i class="en-location2"></i> Vector maps</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Pages <i class="st-files"></i></a>
-                        <ul class="nav sub">
-                            <li><a href="invoice.html"><i class="st-file"></i> Invoice</a>
-                            </li>
-                            <li><a href="profile.html"><i class="ec-user"></i> Profile page</a>
-                            </li>
-                            <li><a href="search.html"><i class="ec-search"></i> Search page</a>
-                            </li>
-                            <li><a href="blank.html"><i class="im-file4"></i> Blank page</a>
-                            </li>
-                            <li><a href="login.html"><i class="ec-locked"></i> Login page</a>
-                            </li>
-                            <li><a href="lockscreen.html"><i class="ec-locked"></i> Lock screen</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="st-files"></i> Error pages</a>
-                                <ul class="nav sub">
-                                    <li><a href="400.html"><i class="st-file-broken"></i> Error 400</a>
-                                    </li>
-                                    <li><a href="401.html"><i class="st-file-broken"></i> Error 401</a>
-                                    </li>
-                                    <li><a href="403.html"><i class="st-file-broken"></i> Error 403</a>
-                                    </li>
-                                    <li><a href="404.html"><i class="st-file-broken"></i> Error 404</a>
-                                    </li>
-                                    <li><a href="405.html"><i class="st-file-broken"></i> Error 405</a>
-                                    </li>
-                                    <li><a href="500.html"><i class="st-file-broken"></i> Error 500</a>
-                                    </li>
-                                    <li><a href="503.html"><i class="st-file-broken"></i> Error 503</a>
-                                    </li>
-                                    <li><a href="offline.html"><i class="st-window"></i> Offline</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Bonus <i class="im-gift"></i></a>
-                        <ul class="nav sub">
-                            <li><a href="landing.html"><i class="im-airplane"></i> Landing page</a>
-                            </li>
-                        </ul>
+                        <a href="#">货物信息 <i class="im-gift"></i></a>
                     </li>
                 </ul>
                 <!-- End #sideNav -->
                 <!-- Start .sidebar-panel -->
-                <div class="sidebar-panel">
-                    <h4 class="sidebar-panel-title"><i class="im-fire"></i> Server usage</h4>
-                    <div class="sidebar-panel-content">
-                        <ul class="server-stats">
-                            <li>
-                                <span class="txt">Disk space</span>
-                                <span class="percent">78</span>
-                                <div id="usage-sparkline" class="sparkline">Loading...</div>
-                                <div class="pie-chart" data-percent="78"></div>
-                            </li>
-                        </ul>
-                        <ul class="server-stats">
-                            <li>
-                                <span class="txt">CPU</span>
-                                <span class="percent">56</span>
-                                <div id="cpu-sparkline" class="sparkline">Loading...</div>
-                                <div class="pie-chart" data-percent="56"></div>
-                            </li>
-                        </ul>
-                        <ul class="server-stats">
-                            <li>
-                                <span class="txt">Memory</span>
-                                <span class="percent">14</span>
-                                <div id="ram-sparkline" class="sparkline">Loading...</div>
-                                <div class="pie-chart" data-percent="14"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+             
                 <!-- End .sidebar-panel -->
             </div>
             <!-- End .sidebar-inner -->
         </div>
         <!-- End #sidebar -->
-        <!-- Start #right-sidebar -->
-        <div id="right-sidebar" class="hide-sidebar">
-            <!-- Start .sidebar-inner -->
-            <div class="sidebar-inner">
-                <div class="sidebar-panel mt0">
-                    <div class="sidebar-panel-content fullwidth pt0">
-                        <div class="chat-user-list">
-                            <form class="form-horizontal chat-search" role="form">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search for user...">
-                                    <button type="submit"><i class="ec-search s16"></i>
-                                    </button>
-                                </div>
-                                <!-- End .form-group  -->
-                            </form>
-                            <ul class="chat-ui bsAccordion">
-                                <li>
-                                    <a href="#">Favorites <span class="notification teal">4</span><i class="en-arrow-down5"></i></a>
-                                    <ul class="in">
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle
-                                                <span class="has-message"><i class="im-pencil"></i></span>
-                                            </a>
-                                            <span class="status online"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/54.jpg" alt="@alagoon">Anthony Lagoon</a>
-                                            <span class="status offline"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/52.jpg" alt="@koridhandy">Kory Handy</a>
-                                            <span class="status"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/50.jpg" alt="@divya">Divia Manyan</a>
-                                            <span class="status"><i class="en-dot"></i></span>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Online <span class="notification green">3</span><i class="en-arrow-down5"></i></a>
-                                    <ul class="in">
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/51.jpg" alt="@kolage">Eric Hofman</a>
-                                            <span class="status online"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/55.jpg" alt="@mikebeecham">Mike Beecham</a>
-                                            <span class="status online"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/53.jpg" alt="@derekebradley">Darek Bradly</a>
-                                            <span class="status online"><i class="en-dot"></i></span>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Offline <span class="notification red">5</span><i class="en-arrow-down5"></i></a>
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="assets/img/avatars/56.jpg" alt="@laurengray">Lauren Grey</a>
-                                            <span class="status offline"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle</a>
-                                            <span class="status offline"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/58.jpg" alt="@frankiefreesbie">Frankie Freesibie</a>
-                                            <span class="status offline"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/57.jpg" alt="@joannefournier">Joane Fornier</a>
-                                            <span class="status offline"><i class="en-dot"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="/onlineshop/css/assets/img/avatars/59.jpg" alt="@aiiaiiaii">Alia Alien</a>
-                                            <span class="status offline"><i class="en-dot"></i></span>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="chat-box">
-                            <h5>Chad Engle</h5>
-                            <a id="close-user-chat" href="#" class="btn btn-xs btn-primary"><i class="en-arrow-left4"></i></a>
-                            <ul class="chat-ui chat-messages">
-                                <li class="chat-user">
-                                    <p class="avatar">
-                                        <img src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">
-                                    </p>
-                                    <p class="chat-name">Chad Engle <span class="chat-time">15 seconds ago</span>
-                                    </p>
-                                    <span class="status online"><i class="en-dot"></i></span>
-                                    <p class="chat-txt">Hello Sugge check out the last order.</p>
-                                </li>
-                                <li class="chat-me">
-                                    <p class="avatar">
-                                        <img src="/onlineshop/css/assets/img/avatars/48.jpg" alt="SuggeElson">
-                                    </p>
-                                    <p class="chat-name">SuggeElson <span class="chat-time">10 seconds ago</span>
-                                    </p>
-                                    <span class="status online"><i class="en-dot"></i></span>
-                                    <p class="chat-txt">Ok i will check it out.</p>
-                                </li>
-                                <li class="chat-user">
-                                    <p class="avatar">
-                                        <img src="/onlineshop/css/assets/img/avatars/49.jpg" alt="@chadengle">
-                                    </p>
-                                    <p class="chat-name">Chad Engle <span class="chat-time">now</span>
-                                    </p>
-                                    <span class="status online"><i class="en-dot"></i></span>
-                                    <p class="chat-txt">Thank you, have a nice day</p>
-                                </li>
-                            </ul>
-                            <div class="chat-write">
-                                <form action="#" class="form-horizontal" role="form">
-                                    <div class="form-group">
-                                        <textarea name="sendmsg" id="sendMsg" class="form-control elastic" rows="1"></textarea>
-                                        <a role="button" class="btn" id="attach_photo_btn">
-                                            <i class="fa-picture s20"></i> 
-                                        </a>
-                                        <input type="file" name="attach_photo" id="attach_photo">
-                                    </div>
-                                    <!-- End .form-group  -->
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End .sidebar-inner -->
-        </div>
-        <!-- End #right-sidebar -->
         <!-- Start #content -->
         <div id="content">
             <!-- Start .content-wrapper -->
@@ -612,7 +327,7 @@
                     <!-- Start .row -->
                     <!-- Start .page-header -->
                     <div class="col-lg-12 heading">
-                        <h1 class="page-header"><i class="im-screen"></i> Dashboard</h1>
+                        <h1 class="page-header"><i class="im-screen"></i><b>售后管理员</b></h1>
                         <!-- Start .bredcrumb -->
                         <ul id="crumb" class="breadcrumb">
                         </ul>
@@ -632,7 +347,7 @@
                                             <div class="shortcut-button">
                                                 <a href="#">
                                                     <i class="im-pie"></i>
-                                                    <span>Earning Stats</span>
+                                                    <span>李欣桐</span>
                                                 </a>
                                             </div>
                                             <div class="shortcut-button">
@@ -763,14 +478,13 @@
                 <!-- End .outlet -->
             </div>
             <!-- End .content-wrapper -->
-            <div class="clearfix"></div>
+             <div class="clearfix"></div>
         </div>
         <!-- End #content -->
         <!-- Javascripts -->
         <!-- Load pace first -->
         <script src="/onlineshop/css/assets/plugins/core/pace/pace.min.js"></script>
         <!-- Important javascript libs(put in all pages) -->
-        <script src="/onlineshop/css/assets/js/jquery-1.8.3.min.js"></script>
         <script>
         window.jQuery || document.write('<script src="/onlineshop/css/assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
         </script>
@@ -798,14 +512,7 @@
         <!-- Bootbox confirm dialog for reset postion on panels -->
         <script src="/onlineshop/css/assets/plugins/ui/bootbox/bootbox.js"></script>
         <!-- Other plugins ( load only nessesary plugins for every page) -->
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.js"></script>
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.pie.js"></script>
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.resize.js"></script>
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.time.js"></script>
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.growraf.js"></script>
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.categories.js"></script>
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.stack.js"></script>
-        <script src="/onlineshop/css/assets/plugins/charts/flot/jquery.flot.tooltip.min.js"></script>
+      
         <script src="/onlineshop/css/assets/plugins/charts/flot/date.js"></script>
         <script src="/onlineshop/css/assets/plugins/charts/sparklines/jquery.sparkline.js"></script>
         <script src="/onlineshop/css/assets/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
@@ -821,7 +528,7 @@
         <script src="/onlineshop/css/assets/js/app.js"></script>
         <script src="/onlineshop/css/assets/js/pages/dashboard.js"></script>
 
-
 </body>
 </html>
+
 
